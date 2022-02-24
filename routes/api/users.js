@@ -91,4 +91,12 @@ router.post('/login', async function (req, res, next) {
 
 });
 
+router.get('/logout', function(req, res) {
+  // @ts-ignore
+  req.session.user = null;
+  res.json({
+    success: 'successfully logged out'
+  })
+})
+
 module.exports = router;

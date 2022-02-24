@@ -82,9 +82,21 @@ router.post('/login', async function (req, res, next) {
   }
 
   //TODO: authorize session with checkAuth
+  // @ts-ignore
+  req.session.user = user
+
+
   //send response
   res.json(user)
 
 });
+
+router.get('/logout', function(req, res) {
+  // @ts-ignore
+  req.session.user = null;
+  res.json({
+    success: 'successfully logged out'
+  })
+})
 
 module.exports = router;

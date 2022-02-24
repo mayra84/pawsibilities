@@ -29,7 +29,7 @@ app.use(
    store.sync();
    
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // app.use('/', indexRouter);
 app.use('/api/v1/users', apiUsersRouter);

@@ -82,6 +82,10 @@ router.post('/login', async function (req, res, next) {
   }
 
   //TODO: authorize session with checkAuth
+  // @ts-ignore
+  req.session.user = user
+
+
   //send response
   res.json(user)
 

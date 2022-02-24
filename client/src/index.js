@@ -4,11 +4,40 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: "#006D77",
+      200: "#83C5BE",
+      300: "#EDF6F9",
+      400: "#FFDDD2",
+      500: "#E29578",
+      101: "#0081A7",
+      201: "#00AFB9",
+      301: "#FDFCDC",
+      401: "#FED9B7",
+      501: "#F07167"
+    },
+  },
+  styles: {
+    global: {
+      // styles for the `body`
+      body: {
+        bg: 'brand.301',
+        // color: 'black',
+      },
+    },
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

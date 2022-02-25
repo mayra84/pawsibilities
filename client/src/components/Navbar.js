@@ -29,9 +29,10 @@ export default function WithSubnavigation() {
     return (
         <Box>
             <Flex
+
             boxShadow={'lg'}
-                bg={useColorModeValue('white', 'gray.800')}
-                color={useColorModeValue('gray.600', 'white')}
+                // bg={useColorModeValue('brand.300', 'gray.800')}
+                // color={useColorModeValue('gray.600', 'white')}
                 minH={'60px'}
                 py={{ base: 2 }}
                 px={{ base: 4 }}
@@ -94,7 +95,7 @@ export default function WithSubnavigation() {
                         bg={'brand.200'}
                         href={'#'}
                         _hover={{
-                            bg: 'pink.300',
+                            bg: 'brand.201',
                         }}>
                         Sign Up
                     </Button>

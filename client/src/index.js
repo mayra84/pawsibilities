@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 const theme = extendTheme({
   colors: {
@@ -25,7 +27,7 @@ const theme = extendTheme({
     global: {
       // styles for the `body`
       body: {
-        bg: 'brand.301',
+        // bg: 'brand.301',
         // color: 'black',
       },
     },
@@ -34,11 +36,13 @@ const theme = extendTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ChakraProvider theme={theme}>
-        <App />
-      </ChakraProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

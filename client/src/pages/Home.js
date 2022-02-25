@@ -15,7 +15,7 @@ function Home() {
     {/* <div>Register to discover the Pawsibilities.</div> */}
     {/* <Features /> */}
     <Carousel />
-Sign up to discover the Pawsibilities
+      <div className='tagLine'>Sign up to discover the Pawsibilities</div>
     <Register />
     {/* <Login /> */}
     

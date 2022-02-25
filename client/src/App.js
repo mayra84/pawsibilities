@@ -8,21 +8,23 @@ import Carousel from './components/Carousel';
 
 import Login from './pages/Login';
 import Navbar from './components/Navbar'
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  
   return (
     <div className="App">
-
-    <Carousel/>
-
       <Navbar />
+      {/* <Register /> */}
+      
 
       <Routes>
-        <Route path="/" element={ <Home />} />
-        <Route path="/register" element={ <Register /> } />
-        <Route path="/login" element={ <Login /> } />
-       
+        <Route path="/" element={<Home />} />
+        
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+
 
       </Routes>
     </div>

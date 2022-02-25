@@ -39,7 +39,7 @@ function Register() {
 
   return (
     //ternary statement?? 
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       {complete && (
         <Alert status='success'>
           <AlertIcon />
@@ -55,7 +55,12 @@ function Register() {
         </Alert>
       )}
 
-      <Flex boxShadow={'lg'} direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} bg={'white'} width={400} p={'5'} borderRadius={'14'} border={'1px'} color={'brand.201'}>
+      <Flex 
+      boxShadow={'lg'}
+      bgColor={'rgba(255 255 255 /70%)'}
+      backdropFilter={'blur(2px)'}  
+
+      direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={400} p={'5'} borderRadius={'14'} border={'2px'} color={'brand.201'}>
         <FormControl color={'black'} mb={'5'}>
           <FormLabel>Email</FormLabel>
           <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
@@ -66,7 +71,7 @@ function Register() {
           <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
-        <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Register</Button>
+        <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Sign Up</Button>
       </Flex>
     </form>
 

@@ -8,7 +8,7 @@ import Slider from 'react-slick';
 // Settings for the slider
 const settings = {
   dots: true,
-  arrows: false,
+//   arrows: false,
   fade: true,
   infinite: true,
   autoplay: true,
@@ -33,9 +33,9 @@ export default function Carousel() {
   // These are the images used in the slide
   const cards = [
     'https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg',
-    'https://cdn.pixabay.com/photo/2020/03/31/19/21/corgi-4988987_1280.jpg',
     'https://live.staticflickr.com/65535/51352284590_c37d8d1c8d_b.jpg',
     'https://live.staticflickr.com/65535/51243662812_cd24858a12_b.jpg',
+    'https://cdn.pixabay.com/photo/2020/03/31/19/21/corgi-4988987_1280.jpg',
     'https://cdn.pixabay.com/photo/2018/08/24/11/14/boxer-3627739_1280.jpg',
     'https://cdn.pixabay.com/photo/2020/10/15/08/58/dog-5656369_1280.jpg',
     'https://cdn.pixabay.com/photo/2019/02/13/11/26/dog-3994180_1280.jpg',
@@ -64,9 +64,12 @@ export default function Carousel() {
 
   return (
     <Box
-      position={'relative'}
+      position={'absolute'}
       height={'100vh'}
       width={'full'}
+      top={'0'}
+      left={'0'}
+      zIndex={'-1'}
       // objectFit={'cover'}
       // boxSize={'100%'}
       overflow={'hidden'}>
@@ -83,7 +86,7 @@ export default function Carousel() {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
       {/* Left Icon */}
-      <IconButton
+      {/* <IconButton
         aria-label="left-arrow"
         colorScheme="messenger"
         borderRadius="full"
@@ -94,9 +97,9 @@ export default function Carousel() {
         zIndex={2}
         onClick={() => slider?.slickPrev()}>
         <BiLeftArrowAlt />
-      </IconButton>
+      </IconButton> */}
       {/* Right Icon */}
-      <IconButton
+      {/* <IconButton
         aria-label="right-arrow"
         colorScheme="messenger"
         borderRadius="full"
@@ -107,7 +110,7 @@ export default function Carousel() {
         zIndex={2}
         onClick={() => slider?.slickNext()}>
         <BiRightArrowAlt />
-      </IconButton>
+      </IconButton> */}
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((url, index) => (

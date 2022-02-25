@@ -1,7 +1,11 @@
 import { Alert, AlertIcon, Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { Link, Link as RouterLink, useNavigate } from 'react-router-dom'
+import { loggedIn } from '../redux/reducers/userReducer'
+import Carousel from '../components/Carousel'
+
 
 function Login() {
   //controlled inputs
@@ -14,6 +18,7 @@ function Login() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,11 +27,16 @@ function Login() {
       email,
       password
     })
-      .then(data => {
+      .then(response => {
+        //???
+        const user = response.data
+
         setEmail('')
         setPassword('')
         setError('')
         setLoading(false)
+        //???
+        dispatch(loggedIn(user))
         navigate('/')
         //redirect
 
@@ -39,9 +49,13 @@ function Login() {
   }
 
   return (
-    //ternary statement?? 
+    <>
+    <Carousel />
+
+    {/* //ternary statement??  */}
+    
     <form onSubmit={handleSubmit}>
-     
+
       {error && (
 
         <Alert status='error'>
@@ -50,7 +64,12 @@ function Login() {
         </Alert>
       )}
 
-      <Flex boxShadow={'lg'} direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} bg={'white'} width={400} p={'5'} borderRadius={'14'} border={'1px'} color={'brand.201'}>
+      <Flex
+      boxShadow={'lg'}
+      bgColor={'rgba(255 255 255 /70%)'}
+      backdropFilter={'blur(2px)'}  
+
+      direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={400} p={'5'} borderRadius={'14'} border={'2px'} color={'brand.201'}>
         <FormControl color={'black'} mb={'5'}>
           <FormLabel>Email</FormLabel>
           <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
@@ -64,6 +83,7 @@ function Login() {
         <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Login</Button>
       </Flex>
     </form>
+    </>
 
 
   )

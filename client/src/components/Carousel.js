@@ -60,6 +60,7 @@ export default function Carousel() {
     'https://cdn3.eyeem.com/thumb/e43e0eece0dedaa3cd3dc8e4410d9cf6370e6c1e-1494109291723/w/800',
     'https://c1.wallpaperflare.com/preview/370/173/76/puppy-pet-dog-animal.jpg',
     'https://www.maxpixel.net/static/photo/1x/Cute-Animal-Cavalier-King-Charles-Spaniel-Dog-Pet-1844929.jpg',
+    '/Pet_a_dog.jpeg'
   ];
 
   return (

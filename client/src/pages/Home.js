@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Carousel from '../components/Carousel'
+import DogProfile from './DogProfile'
 import Login from './Login'
 import Register from './Register'
 // import Features from '../Features'
@@ -17,6 +18,7 @@ function Home() {
     <Carousel />
 Sign up to discover the Pawsibilities
     <Register />
+    {/* <DogProfile /> */}
     {/* <Login /> */}
     
     </div>

@@ -50,12 +50,12 @@ router.post('/register', checkAuth, async (req, res) => {
 })
 
 //delete
-router.delete('/:name', checkAuth, async (req, res) => {
+router.delete('/:id', checkAuth, async (req, res) => {
     //check db for dog with id for current user
     const dog = await db.Dog.findOne({
         where: {
             UserId: req.session.user.id,
-            name: req.params.name
+            id: req.params.id
         }
     })
     

@@ -41,7 +41,7 @@ function Register() {
     //ternary statement?? 
     <form onSubmit={handleSubmit} >
       {complete && (
-        <Alert status='success'>
+        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
           <AlertIcon />
           Registration successful!&nbsp; <Link as={RouterLink} to="/login"> Click here to log in. </Link>
         </Alert>
@@ -49,7 +49,7 @@ function Register() {
 
       {error && (
 
-        <Alert status='error'>
+        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
           <AlertIcon />
           Error!&nbsp; {error.data.error}
         </Alert>

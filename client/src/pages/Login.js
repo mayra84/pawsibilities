@@ -58,7 +58,7 @@ function Login() {
 
       {error && (
 
-        <Alert status='error'>
+        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
           <AlertIcon />
           Error!&nbsp; {error.data.error}
         </Alert>

@@ -103,12 +103,12 @@ export default function WithSubnavigation(props) {
                             justify={'flex-end'}
                             direction={'row'}
                             spacing={6}>
-                            <Button
+                            <Button colorScheme={'teal'}
                                 onClick={handleLogout}
                                 as={'a'}
                                 fontSize={'sm'}
                                 fontWeight={400}
-                                variant={'link'}
+                                variant={'outline'}
                                 href={'#'}>
                                 Logout
                             </Button>
@@ -166,7 +166,12 @@ const DesktopNav = () => {
     return (
         <Stack justify={'center'}
             align={'center'} direction={'row'} spacing={28}>
-            {NAV_ITEMS.map((navItem) => (
+                
+                <Link as={RouterLink} to="/">Calendar</Link>
+                <Link as={RouterLink} to="/">Discover</Link>
+                <Link as={RouterLink} to="/dogprofileform">Dog Profile</Link>
+                <Link as={RouterLink} to="/">About M&amp;Z</Link>
+            {/* {NAV_ITEMS.map((navItem) => (
                 <Box key={navItem.label}>
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
@@ -201,7 +206,7 @@ const DesktopNav = () => {
                         )}
                     </Popover>
                 </Box>
-            ))}
+            ))} */}
         </Stack>
     );
 };

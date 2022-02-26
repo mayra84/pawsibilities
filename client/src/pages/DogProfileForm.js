@@ -22,7 +22,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, Link as RouterLink } from 'react-router-dom'
 
-export default function DogProfile() {
+export default function DogProfileForm() {
 
     const [name, setName] = useState('')
     const [breed, setBreed] = useState('')
@@ -74,22 +74,26 @@ export default function DogProfile() {
     return (
         <form onSubmit={handleSubmit}>
             {complete && (
-        <Alert status='success'>
+        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
           <AlertIcon />
-          Registration successful!&nbsp; <Link as={RouterLink} to="/login"> Click here to log in. </Link>
+          Profile successfully created!
         </Alert>
       )}
 
       {error && (
 
-        <Alert status='error'>
+        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
           <AlertIcon />
           Error!&nbsp; {error.data.error}
         </Alert>
       )}
         <Flex
             // bgSize={'100vh'}
-            bgColor={'brand.200'}
+            // backgroundImage={'./colorful_background_3.jpeg'}
+            // bgRepeat={'no-repeat'}
+            // backgroundSize={'cover'}
+
+            // bgColor={'brand.200'}
             // minH={'100vh'}
             // align={'center'}
             justify={'center'}
@@ -102,12 +106,13 @@ export default function DogProfile() {
 
                 spacing={4}
                 w={'full'}
-                maxW={'md'}
+                maxW={'lg'}
 
                 // rounded={'xl'}
 
                 p={6}
-                my={12}>
+                my={12}
+                >
                 <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
                     Dog Profile
                 </Heading>

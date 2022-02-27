@@ -27,7 +27,13 @@ const theme = extendTheme({
     global: {
       // styles for the `body`
       body: {
-        bg: 'brand.200',
+        backgroundImage: './colorful_background_5.png',
+        backgroundSize: 'cover',
+        height: '100vh',
+        width: 'full',
+        top: '0',
+        left: '0',
+        // bg: '../colorful_background.jpeg',
         // color: 'black',
       },
     },

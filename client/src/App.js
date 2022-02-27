@@ -9,7 +9,7 @@ import Carousel from './components/Carousel';
 import Login from './pages/Login';
 import Navbar from './components/Navbar'
 import { useSelector } from 'react-redux';
-import DogProfile from './pages/DogProfile';
+import DogProfileForm from './pages/DogProfileForm';
 
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
 
         {/* how to route to to dog stuff?? */}
-        <Route path="/dogprofile" element={<DogProfile />} />
+        <Route path="/dogprofileForm" element={<DogProfileForm />} />
 
 
       </Routes>

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { useEffect } from "react";
+import React from 'react'
+import { useEffect, useState } from "react";
 import { Box, Button, Heading, Link } from '@chakra-ui/react'
+import ProductSimple from './WeatherCard';
 
-export default function Weather () {
-    const [currentWeather, setCurrentWeather] = useState([]);
+export default function Weather() {
+    const [currentWeather, setCurrentWeather] = useState(null);
 
     useEffect (() => {
         fetchWeather()
@@ -15,7 +16,7 @@ export default function Weather () {
             .then((res) => res.json())
             .then((data) => {
                 var weather = data
-                console.log(weather.location.name)
+                console.log(weather)
                 console.log(weather.current.condition.text)
                 setCurrentWeather(weather)
             })
@@ -23,17 +24,17 @@ export default function Weather () {
 
     return (
 
-        <div>
-<Box>
-    {currentWeather.map(weather => {
-        return <div>{weather.location.name}</div>
-    })}
-</Box>
-            <h1>Weather</h1>
-         <h1>{}</h1>
-         
+        <div >
+            {currentWeather&& (
+            <Box>
+                    <h1>Weather</h1>
+                    <div>{currentWeather.location.name}</div>
+                    <ProductSimple key={currentWeather.lat} weather = {currentWeather} />
+            </Box>
+            )}
 
-         
+
+
         </div>
     )
 }

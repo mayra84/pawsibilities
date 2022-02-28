@@ -30,6 +30,7 @@ function Home() {
         <div>
           <Carousel />
           <HomePageRegistration />
+          
           {/* <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
             <Center p={'10'} height='60vh'>
               <HomePageHero />

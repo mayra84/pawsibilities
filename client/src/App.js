@@ -10,6 +10,7 @@ import Map from './pages/Map'
 import Login from './pages/Login';
 import Navbar from './components/Navbar'
 import { useSelector } from 'react-redux';
+import DogProfileForm from './pages/DogProfileForm';
 
 
 function App() {
@@ -26,7 +27,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
+
 <Route path="/map" element={<Map/>} />
+
+        {/* how to route to to dog stuff?? */}
+        <Route path="/dogprofileForm" element={<DogProfileForm />} />
+
+
 
       </Routes>
     </div>

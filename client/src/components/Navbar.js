@@ -27,14 +27,14 @@ import { logout } from '../redux/reducers/userReducer';
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 
 export default function WithSubnavigation(props) {
-    
+
     const currentUser = useSelector(state => state.user.currentUser)
     const dispatch = useDispatch()
 
-     const handleLogout = () => {
-         dispatch(logout)
-         navigate("/")
-     }
+    const handleLogout = () => {
+        dispatch(logout)
+        navigate("/")
+    }
 
     const { isOpen, onToggle } = useDisclosure();
     const navigate = useNavigate();
@@ -42,10 +42,10 @@ export default function WithSubnavigation(props) {
     return (
         <Box>
             <Flex
-                
+
                 boxShadow={'lg'}
-                bgColor={'rgba(255 255 255 /30%)'}
-                backdropFilter={'blur(2px)'}            
+                bgColor={'rgba(255 255 255 /70%)'}
+                backdropFilter={'blur(2px)'}
                 // bg={useColorModeValue('white', 'gray.800')}
                 // color={useColorModeValue('gray.600', 'white')}
                 minH={'60px'}
@@ -71,7 +71,8 @@ export default function WithSubnavigation(props) {
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Image
-                    onClick={e => { navigate('/') }}
+                        onClick={e => { navigate('/') }}
+                        isActive={'true'}
                         alignSelf={'left'}
                         borderRadius={'75'}
                         boxSize='125'
@@ -92,26 +93,26 @@ export default function WithSubnavigation(props) {
                 </Flex>
 
 
-{/* ADD LINKS TO BUTTONS */}
+                {/* ADD LINKS TO BUTTONS */}
 
 
                 {currentUser ? (
                     <>
-                    <Stack
-                        flex={{ base: 1, md: 0 }}
-                        justify={'flex-end'}
-                        direction={'row'}
-                        spacing={6}>
-                        <Button
-                        onClick={handleLogout}
-                            as={'a'}
-                            fontSize={'sm'}
-                            fontWeight={400}
-                            variant={'link'}
-                            href={'#'}>
-                            Logout
-                        </Button>
-                    </Stack>
+                        <Stack
+                            flex={{ base: 1, md: 0 }}
+                            justify={'flex-end'}
+                            direction={'row'}
+                            spacing={6}>
+                            <Button colorScheme={'teal'}
+                                onClick={handleLogout}
+                                as={'a'}
+                                fontSize={'sm'}
+                                fontWeight={400}
+                                variant={'outline'}
+                                href={'#'}>
+                                Logout
+                            </Button>
+                        </Stack>
                     </>
                 ) : (
                     <>
@@ -129,21 +130,21 @@ export default function WithSubnavigation(props) {
                                 Sign In
                             </Button> */}
                             <Link as={RouterLink} to={"/login"}>
-                            <Button
+                                <Button
 
 
-                            shadow={'lg'}
-                                display={{ base: 'none', md: 'inline-flex' }}
-                                fontSize={'sm'}
-                                fontWeight={600}
-                                color={'white'}
-                                bg={'brand.200'}
-                                href={'#'}
-                                _hover={{
-                                    bg: 'teal.200',
-                                }}>
-                                Sign in
-                            </Button>
+                                    shadow={'lg'}
+                                    display={{ base: 'none', md: 'inline-flex' }}
+                                    fontSize={'sm'}
+                                    fontWeight={600}
+                                    color={'white'}
+                                    bg={'brand.200'}
+                                    href={'#'}
+                                    _hover={{
+                                        bg: 'teal.200',
+                                    }}>
+                                    Sign in
+                                </Button>
                             </Link>
                         </Stack>
                     </>
@@ -165,7 +166,12 @@ const DesktopNav = () => {
     return (
         <Stack justify={'center'}
             align={'center'} direction={'row'} spacing={28}>
-            {NAV_ITEMS.map((navItem) => (
+                
+                <Link as={RouterLink} to="/">Calendar</Link>
+                <Link as={RouterLink} to="/">Discover</Link>
+                <Link as={RouterLink} to="/dogprofileform">Dog Profile</Link>
+                <Link as={RouterLink} to="/">About M&amp;Z</Link>
+            {/* {NAV_ITEMS.map((navItem) => (
                 <Box key={navItem.label}>
                     <Popover trigger={'hover'} placement={'bottom-start'}>
                         <PopoverTrigger>
@@ -200,7 +206,7 @@ const DesktopNav = () => {
                         )}
                     </Popover>
                 </Box>
-            ))}
+            ))} */}
         </Stack>
     );
 };
@@ -327,7 +333,8 @@ const NAV_ITEMS = [
             {
                 label: 'Dog 1',
                 subLabel: 'Find your dream design job',
-                href: '#',
+                href: '/dogprofile',
+                // href: <Link as={RouterLink} to="/dogprofile"></Link>,
             },
             {
                 label: 'Dog 2',

@@ -4,7 +4,11 @@ import { useSelector } from 'react-redux'
 // import Login from './Login'
 // import Register from './Register'
 // import Features from '../Features'
+
+import DogPark from 'src/components/DogPark';
+
 // import DogPark from 'src/components/DogPark';
+
 import Weather from 'src/components/Weather';
 
 

@@ -7,6 +7,8 @@
     "dev": "nodemon ./bin/ww"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
+    "axios": "^0.26.0",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.2",
     "cookie-parser": "~1.4.4",
@@ -17,6 +19,7 @@
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "pg-promise": "^10.11.1",
+    "redux-thunk": "^2.4.1",
     "sequelize": "^6.16.2",
     "sequelize-cli": "^6.4.1"
   }

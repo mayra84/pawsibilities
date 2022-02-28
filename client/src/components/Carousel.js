@@ -13,7 +13,7 @@ const settings = {
   infinite: true,
   autoplay: true,
   speed: 500,
-  autoplaySpeed: 5000,
+  autoplaySpeed: 4000,
   slidesToShow: 1,
   slidesToScroll: 1,
 };
@@ -40,10 +40,16 @@ export default function Carousel() {
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/upwk62174353-wikimedia-image.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=ad86a8f60950da5faf2f06d6351c1bc8', 
     'https://www.maxpixel.net/static/photo/1x/Welsh-Corgi-Pembroke-Corgi-Dog-Pet-Cute-Animal-4237619.jpg',   
     'https://cdn.pixabay.com/photo/2020/10/15/08/58/dog-5656369_1280.jpg',
+
+    'https://cdn.pixabay.com/photo/2019/02/13/11/26/dog-3994180_1280.jpg',
+    'https://www.maxpixel.net/static/photo/1x/Welsh-Corgi-Pembroke-Corgi-Dog-Pet-Cute-Animal-4237619.jpg',
+    //okay quality below
+
     'https://cdn.pixabay.com/photo/2018/08/24/11/14/boxer-3627739_1280.jpg',
     'https://cdn.pixabay.com/photo/2020/03/31/19/21/corgi-4988987_1280.jpg',
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pu2352634-image-kwvy8lx7.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=1a8cabb8058fff8ea7a09e10645eaab0',
     'https://cdn.pixabay.com/photo/2019/02/13/11/26/dog-3994180_1280.jpg',   
+
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/px657141-image-kwvxm781.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=2969861f941b5584a930089413667d4a',
     'https://www.maxpixel.net/static/photo/1x/Flower-Portrait-Dog-Rottweiler-Nature-Dogshooting-5290550.jpg',
     'https://live.staticflickr.com/65535/51352284590_c37d8d1c8d_b.jpg',
@@ -51,11 +57,17 @@ export default function Carousel() {
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/bs6704-image-kwvx3ahp.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=5244f1013dea25ef1c6b85e17e60b920',
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/bs1293-image-kwvyl7zx.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=04d2d99b6ca36d55250407e6c86f8df4',
     'https://www.maxpixel.net/static/photo/1x/Dog-Bulldog-Mammals-English-Portrait-Adorable-5349598.jpg',
+    //slightly bad quality below
     'https://media.istockphoto.com/photos/dalmatian-picture-id175453491?b=1&k=20&m=175453491&s=170667a&w=0&h=seboc-Fix0qXa4niZVgurxc7knEFTmYXrU2Xg1-R8ZM=',
     'https://cdn.pixabay.com/photo/2018/03/14/18/45/dog-3225999_1280.jpg',
     'https://www.maxpixel.net/static/photo/1x/Hunting-Dog-Pack-Dog-Portrait-Summer-Beagle-4168817.jpg',
     'https://www.maxpixel.net/static/photo/1x/Dog-Animal-Meadow-Corgi-Pet-Pembroke-Welsh-Corgi-5767407.jpg',
+
+    //bad quality below
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9pu5U-pX2vFx3gvX2KQmS-YMOLVvLbCWIhA&usqp=CAU',
+
     // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9pu5U-pX2vFx3gvX2KQmS-YMOLVvLbCWIhA&usqp=CAU',
+
     'https://upload.wikimedia.org/wikipedia/commons/9/98/JMSDF_Military_working_dog_%E3%80%8CKouki%E3%80%8D.jpg',
     'https://www.maxpixel.net/static/photo/1x/Beagle-Dog-Animal-Race-Mammal-Hunting-Dog-Pet-4500928.jpg',
     'https://c0.wallpaperflare.com/preview/822/584/854/sheep-dog-german-german-shepherd-dog.jpg',

@@ -18,6 +18,9 @@ function Home() {
     <div>
 
 
+
+
+
       {currentUser ? (
         <HealthLog />
       ) : (
@@ -36,6 +39,7 @@ function Home() {
 
         </div>
       )}
+
 
 
     </div>

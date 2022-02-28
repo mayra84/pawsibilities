@@ -16,13 +16,20 @@ import {
     Textarea,
     Alert,
     AlertIcon,
+    Box,
 } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, Link as RouterLink } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { addDog } from 'src/redux/reducers/dogReducer';
 
-export default function DogProfileForm() {
+export default function DogProfileForm(props) {
+    // const { dog } = props
+
+    const dispatch = useDispatch()
+    // const dogs = useSelector((state) => state.dog)
 
     const [name, setName] = useState('')
     const [breed, setBreed] = useState('')
@@ -41,9 +48,10 @@ export default function DogProfileForm() {
     const handleSubmit = (e) => {
         e.preventDefault()
         setLoading(true)
+        // dispatch(addDog(dogs))
         axios.post('api/v1/dogs/register', {
             name,
-            breed, 
+            breed,
             weight,
             size,
             age,
@@ -51,77 +59,87 @@ export default function DogProfileForm() {
             coat,
             bio
         })
-        .then(data => {
-            setName('')
-            setBreed('')
-            setWeight('')
-            setSize('')
-            setAge('')
-            setTemperament('')
-            setCoat('')
-            setBio('')
-            setLoading(false)
-            setError('')
-            setComplete(true)
-        })
-        .catch(error => {
-            setLoading(false)
-            setError(error.response)
-        })
+            .then(data => {
+                setName('')
+                setBreed('')
+                setWeight('')
+                setSize('')
+                setAge('')
+                setTemperament('')
+                setCoat('')
+                setBio('')
+                setLoading(false)
+                setError('')
+                setComplete(true)
+               
+            })
+            .catch(error => {
+                setLoading(false)
+                setError(error.response)
+            })
 
     }
 
-    return (
-        <form onSubmit={handleSubmit}>
-            {complete && (
-        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
-          <AlertIcon />
-          Profile successfully created!
-        </Alert>
-      )}
+    // const handleAddDog = async () => {
+    //     const res = await fetch('/api/v1/dogs', {
+    //         method: 'POST',
+    //         body: JSON.stringify(dog),
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
 
-      {error && (
+        return (
+            <form onSubmit={handleSubmit}>
+                {complete && (
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
+                        <AlertIcon />
+                        Profile successfully created!
+                    </Alert>
+                )}
 
-        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
-          <AlertIcon />
-          Error!&nbsp; {error.data.error}
-        </Alert>
-      )}
-        <Flex
-            // bgSize={'100vh'}
-            // backgroundImage={'./colorful_background_3.jpeg'}
-            // bgRepeat={'no-repeat'}
-            // backgroundSize={'cover'}
+                {error && (
 
-            // bgColor={'brand.200'}
-            // minH={'100vh'}
-            // align={'center'}
-            justify={'center'}
-        >
-            <Stack
-                boxShadow={'lg'}
-                bgColor={'rgba(255 255 255 /90%)'}
-                backdropFilter={'blur(2px)'}
-                borderRadius={'10'} border={'2px'} color={'brand.201'}
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
+                        <AlertIcon />
+                        Error!&nbsp; {error.data.error}
+                    </Alert>
+                )}
+                <Flex
+                    // bgSize={'100vh'}
+                    // backgroundImage={'./colorful_background_3.jpeg'}
+                    // bgRepeat={'no-repeat'}
+                    // backgroundSize={'cover'}
 
-                spacing={4}
-                w={'full'}
-                maxW={'lg'}
-
-                // rounded={'xl'}
-
-                p={6}
-                my={12}
+                    // bgColor={'brand.200'}
+                    // minH={'100vh'}
+                    // align={'center'}
+                    justify={'center'}
                 >
-                <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
-                    Dog Profile
-                </Heading>
-                <FormControl id="userName">
-                    <FormLabel>User Icon</FormLabel>
-                    <Stack direction={['column', 'row']} spacing={6}>
-                        <Center>
-                            <Avatar size="xl" src="./IMG_0096.jpg">
-                                {/* <AvatarBadge
+                    <Stack
+                        boxShadow={'lg'}
+                        bgColor={'rgba(255 255 255 /90%)'}
+                        backdropFilter={'blur(2px)'}
+                        borderRadius={'10'} border={'2px'} color={'brand.201'}
+
+                        spacing={4}
+                        w={'full'}
+                        maxW={'700'}
+
+                        // rounded={'xl'}
+
+                        p={6}
+                        my={12}
+                    >
+                        <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
+                            Dog Profile
+                        </Heading>
+                        <FormControl id="userName">
+                            <FormLabel>User Icon</FormLabel>
+                            <Stack direction={['column', 'row']} spacing={6}>
+                                <Center>
+                                    <Avatar size="xl" src="./IMG_0096.jpg">
+                                        {/* <AvatarBadge
                                     as={IconButton}
                                     size="sm"
                                     rounded="full"
@@ -130,99 +148,117 @@ export default function DogProfileForm() {
                                     aria-label="remove Image"
                                     icon={<SmallCloseIcon />}
                                 /> */}
-                            </Avatar>
-                        </Center>
-                        <Center w="full">
-                            <Button w="full">Change Icon</Button>
-                        </Center>
-                    </Stack>
-                </FormControl>
+                                    </Avatar>
+                                </Center>
+                                <Center w="full">
+                                    <Button w="full">Change Profile Picture</Button>
+                                </Center>
+                            </Stack>
+                        </FormControl>
+                        <Stack direction={'row'}>
+                            <FormControl id="name" isRequired>
+                                <FormLabel>Name</FormLabel>
+                                <Input
+                                    required value={name} onChange={(e) => setName(e.target.value)}
+                                    placeholder="Name"
+                                    _placeholder={{ color: 'gray.500' }}
+                                    type="text"
+                                />
+                            </FormControl>
 
-                <FormControl id="name" isRequired>
-                    <FormLabel>Name</FormLabel>
-                    <Input
-                        required value={name} onChange={(e) => setName(e.target.value)}
-                        placeholder="Name"
-                        _placeholder={{ color: 'gray.500' }}
-                        type="text"
-                    />
-                </FormControl>
+                            <FormControl id="breed" isRequired>
+                                <FormLabel>Breed</FormLabel>
+                                <Input
+                                    required value={breed} onChange={(e) => setBreed(e.target.value)}
+                                    placeholder="Ex: Husky Mix"
+                                    _placeholder={{ color: 'gray.500' }}
+                                />
+                            </FormControl>
 
-                <FormControl id="breed" isRequired>
-                    <FormLabel>Breed</FormLabel>
-                    <Input
-                        required value={breed} onChange={(e) => setBreed(e.target.value)}
-                        placeholder="Ex: Husky Mix"
-                        _placeholder={{ color: 'gray.500' }}
-                    />
-                </FormControl>
+                            <FormControl id="weight" isRequired>
+                                <FormLabel>Weight</FormLabel>
+                                <Input
+                                    required value={weight} onChange={(e) => setWeight(e.target.value)}
+                                    placeholder="Ex: 12lbs"
+                                    _placeholder={{ color: 'gray.500' }}
+                                    type="text"
+                                />
+                            </FormControl>
+                            <FormControl id="age" isRequired>
+                                <FormLabel>Age</FormLabel>
+                                <Input
+                                    required value={age} onChange={(e) => setAge(e.target.value)}
+                                    placeholder="Age"
+                                    _placeholder={{ color: 'gray.500' }}
+                                    type="text"
+                                />
+                            </FormControl>
+                        </Stack>
+                        <Stack direction={'row'}>
+                            <FormControl id="size" isRequired>
+                                <FormLabel>Size</FormLabel>
+                                <Select
+                                    required value={size} onChange={(e) => setSize(e.target.value)}
+                                    placeholder='Select option'>
 
-                <FormControl id="weight" isRequired>
-                    <FormLabel>Weight</FormLabel>
-                    <Input
-                        required value={weight} onChange={(e) => setWeight(e.target.value)}
-                        placeholder="Ex: 12lbs"
-                        _placeholder={{ color: 'gray.500' }}
-                        type="text"
-                    />
-                </FormControl>
+                                    {/* value?? */}
 
-                <FormControl id="size" isRequired>
-                    <FormLabel>Size</FormLabel>
-                    <Select
-                        required value={size} onChange={(e) => setSize(e.target.value)}
-                        placeholder='Select option'>
+                                    <option value='option1'>Small - less than 22lb</option>
+                                    <option value='option2'>Medium - 22lb-55lb</option>
+                                    <option value='option3'>Large - over 55lb</option>
+                                </Select>
+                            </FormControl>
 
-                        {/* value?? */}
 
-                        <option value='option1'>Small - less than 22lb</option>
-                        <option value='option2'>Medium - 22lb-55lb</option>
-                        <option value='option3'>Large - over 55lb</option>
-                    </Select>
-                </FormControl>
+                            <FormControl id="temperament" isRequired>
+                                <FormLabel>Temperament</FormLabel>
+                                <Select
+                                    required value={temperament} onChange={(e) => setTemperament(e.target.value)}
+                                    placeholder='Select option'>
+                                    <option value='option1'>Friendly</option>
+                                    <option value='option2'>Unfriendly</option>
+                                </Select>
+                            </FormControl>
 
-                <FormControl id="age" isRequired>
-                    <FormLabel>Age</FormLabel>
-                    <Input
-                        required value={age} onChange={(e) => setAge(e.target.value)}
-                        placeholder="Age"
-                        _placeholder={{ color: 'gray.500' }}
-                        type="text"
-                    />
-                </FormControl>
+                            <FormControl id="coat" isRequired>
+                                <FormLabel>Coat</FormLabel>
+                                <Select
+                                    required value={coat} onChange={(e) => setCoat(e.target.value)}
+                                    placeholder='Select option'>
+                                    <option value='option1'>Smooth Coat</option>
+                                    <option value='option2'>Double Coat</option>
+                                    <option value='option3'>Long Coat</option>
+                                    <option value='option4'>Wire Coat</option>
+                                    <option value='option5'>Curly Coat</option>
+                                </Select>
+                            </FormControl>
+                        </Stack>
 
-                <FormControl id="temperament" isRequired>
-                    <FormLabel>Temperament</FormLabel>
-                    <Select
-                        required value={temperament} onChange={(e) => setTemperament(e.target.value)}
-                        placeholder='Select option'>
-                        <option value='option1'>Friendly</option>
-                        <option value='option2'>Unfriendly</option>
-                    </Select>
-                </FormControl>
+                        <FormControl id="bio" isRequired>
+                            <FormLabel>Bio</FormLabel>
+                            <Textarea
+                                required value={bio} onChange={(e) => setBio(e.target.value)}
+                                placeholder='THIS WILL BE A MODAL also pls provide a short bio thx' />
+                        </FormControl>
 
-                <FormControl id="coat" isRequired>
-                    <FormLabel>Coat</FormLabel>
-                    <Select
-                    required value={coat} onChange={(e) => setCoat(e.target.value)}
-                    placeholder='Select option'>
-                        <option value='option1'>Smooth Coat</option>
-                        <option value='option2'>Double Coat</option>
-                        <option value='option3'>Long Coat</option>
-                        <option value='option4'>Wire Coat</option>
-                        <option value='option5'>Curly Coat</option>
-                    </Select>
-                </FormControl>
+                        <Stack>
 
-                <FormControl id="bio" isRequired>
-                    <FormLabel>Bio</FormLabel>
-                    <Textarea
-                    required value={bio} onChange={(e) => setBio(e.target.value)}
-                     placeholder='Provide a short bio' />
-                </FormControl>
+                            <Box alignSelf={'flex-end'}>
+                                <Button
+                                    // onClick={handleAddDog}
+                                    isLoading={loading} loadingText='Submitting' type={'submit'}
+                                    alignSelf={'flex-end'}
+                                    marginTop={'10'}
+                                    colorScheme={'teal'}
+                                    color={'white'}
+                                    _hover={{
+                                        bg: 'teal.200',
+                                    }}>
+                                    Submit
+                                </Button>
+                            </Box>
 
-                <Stack spacing={6} direction={['column', 'row']}>
-                    <Button
+                            {/* <Button
                         bg={'red.400'}
                         color={'white'}
                         w="full"
@@ -241,10 +277,11 @@ export default function DogProfileForm() {
                             bg: 'blue.500',
                         }}>
                         Submit
-                    </Button>
-                </Stack>
-            </Stack>
-        </Flex>
-        </form>
-    );
-}
+                    </Button> */}
+                        </Stack>
+                    </Stack>
+                </Flex>
+            </form>
+        );
+    }
+// }

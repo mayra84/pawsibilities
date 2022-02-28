@@ -71,8 +71,9 @@ export default function WithSubnavigation(props) {
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Image
+                        boxShadow={'lg'}
                         onClick={e => { navigate('/') }}
-                        isActive={'true'}
+                        // isActive={'true'}
                         alignSelf={'left'}
                         borderRadius={'75'}
                         boxSize='125'
@@ -131,8 +132,7 @@ export default function WithSubnavigation(props) {
                             </Button> */}
                             <Link as={RouterLink} to={"/login"}>
                                 <Button
-
-
+                                    // linkHoverColor={'none'}
                                     shadow={'lg'}
                                     display={{ base: 'none', md: 'inline-flex' }}
                                     fontSize={'sm'}
@@ -166,11 +166,11 @@ const DesktopNav = () => {
     return (
         <Stack justify={'center'}
             align={'center'} direction={'row'} spacing={28}>
-                
-                <Link as={RouterLink} to="/">Calendar</Link>
-                <Link as={RouterLink} to="/">Discover</Link>
-                <Link as={RouterLink} to="/dogprofileform">Dog Profile</Link>
-                <Link as={RouterLink} to="/">About M&amp;Z</Link>
+
+            <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
+            <Link as={RouterLink} to="/discover">Discover</Link>
+            <Link as={RouterLink} to="/dogprofileform">Dog Profile</Link>
+            <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
             {/* {NAV_ITEMS.map((navItem) => (
                 <Box key={navItem.label}>
                     <Popover trigger={'hover'} placement={'bottom-start'}>

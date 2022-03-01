@@ -32,15 +32,3 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
   );
 }
 
-// Geocode.fromAddress(this.state.zipCode).then(
-//     response => {
-//         const { lat, lng } = response.results[0].geometry.location;
-//         const { google } = this.props;
-//         const service = new google.maps.places.PlacesService(this.state.map);
-//         const startPoint = new google.maps.LatLng(lat, lng);
-//         var request = {
-//             location: startPoint,
-//             radius: '50000',
-//             query: ['dog park'],
-//             fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
-//         };

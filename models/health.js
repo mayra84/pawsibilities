@@ -15,9 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Health.init({
-    mood: DataTypes.STRING,
-    physical: DataTypes.STRING,
-    activity: DataTypes.STRING,
+    mood: DataTypes.JSONB,
+    physical: DataTypes.JSONB,
+    activity: DataTypes.JSONB,
     notes: DataTypes.STRING,
   }, {
     sequelize,

@@ -4,6 +4,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Box, Container, Flex } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
+import SmoothList from 'react-smooth-list';
 
 const localizer = momentLocalizer(moment);
 
@@ -26,7 +27,7 @@ export default function DogCalendar(props) {
 
 
   return (
-
+<SmoothList transitionDuration={1400}>
     <Flex
       justifyContent='center'>
       <Box
@@ -45,6 +46,7 @@ export default function DogCalendar(props) {
         />
       </Box>
     </Flex>
+    </SmoothList>
   );
 }
 

@@ -5,6 +5,7 @@ import { Link, Link as RouterLink } from 'react-router-dom'
 import { Center, Divider } from '@chakra-ui/react'
 // import Register from 'src/pages/Register'
 import HomePageHero from './HomePageHero'
+import SmoothList from 'react-smooth-list';
 
 function HomePageRegistration() {
     const [password, setPassword] = useState('')
@@ -41,20 +42,23 @@ function HomePageRegistration() {
         <div>
             <form onSubmit={handleSubmit} >
                 {complete && (
+                    <SmoothList transitionDuration={600}>
                     <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
                         <AlertIcon />
                         Registration successful!&nbsp; <Link as={RouterLink} to="/login"> Click here to log in. </Link>
                     </Alert>
+                    </SmoothList>
                 )}
 
                 {error && (
-
+                    <SmoothList transitionDuration={600}>
                     <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
                         <AlertIcon />
                         Error!&nbsp; {error.data.error}
                     </Alert>
+                    </SmoothList>
                 )}
-
+<SmoothList transitionDuration={1400}>
                 <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
                     <Center p={'10'} height='60vh'>
                         <HomePageHero />
@@ -81,6 +85,7 @@ function HomePageRegistration() {
                         </Flex>
                     </Center>
                 </Flex>
+                </SmoothList>
             </form>
         </div>
 

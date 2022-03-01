@@ -9,13 +9,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       mood: {
-        type: Sequelize.STRING
+        type: Sequelize.JSONB
       },
       physical: {
-        type: Sequelize.STRING
+        type: Sequelize.JSONB
       },
       activity: {
-        type: Sequelize.STRING
+        type: Sequelize.JSONB
       },
       notes: {
         type: Sequelize.STRING
@@ -25,7 +25,8 @@ module.exports = {
         references: {
           model: 'Dogs',
           key: 'id'
-        }
+        },
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

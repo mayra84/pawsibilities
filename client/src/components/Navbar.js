@@ -25,6 +25,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/reducers/userReducer';
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import SmoothList from 'react-smooth-list';
 
 export default function WithSubnavigation(props) {
 
@@ -71,6 +72,7 @@ export default function WithSubnavigation(props) {
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Image
+                    cursor={'pointer'}
                         boxShadow={'lg'}
                         onClick={e => { navigate('/') }}
                         // isActive={'true'}
@@ -164,6 +166,7 @@ const DesktopNav = () => {
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
     return (
+        // <SmoothList transitionDuration={1200} delay={200}>
         <Stack justify={'center'}
             align={'center'} direction={'row'} spacing={28}>
 
@@ -208,6 +211,7 @@ const DesktopNav = () => {
                 </Box>
             ))} */}
         </Stack>
+        // </SmoothList>
     );
 };
 

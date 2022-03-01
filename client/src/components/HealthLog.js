@@ -33,6 +33,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import CurrentDay from './CurrentDay';
 import DogDropDown from './DogDropDown';
 import ImageButton from './ImageButton';
+import SmoothList from 'react-smooth-list';
 
 function HealthLog(props) {
 
@@ -40,8 +41,8 @@ function HealthLog(props) {
     //VALUE? ONCHANGE?
 
     const [mood, setMood] = useState([])
-    const [physical, setPhysical] = useState('')
-    const [activity, setActivity] = useState('')
+    const [physical, setPhysical] = useState([])
+    const [activity, setActivity] = useState([])
     const [notes, setNotes] = useState('')
 
     const [complete, setComplete] = useState(false)
@@ -73,35 +74,61 @@ function HealthLog(props) {
             })
     }
 
-const toggleMood = (value) => {
-    setMood([...mood, value])
-
-    if (mood.includes(value)) {
-        setMood(mood.filter((m) => {
-            return m !== value
-        } ))
-    } else {
+    const toggleMood = (value) => {
         setMood([...mood, value])
+
+        if (mood.includes(value)) {
+            setMood(mood.filter((m) => {
+                return m !== value
+            }))
+        } else {
+            setMood([...mood, value])
+        }
     }
-}
+
+    const togglePhysical = (value) => {
+        setPhysical([...physical, value])
+
+        if (physical.includes(value)) {
+            setPhysical(physical.filter((p) => {
+                return p !== value
+            }))
+        } else {
+            setPhysical([...physical, value])
+        }
+    }
+
+    const toggleActivity = (value) => {
+        setActivity([...activity, value])
+
+        if (activity.includes(value)) {
+            setActivity(activity.filter((a) => {
+                return a !== value
+            }))
+        } else {
+            setActivity([...activity, value])
+        }
+    }
 
     return (
         <div>
 
-
             {complete && (
-                <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
-                    <AlertIcon />
-                    Successfully logged!
-                </Alert>
+                <SmoothList transitionDuration={600}>
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
+                        <AlertIcon />
+                        Successfully logged!
+                    </Alert>
+                </SmoothList>
             )}
 
             {error && (
-
-                <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
-                    <AlertIcon />
-                    Error!&nbsp; {error.data.error}
-                </Alert>
+                <SmoothList transitionDuration={600}>
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
+                        <AlertIcon />
+                        Error!&nbsp; {error.data.error}
+                    </Alert>
+                </SmoothList>
             )}
 
             <form onSubmit={handleSubmit}>
@@ -113,214 +140,107 @@ const toggleMood = (value) => {
                             backdropFilter={'blur(2px)'}
                             borderRadius={'10'} border={'2px'} color={'brand.201'}
                             rounded={'lg'}
-                            //   bg={useColorModeValue('white', 'gray.700')}
                             p={12}>
+
                             <Stack spacing={2}>
+                                <SmoothList transitionDuration={1200} delay={200}>
 
-                                {/* <DogDropDown /> */}
+                                    {/* <DogDropDown /> */}
 
 
-                                <FormControl id="mood">
-                                    <FormLabel fontSize={'2xl'} color={'black'}>Mood</FormLabel>
-                                    <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-                                        <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
-                                            {/* <Checkbox value='happy'> */}
-                                            <ImageButton onClick={() => {toggleMood('happy')}} src={'../Happy_3.png'} isActive={mood.includes('happy')}/>
-                                            
-                                                {/* </Checkbox> */}
+                                    <FormControl id="mood">
+                                        <FormLabel fontSize={'2xl'} color={'black'}>Mood</FormLabel>
+                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                                            <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
 
-                                            {/* <Checkbox value='calm'> */}
-                                                <ImageButton onClick={() => {toggleMood('calm')}} src={'../Calm.png'} isActive={mood.includes('calm')} />
-                                                {/* </Checkbox> */}
-                                            {/* <Checkbox value='energetic'> */}
-                                                <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Energetic.png'
-                                                alt='Pawsibilities' />
-                                                {/* </Checkbox> */}
-                                            {/* <Checkbox value='sad'> */}
-                                                <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Sad.png'
-                                                alt='Pawsibilities' />
-                                                {/* </Checkbox> */}
-                                            {/* <Checkbox value='anxious'> */}
-                                                <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Anxious.png'
-                                                alt='Pawsibilities' />
-                                                {/* </Checkbox> */}
-                                            {/* <Checkbox value='apathetic'> */}
-                                                <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Apathetic.png'
-                                                alt='Pawsibilities' />
-                                                {/* </Checkbox> */}
-                                        </Stack>
-                                    </CheckboxGroup>
-                                </FormControl>
-                                <FormControl id="physicalObservations">
-                                    <FormLabel fontSize={'2xl'} color={'black'}>Physical Observations</FormLabel>
-                                    <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-                                        <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
-                                            {/* <Checkbox value='limping'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Limping_2.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                           
-                                            {/* <Checkbox value='nausea'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Nausea_2.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                            {/* <Checkbox value='constipation'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Constipation.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                            {/* <Checkbox value='abnormalAppetite'>Abnormal Appetite</Checkbox> */}
-                                            {/* <Checkbox value='irregular bowel movement'>Irregular Bowel Movement</Checkbox> */}
-                                        </Stack>
-                                    </CheckboxGroup>
-                                </FormControl>
-                                <FormControl id="activity">
-                                    <FormLabel fontSize={'2xl'} color={'black'}>Activity</FormLabel>
-                                    <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-                                        <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
-                                            {/* when option clicked, ask to input distance/time */}
-                                            {/* <Checkbox value='walk'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Walk.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                            {/* <Checkbox value='park'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Park.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                            {/* <Checkbox value='run'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Run.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                            {/* <Checkbox value='swim'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Swim.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                            {/* <Checkbox value='fetch'> */}
-                                            <Image
-                                                boxShadow={'lg'}
-                                                onClick={''}
-                                                // isActive={'true'}
-                                                alignSelf={'left'}
-                                                borderRadius={'75'}
-                                                boxSize='115'
-                                                objectFit='fill'
-                                                src='../Played_Fetch.png'
-                                                alt='Pawsibilities' />
-                                            {/* </Checkbox> */}
-                                        </Stack>
-                                    </CheckboxGroup>
-                                </FormControl>
+                                                <ImageButton onClick={() => { toggleMood('happy') }} src={'../Happy_3.png'} isActive={mood.includes('happy')} />
+
+                                                <ImageButton onClick={() => { toggleMood('calm') }} src={'../Calm.png'} isActive={mood.includes('calm')} />
+
+                                                <ImageButton onClick={() => { toggleMood('energetic') }} src={'../Energetic.png'} isActive={mood.includes('energetic')} />
+
+
+                                                <ImageButton onClick={() => { toggleMood('sad') }} src={'../Sad.png'} isActive={mood.includes('sad')} />
+
+                                                <ImageButton onClick={() => { toggleMood('anxious') }} src={'../Anxious.png'} isActive={mood.includes('anxious')} />
+
+
+                                                <ImageButton onClick={() => { toggleMood('apathetic') }} src={'../Apathetic.png'} isActive={mood.includes('apathetic')} />
+
+                                                <ImageButton onClick={() => { toggleMood('nonePaw') }} src={'../None_Paw.png'} isActive={mood.includes('nonePaw')} />
+
+                                            </Stack>
+                                        </CheckboxGroup>
+                                    </FormControl>
+
+                                    <FormControl id="activity">
+                                        <FormLabel fontSize={'2xl'} color={'black'}>Activity</FormLabel>
+                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                                            <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
+                                                {/* when option clicked, ask to input distance/time */}
+
+                                                <ImageButton onClick={() => { toggleActivity('walk') }} src={'../Walk.png'} isActive={activity.includes('walk')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('park') }} src={'../Park.png'} isActive={activity.includes('park')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('run') }} src={'../Run.png'} isActive={activity.includes('run')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('swim') }} src={'../Swim.png'} isActive={activity.includes('swim')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('playedFetch') }} src={'../Played_Fetch.png'} isActive={activity.includes('playedFetch')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('noneBall') }} src={'../None_Ball.png'} isActive={activity.includes('noneBall')} />
+
+                                            </Stack>
+                                        </CheckboxGroup>
+                                    </FormControl>
+
+                                    <FormControl id="physicalObservations">
+                                        <FormLabel fontSize={'2xl'} color={'black'}>Physical Observations</FormLabel>
+                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                                            <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
+
+                                                <ImageButton onClick={() => { togglePhysical('limping') }} src={'../Limping.png'} isActive={physical.includes('limping')} />
+
+                                                <ImageButton onClick={() => { togglePhysical('nausea') }} src={'../Nausea.png'} isActive={physical.includes('nausea')} />
+
+                                                <ImageButton onClick={() => { togglePhysical('constipation') }} src={'../Constipation.png'} isActive={physical.includes('constipation')} />
+
+                                                <ImageButton onClick={() => { togglePhysical('noneBone') }} src={'../None_Bone.png'} isActive={physical.includes('noneBone')} />
+
+                                                {/* <Checkbox value='abnormalAppetite'>Abnormal Appetite</Checkbox> */}
+                                                {/* <Checkbox value='irregular bowel movement'>Irregular Bowel Movement</Checkbox> */}
+                                            </Stack>
+                                        </CheckboxGroup>
+                                    </FormControl>
 
 
 
-                                {/* TODO:
+
+                                    {/* TODO:
 ADD PICTURES FOR THAT DAY */}
 
 
 
-                                <FormControl id="other">
-                                    <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
-                                    <Textarea placeholder='Enter observations here' />
-                                </FormControl>
-
-                                <Box alignSelf={'flex-end'} spacing={10}>
-                                    <Button isLoading={loading} loadingText='Submitting' type={'submit'}
-                                        marginTop={'5'}
-                                        colorScheme={'teal'}
-                                        color={'white'}
-                                        _hover={{
-                                            bg: 'teal.200',
-                                        }}>
-                                        Submit
-                                    </Button>
-                                </Box>
+                                    <FormControl id="other">
+                                        <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
+                                        <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
+                                    </FormControl>
+                                    <Stack>
+                                        <Box alignSelf={'flex-end'} spacing={10}>
+                                            <Button isLoading={loading} loadingText='Submitting' type={'submit'}
+                                                alignSelf={'flex-end'}
+                                                marginTop={'5'}
+                                                colorScheme={'teal'}
+                                                color={'white'}
+                                                _hover={{
+                                                    bg: 'teal.200',
+                                                }}>
+                                                Submit
+                                            </Button>
+                                        </Box>
+                                    </Stack>
+                                </SmoothList>
                             </Stack>
                         </Box>
                     </Stack>

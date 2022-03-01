@@ -20,7 +20,7 @@ router.post('/log/:id', checkAuth, async (req, res) => {
     // })
     
     //check body for required info
-    if (!req.body.mood || !req.body.physical || !req.body.activity || !req.body.notes) {
+    if (!req.body.mood || !req.body.physical || !req.body.activity) {
         res.status(400).json({ error: 'Please include all required fields'})
         return
     }
@@ -29,24 +29,24 @@ router.post('/log/:id', checkAuth, async (req, res) => {
     //HOW TO KEEP FROM DUPLICATING??
 
     // check if log already exists
-    const dayStart = new Date()
-    dayStart.setHours(0, 0, 0, 0)
-    const dayEnd = new Date()
-    dayEnd.setHours(23, 59, 59, 999)
-    const logs = await db.Health.findAll({
-        where: {
-            createdAt: {
-                [Op.between] : [dayStart, dayEnd]
-            }
-        }
-    })
+    // const dayStart = new Date()
+    // dayStart.setHours(0, 0, 0, 0)
+    // const dayEnd = new Date()
+    // dayEnd.setHours(23, 59, 59, 999)
+    // const logs = await db.Health.findAll({
+    //     where: {
+    //         createdAt: {
+    //             [Op.between] : [dayStart, dayEnd]
+    //         }
+    //     }
+    // })
 
-    if (logs.length) {
-        res.status(400).json({
-            error: `A survey for ${dayStart.toLocaleDateString()} has already been created`            
-        })
-        return
-    }
+    // if (logs.length) {
+    //     res.status(400).json({
+    //         error: `A survey for ${dayStart.toLocaleDateString()} has already been created`            
+    //     })
+    //     return
+    // }
 
     //create new item
     const log = await db.Health.create({
@@ -62,7 +62,9 @@ router.post('/log/:id', checkAuth, async (req, res) => {
     
     //send response
     if (log) {
-        res.status(201).json(log)
+        res.status(201).json({
+            success: 'Dalton\'s log for today has been successfully created!'
+        })
         return
     }
     res.status(500).json({

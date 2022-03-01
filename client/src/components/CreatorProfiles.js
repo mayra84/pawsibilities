@@ -1,3 +1,4 @@
+import SmoothList from 'react-smooth-list';
 import {
     Heading,
     Avatar,
@@ -14,6 +15,7 @@ import {
 
 export default function CreatorProfiles() {
     return (
+            <SmoothList transitionDuration={1200} delay={200}>
         <Center p={'10'} height='80vh'>
             {/* <Center py={6}> */}
                 <Box
@@ -192,5 +194,6 @@ export default function CreatorProfiles() {
                 </Box>
             {/* </Center> */}
         </Center>
+                </SmoothList>
     );
 }

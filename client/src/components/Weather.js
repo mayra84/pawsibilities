@@ -27,8 +27,8 @@ export default function Weather() {
         <div >
             {currentWeather&& (
             <Box>
-                    <h1>Weather</h1>
-                    <div>{currentWeather.location.name}</div>
+                    {/* <h1>Weather</h1>
+                    <div>{currentWeather.location.name}</div> */}
                     <ProductSimple key={currentWeather.lat} weather = {currentWeather} />
             </Box>
             )}

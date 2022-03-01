@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 // import Features from '../Features'
 import DogPark from 'src/components/DogPark';
 import Weather from 'src/components/Weather';
+import { SimpleGrid } from '@chakra-ui/react'
 
 
 function Map(status) {
@@ -13,14 +14,14 @@ function Map(status) {
     const render = status
     //display login false, click on link -> true
 
-  return (
-    <div>
-
-{/* <DogPark /> */}
-<Weather />
-
-    </div>
-  )
+    return (
+        <div>
+            <SimpleGrid columns={{ sm: 1, md: 2, lg: 2}}>
+                <DogPark />
+                <Weather />
+            </SimpleGrid>
+        </div>
+    )
 }
 
 export default Map

@@ -7,23 +7,23 @@ export default function DogPark () {
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
   const defaultProps = {
     center: {
-      lat: 10.99835602,
-      lng: 77.01502627
+      lat: 34.05,
+      lng: -84.38
     },
     zoom: 11
   };
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '50vh', width: '50%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
         <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
+          lat={34.05}
+          lng={-84.38}
           text="My Marker"
         />
       </GoogleMapReact>

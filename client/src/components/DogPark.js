@@ -30,3 +30,35 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
     </div>
   );
 }
+
+// Geocode.fromAddress(this.state.zipCode).then(
+//     response => {
+//         const { lat, lng } = response.results[0].geometry.location;
+//         const { google } = this.props;
+//         const service = new google.maps.places.PlacesService(this.state.map);
+//         const startPoint = new google.maps.LatLng(lat, lng);
+//         var request = {
+//             location: startPoint,
+//             radius: '50000',
+//             query: ['dog park'],
+//             fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
+//         };
+//         service.textSearch(request, (results, status) => {
+//             if (status === google.maps.places.PlacesServiceStatus.OK) {
+//                 this.setState({
+//                     stores: results
+//                 })
+
+//                 const bounds = new google.maps.LatLngBounds();
+
+//                 results.forEach(result => {
+//                     bounds.extend(result.geometry.location);
+//                 });
+//                 this.state.map.fitBounds(bounds);
+//             }
+//         });
+//     },
+//     error => {
+//         console.error(error);
+//     }
+// );

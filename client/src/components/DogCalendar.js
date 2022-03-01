@@ -9,7 +9,12 @@ import { fetchHealth } from "src/redux/reducers/calendarReducer";
 
 const localizer = momentLocalizer(moment);
 
+const colors = ['#FED9B7', '#006D77', '#00AFB9', '#0081A7','#F07167']
+let currentColor = 0
 
+const newColor = () => {
+  return colors[currentColor++ % colors.length]
+}
 
 export default function DogCalendar(props) {
 
@@ -19,19 +24,28 @@ export default function DogCalendar(props) {
     dispatch(fetchHealth)
   }, [dispatch])
 
-  const events = calendar.logs.map((event) => {
+  let colors = {}
+
+
+  const events = calendar.logs.map((log) => {
     // console.log(event)
-    const start = new Date(event.createdAt)
-    const end = new Date(event.createdAt)
+    if (!(log.Dog.id in colors)) {
+      colors[log.Dog.id] = newColor()
+    }
+
+    const start = new Date(log.createdAt)
+    const end = new Date(log.createdAt)
     end.setTime(end.getTime() + 360000)
     console.log(start, end)
     return {
-      title: event.Dog.name,
+      title: log.Dog.name,
       start: start,
       end: end,
-      resource: event
+      resource: log
     }
   })
+
+  console.log(colors)
 
 
   return (
@@ -51,10 +65,18 @@ export default function DogCalendar(props) {
             defaultView="month"
             events={events}
             style={{ height: "50vh", width: "100vh" }}
+            
+            //receives a function returns an object
+            eventPropGetter={(event, start, end, isSelected) => ({
+              event,
+              start,
+              end,
+              isSelected,
+              style: { backgroundColor: colors[event.resource.Dog.id] }
+            })}
           />
         </Box>
       </Flex>
     </SmoothList>
   );
 }
-

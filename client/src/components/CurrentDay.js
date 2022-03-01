@@ -87,18 +87,11 @@ export default function CurrentDay(props) {
     const objToday = new Date()
     const weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
 	const dayOfWeek = weekday[objToday.getDay()]
-	// const domEnder = function() { const a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }()
-	// const dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder
 	const months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December')
 	const curMonth = months[objToday.getMonth()]
-	// const curYear = objToday.getFullYear()
-	// const curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours())
-	// const curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes()
-	// const curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds()
-	// const curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
-    // const today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 
-    const [dog, setDog] = useState({id:2, name: 'Emma'})
+
+    const [dog, setDog] = useState({id:5, name: 'doggy'})
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const yourDog = 'Dalton'

@@ -20,6 +20,9 @@ function Home() {
     <div>
 
 
+
+
+
       {currentUser ? (
         <>
 
@@ -43,6 +46,7 @@ function Home() {
 
         </div>
       )}
+
 
 
     </div>

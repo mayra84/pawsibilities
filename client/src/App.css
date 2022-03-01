@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+.tagLine {
+  font-size: 30px;
+  color: #edf6f9;
+  margin-top: 20px;
+}

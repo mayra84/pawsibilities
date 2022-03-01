@@ -29,35 +29,47 @@ router.post('/log/:id', checkAuth, async (req, res) => {
     //HOW TO KEEP FROM DUPLICATING??
 
     // check if log already exists
-    // const dayStart = new Date()
-    // dayStart.setHours(0, 0, 0, 0)
-    // const dayEnd = new Date()
-    // dayEnd.setHours(23, 59, 59, 999)
-    // const logs = await db.Health.findAll({
-    //     where: {
-    //         createdAt: {
-    //             [Op.between] : [dayStart, dayEnd]
-    //         }
-    //     }
-    // })
+    const dayStart = new Date()
+    dayStart.setHours(0, 0, 0, 0)
+    const dayEnd = new Date()
+    dayEnd.setHours(23, 59, 59, 999)
+    const logs = await db.Health.findAll({
+        where: {
+            createdAt: {
+                [Op.between] : [dayStart, dayEnd]
+            }
+        }
+    })
 
-    // if (logs.length) {
-    //     res.status(400).json({
-    //         error: `A survey for ${dayStart.toLocaleDateString()} has already been created`            
-    //     })
-    //     return
-    // }
+    if (logs.length) {
+        res.status(400).json({
+            error: `A survey for ${dayStart.toLocaleDateString()} has already been created`            
+        })
+        return
+    }
+
+    const dog = await db.Dog.findOne({
+        where: {
+            UserId: req.session.user.id,
+            id: req.params.id
+        }
+    })
+
+    if (!dog) {
+        res.status(404).json({
+            error: 'Dog not found'
+        })
+        return
+    }
+
 
     //create new item
-    const log = await db.Health.create({
+    //magic method 
+    const log = await dog.createHealth({
         mood: req.body.mood,
         physical: req.body.physical,
         activity: req.body.activity,
         notes: req.body.notes,
-     
-        //HOW TO CONNECT DOG ID TO HEALTH LOG??
-
-        DogId: req.params.id
     })
     
     //send response
@@ -96,12 +108,17 @@ router.delete('/:id', checkAuth, async (req, res) => {
 //read
 router.get('/', checkAuth, async (req, res) => {
     //find all logs for dog
-    const dogs = await db.Dog.findAll({
-        where: {
-            UserId: req.session.user.id
+    const health = await db.Health.findAll({
+        //nested where
+        
+        include: {
+            model: db.Dog,
+            where: {
+                UserId: req.session.user.id
+            },
         }
     })
-    res.json(dogs)
+    res.json(health)
 })
 
 // router.get('/', checkAuth, async (req, res) => {

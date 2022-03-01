@@ -98,7 +98,7 @@ export default function CurrentDay(props) {
 	// const curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
     // const today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 
-    const [dog, setDog] = useState({id:1, name: 'Dalton'})
+    const [dog, setDog] = useState({id:2, name: 'Emma'})
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const yourDog = 'Dalton'

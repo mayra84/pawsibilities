@@ -167,7 +167,7 @@ function HealthLog(props) {
 
                                                 <ImageButton onClick={() => { toggleMood('apathetic') }} src={'../Apathetic.png'} isActive={mood.includes('apathetic')} />
 
-                                                <ImageButton onClick={() => { toggleMood('nonePaw') }} src={'../None_Paw.png'} isActive={mood.includes('nonePaw')} />
+                                                <ImageButton onClick={() => { toggleMood('none') }} src={'../None_Paw.png'} isActive={mood.includes('none')} />
 
                                             </Stack>
                                         </CheckboxGroup>
@@ -189,7 +189,7 @@ function HealthLog(props) {
 
                                                 <ImageButton onClick={() => { toggleActivity('playedFetch') }} src={'../Played_Fetch.png'} isActive={activity.includes('playedFetch')} />
 
-                                                <ImageButton onClick={() => { toggleActivity('noneBall') }} src={'../None_Ball.png'} isActive={activity.includes('noneBall')} />
+                                                <ImageButton onClick={() => { toggleActivity('none') }} src={'../None_Ball.png'} isActive={activity.includes('none')} />
 
                                             </Stack>
                                         </CheckboxGroup>
@@ -206,7 +206,7 @@ function HealthLog(props) {
 
                                                 <ImageButton onClick={() => { togglePhysical('constipation') }} src={'../Constipation.png'} isActive={physical.includes('constipation')} />
 
-                                                <ImageButton onClick={() => { togglePhysical('noneBone') }} src={'../None_Bone.png'} isActive={physical.includes('noneBone')} />
+                                                <ImageButton onClick={() => { togglePhysical('none') }} src={'../None_Bone.png'} isActive={physical.includes('none')} />
 
                                                 {/* <Checkbox value='abnormalAppetite'>Abnormal Appetite</Checkbox> */}
                                                 {/* <Checkbox value='irregular bowel movement'>Irregular Bowel Movement</Checkbox> */}

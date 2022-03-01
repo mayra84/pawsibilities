@@ -9,8 +9,6 @@ const { Op } = require("sequelize");
 //create
 router.post('/log/:id', checkAuth, async (req, res) => {
 
-    //how to make "notes" optional
-
     //when on home page
     //get all dogs for that user 
     // const logs = await db.Health.findAll({
@@ -28,13 +26,14 @@ router.post('/log/:id', checkAuth, async (req, res) => {
 
     //HOW TO KEEP FROM DUPLICATING??
 
-    // check if log already exists
+    // check if log for specific dog already exists
     const dayStart = new Date()
     dayStart.setHours(0, 0, 0, 0)
     const dayEnd = new Date()
     dayEnd.setHours(23, 59, 59, 999)
     const logs = await db.Health.findAll({
         where: {
+            DogId: req.params.id,
             createdAt: {
                 [Op.between] : [dayStart, dayEnd]
             }

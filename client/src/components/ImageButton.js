@@ -6,8 +6,9 @@ function ImageButton(props) {
 
   return (
 
-    <Box position={'relative'}>
+    <Box position={'relative'} >
     <Image
+    border={'2px'} color={'brand.201'}
     cursor={'pointer'}
     onClick={props.onClick}
     boxShadow={'lg'}
@@ -25,6 +26,8 @@ function ImageButton(props) {
     boxSize={'8'}
     borderRadius={'50%'}
     bgColor={'white'}
+    borderStyle={'solid'}
+    borderColor={'turquoise'}
 
     pos={'absolute'}
         bottom={0}

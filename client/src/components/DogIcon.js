@@ -7,6 +7,8 @@ function DogIcon(props) {
        
             <Box>
                 <Image
+                
+                border={'2px'} color={'brand.201'}
                 m={'0 auto'}
                 mb={'6'}
                     cursor={'pointer'}
@@ -23,6 +25,7 @@ function DogIcon(props) {
                 {props.isActive && (
 
                     <CheckCircleIcon
+                    
                         boxSize={'8'}
                         borderRadius={'50%'}
                         bgColor={'white'}

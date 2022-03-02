@@ -2,14 +2,15 @@ import React, { Component, useEffect, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Box, Container, Flex } from "@chakra-ui/react";
+import { Box, Container, Flex, useDisclosure, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Modal} from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import SmoothList from 'react-smooth-list';
 import { fetchHealth } from "src/redux/reducers/calendarReducer";
+import DogCalendarCard from "./DogCalendarCard";
 
 const localizer = momentLocalizer(moment);
 
-const colors = ['#FED9B7', '#006D77', '#00AFB9', '#0081A7','#F07167']
+const colors = ['#FED9B7', '#F07167', '#006D77', '#00AFB9', '#0081A7']
 let currentColor = 0
 
 const newColor = () => {
@@ -17,9 +18,13 @@ const newColor = () => {
 }
 
 export default function DogCalendar(props) {
+  //falsy
+  const [info, setInfo] = useState(null) 
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch()
   const calendar = useSelector((state) => state.calendar)
+  // console.log(calendar.logs)
   useEffect(() => {
     dispatch(fetchHealth)
   }, [dispatch])
@@ -36,7 +41,7 @@ export default function DogCalendar(props) {
     const start = new Date(log.createdAt)
     const end = new Date(log.createdAt)
     end.setTime(end.getTime() + 360000)
-    console.log(start, end)
+    // console.log(start, end)
     return {
       title: log.Dog.name,
       start: start,
@@ -45,8 +50,9 @@ export default function DogCalendar(props) {
     }
   })
 
-  console.log(colors)
+  // console.log(colors)
 
+  // (console.log(target.onClick()))
 
   return (
     <SmoothList transitionDuration={1400}>
@@ -65,7 +71,7 @@ export default function DogCalendar(props) {
             defaultView="month"
             events={events}
             style={{ height: "50vh", width: "100vh" }}
-            
+
             //receives a function returns an object
             eventPropGetter={(event, start, end, isSelected) => ({
               event,
@@ -74,8 +80,31 @@ export default function DogCalendar(props) {
               isSelected,
               style: { backgroundColor: colors[event.resource.Dog.id] }
             })}
+
+            onSelectEvent={(event) => {
+              setInfo(event)
+              onOpen()
+
+            } }
           />
         </Box>
+        <Modal size={'6xl'} isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+
+                        <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>
+                          {info.resource.Dog.name}
+                          </ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                           <DogCalendarCard log={info.resource} />
+                        </ModalBody>
+
+                        {/* <ModalFooter>
+                                
+                            </ModalFooter> */}
+                    </ModalContent>
+                </Modal>
       </Flex>
     </SmoothList>
   );

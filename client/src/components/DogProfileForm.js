@@ -24,6 +24,7 @@ import axios from 'axios';
 import { Link, Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addDog } from 'src/redux/reducers/dogReducer';
+import AllDogs from './AllDogs';
 
 export default function DogProfileForm(props) {
     // const { dog } = props
@@ -90,6 +91,11 @@ export default function DogProfileForm(props) {
     //     })
 
         return (
+
+            <Box>
+
+           
+
             <form onSubmit={handleSubmit}>
                 {complete && (
                     <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
@@ -117,10 +123,12 @@ export default function DogProfileForm(props) {
                     justify={'center'}
                 >
                     <Stack
+
                         boxShadow={'lg'}
                         bgColor={'rgba(255 255 255 /90%)'}
                         backdropFilter={'blur(2px)'}
-                        borderRadius={'10'} border={'2px'} color={'brand.201'}
+                        borderRadius={'10'} border={'2px'} borderColor={'brand.201'}
+                        color={'black'}
 
                         spacing={4}
                         w={'full'}
@@ -138,7 +146,7 @@ export default function DogProfileForm(props) {
                             <FormLabel>User Icon</FormLabel>
                             <Stack direction={['column', 'row']} spacing={6}>
                                 <Center>
-                                    <Avatar size="xl" src="./IMG_0096.jpg">
+                                    <Avatar border={'2px'} color={'brand.201'} size="xl" src="./IMG_0096.jpg">
                                         {/* <AvatarBadge
                                     as={IconButton}
                                     size="sm"
@@ -203,9 +211,9 @@ export default function DogProfileForm(props) {
 
                                     {/* value?? */}
 
-                                    <option value='option1'>Small - less than 22lb</option>
-                                    <option value='option2'>Medium - 22lb-55lb</option>
-                                    <option value='option3'>Large - over 55lb</option>
+                                    <option value='small'>Small - less than 22lb</option>
+                                    <option value='medium'>Medium - 22lb-55lb</option>
+                                    <option value='large'>Large - over 55lb</option>
                                 </Select>
                             </FormControl>
 
@@ -215,8 +223,8 @@ export default function DogProfileForm(props) {
                                 <Select
                                     required value={temperament} onChange={(e) => setTemperament(e.target.value)}
                                     placeholder='Select option'>
-                                    <option value='option1'>Friendly</option>
-                                    <option value='option2'>Unfriendly</option>
+                                    <option value='friendly'>Friendly</option>
+                                    <option value='unfriendly'>Unfriendly</option>
                                 </Select>
                             </FormControl>
 
@@ -225,11 +233,11 @@ export default function DogProfileForm(props) {
                                 <Select
                                     required value={coat} onChange={(e) => setCoat(e.target.value)}
                                     placeholder='Select option'>
-                                    <option value='option1'>Smooth Coat</option>
-                                    <option value='option2'>Double Coat</option>
-                                    <option value='option3'>Long Coat</option>
-                                    <option value='option4'>Wire Coat</option>
-                                    <option value='option5'>Curly Coat</option>
+                                    <option value='smooth'>Smooth Coat</option>
+                                    <option value='double'>Double Coat</option>
+                                    <option value='long'>Long Coat</option>
+                                    <option value='wire'>Wire Coat</option>
+                                    <option value='curly'>Curly Coat</option>
                                 </Select>
                             </FormControl>
                         </Stack>
@@ -282,6 +290,7 @@ export default function DogProfileForm(props) {
                     </Stack>
                 </Flex>
             </form>
+            </Box>
         );
     }
 // }

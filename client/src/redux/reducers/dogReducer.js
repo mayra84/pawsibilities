@@ -26,6 +26,7 @@ export function setDogs(dogs) {
     }
 }
 
+//gets dogs from backend
 export function fetchDogs(dispatch, getState) {
     const state = getState()
     if (!state.user.currentUser) {

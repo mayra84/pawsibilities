@@ -31,6 +31,8 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
   );
 }
 
+//ADD VETS
+
 // Geocode.fromAddress(this.state.zipCode).then(
 //     response => {
 //         const { lat, lng } = response.results[0].geometry.location;

@@ -11,6 +11,7 @@ function Register() {
 
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
+  const [zipcode, setZipcode] = useState('')
   const [loading, setLoading] = useState(false)
   const [complete, setComplete] = useState(false)
   const [error, setError] = useState('')
@@ -20,11 +21,13 @@ function Register() {
     setLoading(true)
     axios.post('/api/v1/users/register', {
       email,
-      password
+      password,
+      zipcode
     })
       .then(data => {
         setEmail('')
         setPassword('')
+        setZipcode('')
         setLoading(false)
         setError('')
         setComplete(true)
@@ -69,6 +72,11 @@ function Register() {
         <FormControl color={'black'} mb={'5'}>
           <FormLabel>Password</FormLabel>
           <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
+          <FormErrorMessage>Error message</FormErrorMessage>
+        </FormControl>
+        <FormControl color={'black'} mb={'5'}>
+          <FormLabel>Zipcode</FormLabel>
+          <Input required value={zipcode} onChange={(e) => setZipcode(e.target.value)} type={'zipcode'} />
           <FormErrorMessage>Error message</FormErrorMessage>
         </FormControl>
         <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Sign Up</Button>

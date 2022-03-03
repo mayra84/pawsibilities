@@ -10,7 +10,7 @@ router.post('/register', async function (req, res, next) {
 
   //is email and password present on body
 
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.email || !req.body.password || !req.body.zipcode) {
     res.status(400).json({
       error: 'please include all required fields'
     })
@@ -37,7 +37,8 @@ router.post('/register', async function (req, res, next) {
   //store new user in db
   const user = await db.User.create({
     email: req.body.email,
-    password: hash
+    password: hash,
+    zipcode: req.body.zipcode
   })
 
   //send response

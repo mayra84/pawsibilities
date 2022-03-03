@@ -25,6 +25,7 @@ import { Link, Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addDog } from 'src/redux/reducers/dogReducer';
 import AllDogs from './AllDogs';
+import React from 'react';
 
 export default function DogProfileForm(props) {
     // const { dog } = props

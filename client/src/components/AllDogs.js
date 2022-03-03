@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { fetchDogs } from 'src/redux/reducers/dogReducer';
 import DogProfileForm from './DogProfileForm';
+import React from 'react';
 
 export default function AllDogs(props) {
 

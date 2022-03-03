@@ -25,7 +25,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/reducers/userReducer';
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
-import SmoothList from 'react-smooth-list';
+// import SmoothList from 'react-smooth-list';
+import React from 'react';
 
 export default function WithSubnavigation(props) {
 

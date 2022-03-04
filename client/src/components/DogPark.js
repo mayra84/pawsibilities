@@ -3,7 +3,30 @@ import React, {useEffect} from "react";
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import { render } from '@testing-library/react';
+import { Center } from '@chakra-ui/react';
 
+
+
+function DogPark ({currentUser}) {
+  // const [currentWeather, setCurrentWeather] = useState(null);
+  console.log ("this is the ", currentUser)
+
+//   useEffect (() => {
+//     fetchWeather(currentUser)
+// }, [])
+
+
+// const fetchWeather = async (currentUser) => {
+
+//   await fetch(`http://api.weatherapi.com/v1/current.json?key=ca26e518dd18404c95f191858222702&q=${currentUser.zipcode}&`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//           var weather = data
+//           console.log(weather)
+//           console.log(weather.current.condition.text)
+//           setCurrentWeather(weather)
+//       })
+// }
 
 function DogPark ({currentUser}) {
   // const [currentWeather, setCurrentWeather] = useState(null);
@@ -48,6 +71,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
     // Important! Always set the container height explicitly
     <div style={{ height: '50vh', width: '50%' }}>
       <GoogleMapReact
+
         bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
@@ -60,6 +84,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
       </GoogleMapReact>
     </div>
   );
+}
 }
 
 // Geocode.setLanguage('en');

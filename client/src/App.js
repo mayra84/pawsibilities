@@ -9,29 +9,52 @@ import Map from './pages/Map'
 
 import Login from './pages/Login';
 import Navbar from './components/Navbar'
-import { useSelector } from 'react-redux';
-import DogProfileForm from './pages/DogProfileForm';
+import { useDispatch, useSelector } from 'react-redux';
+import DogProfileForm from './components/DogProfileForm';
+import HealthCalendar from './pages/HealthCalendar';
+import AboutUs from './pages/AboutUs';
+import Discover from './pages/Discover';
+import DogProfile from './pages/DogProfile';
+import { useEffect } from 'react';
+import { checkUser } from './redux/reducers/userReducer';
+
 
 
 function App() {
-  
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(checkUser)
+  },[dispatch])
+
   return (
     <div className="App">
       <Navbar />
-      {/* <Register /> */}
-      
 
       <Routes>
         <Route path="/" element={<Home />} />
-        
-        <Route path="/register" element={<Register />} />
+
+        {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
-
 <Route path="/map" element={<Map/>} />
+ {/* how to route to to dog stuff?? */}
+ <Route path="/dogprofileForm" element={<DogProfileForm />} />
+
+        <Route path="/map" element={<Map />} />
+
+        <Route path="/map" element={<Map/>} />
+
+
+
         {/* how to route to to dog stuff?? */}
-        <Route path="/dogprofileForm" element={<DogProfileForm />} />
+        <Route path="/dogprofile" element={<DogProfile/>} />
+        <Route path="/healthcalendar" element={<HealthCalendar />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/map" element={<Discover />} />
 
 
+        {/* <Route path="dogdrop" element={ <DogDrop /> } /> */}
+        {/* <Route path="/currentday" element={<Current} */}
       </Routes>
     </div>
   );

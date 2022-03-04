@@ -10,11 +10,12 @@ import Map from './pages/Map'
 import Login from './pages/Login';
 import Navbar from './components/Navbar'
 import { useSelector } from 'react-redux';
-import DogProfileForm from './components/DogProfileForm';
+
 import HealthCalendar from './pages/HealthCalendar';
 import AboutUs from './pages/AboutUs';
 import Discover from './pages/Discover';
 import DogProfile from './pages/DogProfile';
+
 
 
 function App() {
@@ -34,11 +35,16 @@ function App() {
 
         <Route path="/map" element={<Map />} />
 
+        <Route path="/map" element={<Map/>} />
+
+
+
         {/* how to route to to dog stuff?? */}
         <Route path="/dogprofile" element={<DogProfile/>} />
         <Route path="/healthcalendar" element={<HealthCalendar />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/discover" element={<Discover />} />
+
 
         {/* <Route path="dogdrop" element={ <DogDrop /> } /> */}
         {/* <Route path="/currentday" element={<Current} */}

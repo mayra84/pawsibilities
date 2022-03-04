@@ -2,9 +2,11 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models')
+
 const models = require('../../models')
 const bcrypt = require('bcrypt');
 const user = require('../../models/user');
+
 
 /* GET users listing. */
 router.get('/', async (req, res) => {

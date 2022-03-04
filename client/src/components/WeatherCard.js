@@ -6,14 +6,15 @@ import {
     Text,
     Stack,
     Image,
-  } from '@chakra-ui/react';
-  import React from 'react';
+} from '@chakra-ui/react';
+import React from 'react';
 
-  
-  export default function ProductSimple(props) {
+
+export default function ProductSimple(props) {
     const { weather } = props
     console.log(weather)
     return (
+
     //   <Center py={12}>
         <Box
           role={'group'}
@@ -58,5 +59,6 @@ import {
           </Stack>
         </Box>
     //   </Center>
+
     );
-  }
+}

@@ -1,9 +1,13 @@
 import { connect, useSelector } from 'react-redux'
 import React, {useEffect} from "react";
 import GoogleMapReact from 'google-map-react';
+
 import Weather from './Weather';
 import axios from 'axios';
 import { render } from '@testing-library/react';
+
+import { Center } from '@chakra-ui/react';
+
 
 
 function DogPark ({currentUser}) {
@@ -30,8 +34,10 @@ function DogPark ({currentUser}) {
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
   const defaultProps = {
     center: {
-      lat: 34.05,
-      lng: -84.38
+
+        lat: 34.05,
+        lng: -84.38
+
     },
     zoom: 11
   };
@@ -47,8 +53,10 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
   return (
     // Important! Always set the container height explicitly
+
     <div style={{ height: '50vh', width: '50%' }}>
       <GoogleMapReact
+
         bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
@@ -60,8 +68,10 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
         />
       </GoogleMapReact>
     </div>
+    </Center>
   );
 }
+
 
 // Geocode.setLanguage('en');
 // Geocode.setApiKey("AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" );
@@ -87,3 +97,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps) (DogPark)
+

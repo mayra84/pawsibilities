@@ -73,10 +73,11 @@ export default function WithSubnavigation(props) {
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
                     <Image
-                    cursor={'pointer'}
+                   cursor={'pointer'}
                         boxShadow={'lg'}
                         onClick={e => { navigate('/') }}
                         // isActive={'true'}
+
                         alignSelf={'left'}
                         borderRadius={'75'}
                         boxSize='125'
@@ -135,7 +136,9 @@ export default function WithSubnavigation(props) {
                             </Button> */}
                             <Link as={RouterLink} to={"/login"}>
                                 <Button
+
                                     // linkHoverColor={'none'}
+
                                     shadow={'lg'}
                                     display={{ base: 'none', md: 'inline-flex' }}
                                     fontSize={'sm'}
@@ -170,11 +173,13 @@ const DesktopNav = () => {
         // <SmoothList transitionDuration={1200} delay={200}>
         <Stack justify={'center'}
             align={'center'} direction={'row'} spacing={28}>
+ 
             <Link as={RouterLink} to="/">Home</Link>
             <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
             <Link as={RouterLink} to="/map">Discover</Link>
             <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
             <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+
             {/* {NAV_ITEMS.map((navItem) => (
                 <Box key={navItem.label}>
                     <Popover trigger={'hover'} placement={'bottom-start'}>

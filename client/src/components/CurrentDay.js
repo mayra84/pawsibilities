@@ -56,11 +56,12 @@ export default function CurrentDay(props) {
 
     //when page refreshes, dot not set on first item
     useEffect(() => {
-        if (!activeDog) {
-            setActiveDog(dogs[0])
+        if (!dogs.length) {
+            return
         }
+        setActiveDog(dogs[0])
         // dispatch(fetchDogs)
-    }, [activeDog])
+    }, [dogs])
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()

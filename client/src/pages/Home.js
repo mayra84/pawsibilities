@@ -6,6 +6,7 @@ import CurrentDay from 'src/components/CurrentDay'
 import HealthLog from 'src/components/HealthLog'
 import HomePageHero from 'src/components/HomePageHero'
 import HomePageRegistration from 'src/components/HomePageRegistration'
+
 import Carousel from '../components/Carousel'
 // import DogProfileForm from './DogProfileForm'
 import Login from './Login'
@@ -21,19 +22,18 @@ function Home() {
     <div>
 
 
-
-
-
       {currentUser ? (
         <>
 
           <CurrentDay />
          
         </>
+
       ) : (
 
         <div>
           <Carousel />
+
           <HomePageRegistration />
           
           {/* <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
@@ -46,9 +46,9 @@ function Home() {
             </Center>
           </Flex> */}
 
+
         </div>
       )}
-
 
 
     </div>

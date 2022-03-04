@@ -24,8 +24,10 @@ function HomePageHero() {
             fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
             Sign up to discover the Pawsibilities! <br />
+
           </Heading>
             
+
         </Stack>
       </Container>
     </div>

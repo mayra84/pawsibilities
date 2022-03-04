@@ -35,7 +35,7 @@ export default function Carousel() {
     'https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg',
     // 'https://live.staticflickr.com/65535/51243662812_cd24858a12_b.jpg',  
     '/Pet_a_dog.jpeg',
-    'https://cdn.pixabay.com/photo/2018/08/12/08/04/dog-3600325_1280.jpg',
+'https://cdn.pixabay.com/photo/2018/08/12/08/04/dog-3600325_1280.jpg',
     './IMG_1794.JPG',    
     'https://cdn.pixabay.com/photo/2020/06/21/14/04/border-collie-5324985_1280.jpg',
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/upwk62174353-wikimedia-image.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=ad86a8f60950da5faf2f06d6351c1bc8', 
@@ -51,7 +51,8 @@ export default function Carousel() {
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pu2352634-image-kwvy8lx7.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=1a8cabb8058fff8ea7a09e10645eaab0',
     'https://cdn.pixabay.com/photo/2019/02/13/11/26/dog-3994180_1280.jpg',   
 
-    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/px657141-image-kwvxm781.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=2969861f941b5584a930089413667d4a',
+   'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/px657141-image-kwvxm781.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=2969861f941b5584a930089413667d4a',
+
     'https://www.maxpixel.net/static/photo/1x/Flower-Portrait-Dog-Rottweiler-Nature-Dogshooting-5290550.jpg',
     'https://live.staticflickr.com/65535/51352284590_c37d8d1c8d_b.jpg',
  
@@ -66,10 +67,7 @@ export default function Carousel() {
 
     //bad quality below
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9pu5U-pX2vFx3gvX2KQmS-YMOLVvLbCWIhA&usqp=CAU',
-
-    // 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9pu5U-pX2vFx3gvX2KQmS-YMOLVvLbCWIhA&usqp=CAU',
-
-    'https://upload.wikimedia.org/wikipedia/commons/9/98/JMSDF_Military_working_dog_%E3%80%8CKouki%E3%80%8D.jpg',
+'https://upload.wikimedia.org/wikipedia/commons/9/98/JMSDF_Military_working_dog_%E3%80%8CKouki%E3%80%8D.jpg',
     'https://www.maxpixel.net/static/photo/1x/Beagle-Dog-Animal-Race-Mammal-Hunting-Dog-Pet-4500928.jpg',
     'https://c0.wallpaperflare.com/preview/822/584/854/sheep-dog-german-german-shepherd-dog.jpg',
     'https://live.staticflickr.com/7066/27253432403_1e8977cd8b_b.jpg',

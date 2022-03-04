@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import { checkUser } from './redux/reducers/userReducer';
 
 
+
 function App() {
 
   const dispatch = useDispatch()
@@ -35,13 +36,22 @@ function App() {
 
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
+<Route path="/map" element={<Map/>} />
+ {/* how to route to to dog stuff?? */}
+ <Route path="/dogprofileForm" element={<DogProfileForm />} />
+
         <Route path="/map" element={<Map />} />
+
+        <Route path="/map" element={<Map/>} />
+
+
 
         {/* how to route to to dog stuff?? */}
         <Route path="/dogprofile" element={<DogProfile/>} />
         <Route path="/healthcalendar" element={<HealthCalendar />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/discover" element={<Discover />} />
+
 
         {/* <Route path="dogdrop" element={ <DogDrop /> } /> */}
         {/* <Route path="/currentday" element={<Current} */}

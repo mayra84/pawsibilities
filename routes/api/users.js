@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 /* GET users listing. */
 router.post('/register', async function (req, res, next) {
@@ -10,7 +10,7 @@ router.post('/register', async function (req, res, next) {
 
   //is email and password present on body
 
-  if (!req.body.email || !req.body.password) {
+  if (!req.body.email || !req.body.password || !req.body.zipcode) {
     res.status(400).json({
       error: 'please include all required fields'
     })
@@ -37,7 +37,8 @@ router.post('/register', async function (req, res, next) {
   //store new user in db
   const user = await db.User.create({
     email: req.body.email,
-    password: hash
+    password: hash,
+    zipcode: req.body.zipcode
   })
 
   //send response
@@ -96,6 +97,44 @@ router.get('/logout', function(req, res) {
   req.session.user = null;
   res.json({
     success: 'successfully logged out'
+  })
+})
+
+router.put("/zipcode", async function(req,res) {
+  if (
+    // !req.body.email ||
+    //  !req.body.password ||
+     !req.body.zipcode) {
+    res.status(400).json({
+      error: 'please include all required fields'
+    })
+    return
+  }
+
+  //hash password
+  // const hash2 = await bcrypt.hash(req.body.zipcode, 10)
+  // const hash = await bcrypt.hash(req.body.password, 10)
+
+  //store new user in db
+  const user = await db.User.update({
+    // email: req.body.email,
+    // password: hash,
+    zipcode: req.body.zipcode
+  }, 
+  {
+    where:{
+      // @ts-ignore
+      id: req.session.user.id
+    }
+  })
+
+  //send response
+  if (user) {
+    res.status(201).json(user.zipcode)
+    return
+  }
+  res.status(500).json({
+    error: 'oops! something went wrong'
   })
 })
 

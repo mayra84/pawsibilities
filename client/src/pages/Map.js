@@ -9,7 +9,9 @@ import DogPark from 'src/components/DogPark';
 
 // import DogPark from 'src/components/DogPark';
 
+
 import Weather from 'src/components/Weather';
+import { SimpleGrid } from '@chakra-ui/react';
 
 
 function Map(status) {
@@ -19,9 +21,10 @@ function Map(status) {
 
   return (
     <div>
-
-{/* <DogPark /> */}
-<Weather />
+        <SimpleGrid columns={{ sm: 1, md: 2, lg: 2}}>
+                <DogPark />
+                <Weather />
+            </SimpleGrid>
 
     </div>
   )

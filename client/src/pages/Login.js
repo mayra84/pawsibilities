@@ -58,7 +58,9 @@ function Login() {
     <form onSubmit={handleSubmit}>
 
       {error && (
+
         <SmoothList transitionDuration={600}>
+
         <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
           <AlertIcon />
           Error!&nbsp; {error.data.error}

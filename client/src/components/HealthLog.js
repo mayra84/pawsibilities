@@ -15,6 +15,7 @@ import {
     useColorModeValue,
     Textarea,
     flexbox,
+
     Alert,
     AlertIcon,
     Modal,
@@ -218,7 +219,9 @@ function HealthLog(props) {
 
 
                                     {/* TODO:
+
 ADD PICTURES FOR THAT DAY */}
+
 
 
 
@@ -246,9 +249,11 @@ ADD PICTURES FOR THAT DAY */}
                     </Stack>
                 </Stack>
             </form>
+
             {/* </Flex> */}
         </div>
     )
 }
 
 export default HealthLog
+

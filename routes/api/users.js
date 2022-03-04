@@ -2,9 +2,29 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../../models')
-const bcrypt = require('bcrypt')
+const models = require('../../models')
+const bcrypt = require('bcrypt');
+const user = require('../../models/user');
 
 /* GET users listing. */
+router.get('/', async (req, res) => {
+  await models.User.findAll(
+  //   {
+  //   include: [models.email, models.password, models.zipcode]
+  // }
+  )
+    .then(users => {
+      console.log(users)
+      res.json(users)
+    })
+    .catch(e => {
+      console.error(e)
+      res.status(500).json({
+        error: 'Server Error'
+      })
+    })
+  });
+
 router.post('/register', async function (req, res, next) {
   //accept email, accept password
 
@@ -137,5 +157,6 @@ router.put("/zipcode", async function(req,res) {
     error: 'oops! something went wrong'
   })
 })
+
 
 module.exports = router;

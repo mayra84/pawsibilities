@@ -172,7 +172,7 @@ const DesktopNav = () => {
             align={'center'} direction={'row'} spacing={28}>
             <Link as={RouterLink} to="/">Home</Link>
             <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
-            <Link as={RouterLink} to="/discover">Discover</Link>
+            <Link as={RouterLink} to="/map">Discover</Link>
             <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
             <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
             {/* {NAV_ITEMS.map((navItem) => (
@@ -355,17 +355,17 @@ const NAV_ITEMS = [
             {
                 label: 'Dog Parks',
                 subLabel: 'Find your dream design job',
-                href: '#',
+                href: '/map',
             },
             {
                 label: 'Adoption',
                 subLabel: 'Find your dream design job',
-                href: '#',
+                href: '/discover',
             },
         ],
     },
     {
         label: 'About M&Z',
-        href: '#',
+        href: '/aboutus',
     },
 ];

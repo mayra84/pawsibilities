@@ -91,6 +91,18 @@ router.post('/login', async function (req, res, next) {
 
 });
 
+router.get('/current', function(req, res) {
+  // @ts-ignore
+  if (!req.session.user) {
+    res.status(401).json({
+      error: 'Not logged in'
+    })
+    return
+  }
+  // @ts-ignore
+  res.json(req.session.user)
+})
+
 router.get('/logout', function(req, res) {
   // @ts-ignore
   req.session.user = null;

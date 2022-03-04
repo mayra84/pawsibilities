@@ -23,20 +23,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { fetchDogs } from 'src/redux/reducers/dogReducer';
 import DogProfileForm from './DogProfileForm';
+import SmoothList from 'react-smooth-list';
 
 export default function AllDogs(props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const dogs = useSelector((state) => state.dogs)
+    const { dogs, user } = useSelector((state) => state)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
+        if (!user) {
+            return
+        }
         dispatch(fetchDogs)
-    }, [dispatch])
+    }, [dispatch, user])
+
+
+    const handleSuccess = () => {
+        onClose()
+        dispatch(fetchDogs)
+    }
 
     return (
+
 
         <Box>
             <Stack maxW={'40'} m={'0 auto'}>
@@ -51,22 +62,23 @@ export default function AllDogs(props) {
                         <ModalCloseButton />
                         <ModalBody>
 
-                            <DogProfileForm />
+                            <DogProfileForm onSuccess={handleSuccess}/>
 
                         </ModalBody>
 
                         <ModalFooter>
-                            
+
                         </ModalFooter>
                     </ModalContent>
                 </Modal>
 
 
-
                 <SimpleGrid columns={{ sm: 1, lg: 2 }} alignItems='stretch' spacing={20} m={10}>
 
                     {dogs.map((dog) => (
+
                         <Box
+                        key={dog.id}
                             bgColor={'rgba(255 255 255 /90%)'}
                             backdropFilter={'blur(2px)'}
                             borderRadius={'10'} border={'2px'} color={'brand.201'}
@@ -78,25 +90,15 @@ export default function AllDogs(props) {
                             rounded={'lg'}
                             p={10}
                             textAlign={'center'}>
+                            <SmoothList transitionDuration={1000} delay={100}>
+                                
                             <Avatar
+                            key={dog.Image?.id}
                                 size={'xl'}
-                                src={
-                                    'https://images.unsplash.com/photo-1520810627419-35e362c5dc07?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ'
-                                }
+                                src={dog.Image?.location}
                                 alt={'Avatar Alt'}
                                 mb={4}
                                 pos={'relative'}
-                                _after={{
-                                    content: '""',
-                                    w: 4,
-                                    h: 4,
-                                    bg: 'green.300',
-                                    border: '2px solid white',
-                                    rounded: 'full',
-                                    pos: 'absolute',
-                                    bottom: 0,
-                                    right: 3,
-                                }}
                             />
                             <Heading fontSize={'4xl'} fontFamily={'body'} color={'black'} pb={5}>
                                 {dog.name}
@@ -180,10 +182,11 @@ export default function AllDogs(props) {
                                     Update
                                 </Button>
                             </Stack>
+                        </SmoothList>
                         </Box>
                     ))}
-                </SimpleGrid>
-            </Center>
-        </Box>
+            </SimpleGrid>
+        </Center>
+        </Box >
     );
 }

@@ -1,88 +1,129 @@
 import {
-    Heading,
-    Avatar,
-    Box,
-    Center,
-    Text,
-    Stack,
-    Button,
-    Link,
-    Badge,
-    useColorModeValue,
-  } from '@chakra-ui/react';
+  Heading,
+  Avatar,
+  Box,
+  Center,
+  Text,
+  Stack,
+  Button,
+  Link,
+  Badge,
+  SimpleGrid,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { dogReducer } from 'src/redux/reducers/dogReducer';
-  
-  export default function DogCalendarCard(props) {
-    const { log } = props
-    
+import ImageButton from './ImageButton';
+import SmoothList from 'react-smooth-list';
 
-    // const { health } = props
-    // console.log(props.health)
+export default function DogCalendarCard(props) {
+  const { log } = props
+  console.log(log)
+  const date = log.createdAt
+  // const curDate= date.toLocaleString()
 
-
-    //map over calendar logs
-    // 
-    // console.log(dogName)
-    
-    //for next button
-    // const events = calendar.logs.map((log) => {
-    //   // console.log(log)
-      
-    //   const start = new Date(log.createdAt)
-    //   const end = new Date(log.createdAt)
-    //   end.setTime(end.getTime() + 360000)
-    //   // console.log(start, end)
-    //   return {
-    //     title: log.Dog.name,
-    //     start: start,
-    //     end: end,
-    //     resource: log
-    //   }
-    // })
-
-    // console.log(calendar.logs[0].createdAt)
-    // const dogName = calendar.logs[2].Dog.name
-    // const mood = calendar.logs[2].mood
-    // const physical = calendar.logs[2].physical
-    // const activity = calendar.logs[2].activity
-    // const date = calendar.logs[2].createdAt
-  
-
-    return (
-      <Center py={6}>
-        <Box
-          maxW={'320px'}
-          w={'full'}
-          bg={useColorModeValue('white', 'gray.900')}
-          boxShadow={'2xl'}
-          rounded={'lg'}
-          p={6}
-          textAlign={'center'}>
-          <Avatar
-            size={'xl'}
-            src={'IMG_0096.jpg'}
-            alt={'Avatar Alt'}
-            mb={4}
-            pos={'relative'}
-            
-          />
-          <Heading fontSize={'2xl'} fontFamily={'body'}>
-            {log.name}
-          </Heading>
-          <Text fontWeight={600} color={'gray.500'} mb={4}>
-            {/* {date} */}
-          </Text>
-          <Text
-            textAlign={'center'}
-            color={useColorModeValue('gray.700', 'gray.400')}
-            px={3}>
-            {log.mood} {log.physical} {log.activity}
-            
-          </Text>
-  
-          
-        </Box>
-      </Center>
-    );
+  const images = {
+    mood: {
+      'happy': '../Happy_3.png',
+      'calm': '../Calm.png',
+      'energetic': '../Energetic.png',
+      'sad': '../Sad.png',
+      'anxious': '../Anxious.png',
+      'apathetic': '../Apathetic.png',
+      'none': '../None_Paw.png'
+    },
+    activity: {
+      'walk': '../Walk.png',
+      'park': '../Park.png',
+      'run': '../Run.png',
+      'swim': '../Swim.png',
+      'playedFetch': '../Played_Fetch.png',
+      'none': '../None_Ball.png'
+    },
+    physical: {
+      'limping': '../Limping.png',
+      'nausea': '../Nausea.png',
+      'constipation': '../Constipation.png',
+      'none': '../None_Bone.png'
+    }
   }
+
+
+  return (
+    <Center py={6}>
+      <SmoothList transitionDuration={1200} delay={200}>
+      <Box
+      borderRadius={'10'} border={'2px'} borderColor={'brand.201'}
+      
+        maxW={'lg'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.900')}
+        boxShadow={'2xl'}
+        rounded={'lg'}
+        p={6}
+        textAlign={'center'}
+      >
+        <SmoothList transitionDuration={1200} delay={200}>
+        <Avatar
+          size={'xl'}
+          src={'IMG_0096.jpg'}
+          alt={'Avatar Alt'}
+          mb={4}
+          pos={'relative'}
+
+        />
+        <Heading fontSize={'2xl'} fontFamily={'body'}>
+          {log.name}
+        </Heading>
+        <Text fontWeight={600} color={'gray.500'} mb={4}>
+          {date}
+        </Text>
+        <Stack justify={'center'} alignItems={'center'} direction={'column'}>
+          <Stack direction={'row'}>
+            <Box
+              BoxAlign={'center'}
+              color={useColorModeValue('gray.700', 'gray.400')}
+              px={3}
+            >
+              <SimpleGrid columns={{ sm: 2}} alignItems='stretch' spacing={10} m={2}>
+              {log.mood.map((mood) => {
+                return <ImageButton src={images.mood[mood]} />
+              })}
+              </SimpleGrid>
+            </Box>
+          </Stack>
+          <Box>
+          <SimpleGrid columns={{ sm: 2}} alignItems='stretch' spacing={10} m={2}>
+            {log.activity.map((activity) => {
+              return <ImageButton src={images.activity[activity]} />
+            })}
+            </SimpleGrid>
+          </Box>
+          <Box>
+          <SimpleGrid columns={{ sm: 2}} alignItems='stretch' justify={'center'} spacing={10} m={2}>
+            {log.physical.map((physical) => {
+              return <ImageButton src={images.physical[physical]} />
+            })}
+            {/* log.physical !== 'none' && () */}
+            </SimpleGrid>
+          </Box>
+          </Stack>
+          {log.notes ? (
+          <Box pt={'5'}>
+            <Text fontWeight={600} color={'black'} mb={4}>
+              Notes: <br></br> {log.notes}
+            </Text>
+
+          </Box>
+          ) : (
+            null
+          )
+          }
+        
+
+        </SmoothList>
+      </Box>
+      </SmoothList>
+    </Center>
+  );
+}

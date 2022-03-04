@@ -2,29 +2,52 @@ const express = require('express');
 const checkAuth = require('../../checkAuth');
 const router = express.Router();
 const db = require('../../models')
-
+const upload = require('../../upload')
 
 //create
-router.post('/register', checkAuth, async (req, res) => {
+router.post('/register', checkAuth, upload.array('image'), async (req, res) => {
     //check body for req'd info
-    if (!req.body.name || !req.body.breed || !req.body.weight || !req.body.size || !req.body.age || !req.body.temperament || !req.body.coat || !req.body.bio) {
+    if (!req.body.name || !req.body.breed || !req.body.weight || !req.body.size || !req.body.age || !req.body.temperament || !req.body.coat || !req.body.bio || !req.files?.length) {
         res.status(400).json({ error: 'please include all required fields' })
+        return
     }
 
     //check if dog already exists
     const dogs = await db.Dog.findAll({
         where: {
+            UserId: req.session.user.id,
             name: req.body.name
         }
     })
 
     if (dogs.length) {
         res.status(400).json({
-            error: `dog ${req.body.name} already exists`
+            error: `${req.body.name} already exists`
         })
         return
     }
-
+    // console.log(req.files)
+    // [
+    //     {
+    //       fieldname: 'image',
+    //       originalname: 'baby_dalton.JPG',
+    //       encoding: '7bit',
+    //       mimetype: 'image/jpeg',
+    //       size: 719236,
+    //       bucket: 'pawsibilities',
+    //       key: 'baby_dalton.JPG1646331053181',
+    //       acl: 'private',
+    //       contentType: 'application/octet-stream',
+    //       contentDisposition: null,
+    //       contentEncoding: null,
+    //       storageClass: 'STANDARD',
+    //       serverSideEncryption: null,
+    //       metadata: null,
+    //       location: 'https://pawsibilities.s3.us-east-2.amazonaws.com/baby_dalton.JPG1646331053181',
+    //       etag: '"10e56c8bbcfc794b5650b292ef657b1d"',
+    //       versionId: undefined
+    //     }
+    //   ]
     //create new item
     const dog = await db.Dog.create({
         name: req.body.name,
@@ -35,7 +58,14 @@ router.post('/register', checkAuth, async (req, res) => {
         temperament: req.body.temperament,
         coat: req.body.coat,
         bio: req.body.bio,
-        UserId: req.session.user.id
+        UserId: req.session.user.id,
+        Image: {
+            name: req.files[0].originalname,
+            location: req.files[0].location,
+            data: req.files[0]
+        }
+    }, {
+        include: db.Image
     })
 
     //send response
@@ -58,26 +88,27 @@ router.delete('/:id', checkAuth, async (req, res) => {
             id: req.params.id
         }
     })
-    
+
     //if no dog, 404
     if (!dog) {
-        res.status(404).json({ error: 'could not find dog with that name'})
+        res.status(404).json({ error: 'could not find dog with that name' })
         return
     }
     //delete movie
     const deleted = await dog.destroy()
 
     //send response
-    res.status(204).json({ success: 'dog successfully deleted'})
+    res.status(204).json({ success: 'dog successfully deleted' })
 })
 
 //read
 router.get('/', checkAuth, async (req, res) => {
     //find all dogs for user
-   const dogs = await db.Dog.findAll({
+    const dogs = await db.Dog.findAll({
         where: {
             UserId: req.session.user.id,
-        }
+        },
+        include: db.Image
     })
     res.json(dogs)
 })

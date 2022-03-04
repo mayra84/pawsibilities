@@ -60,6 +60,7 @@ function HealthLog(props) {
         })
             .then(data => {
                 setMood([])
+                //check this??????
                 setPhysical('')
                 setActivity('')
                 setNotes('')
@@ -224,7 +225,7 @@ ADD PICTURES FOR THAT DAY */}
 
                                     <FormControl id="other">
                                         <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
-                                        <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
+                                        <Textarea color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
                                     </FormControl>
                                     <Stack>
                                         <Box alignSelf={'flex-end'} spacing={10}>

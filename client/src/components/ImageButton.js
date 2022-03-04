@@ -3,7 +3,7 @@ import { Box, Image } from '@chakra-ui/react'
 import React from 'react'
 
 function ImageButton(props) {
-
+console.log(props)
   return (
 
     <Box position={'relative'} >
@@ -18,6 +18,7 @@ function ImageButton(props) {
     boxSize='115'
     objectFit='fill'
     src={props.src}
+    //props.alt 
     alt='happy'
     />
     { props.isActive && (

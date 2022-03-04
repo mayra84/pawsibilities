@@ -12,8 +12,10 @@ import {
     useColorModeValue,
     Divider,
 } from '@chakra-ui/react';
+import React from 'react';
 
 export default function CreatorProfiles() {
+    
     return (
             <SmoothList transitionDuration={1200} delay={200}>
         <Center p={'10'} height='80vh'>

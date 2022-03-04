@@ -11,7 +11,9 @@ import DogPark from 'src/components/DogPark';
 
 
 import Weather from 'src/components/Weather';
+
 import { SimpleGrid } from '@chakra-ui/react';
+
 
 
 function Map(status) {
@@ -28,6 +30,7 @@ function Map(status) {
 
     </div>
   )
+
 }
 
 export default Map

@@ -10,6 +10,7 @@ import SmoothList from 'react-smooth-list';
 function HomePageRegistration() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [zipcode, setZipcode] = useState('')
     const [loading, setLoading] = useState(false)
     const [complete, setComplete] = useState(false)
     const [error, setError] = useState('')
@@ -19,11 +20,13 @@ function HomePageRegistration() {
         setLoading(true)
         axios.post('/api/v1/users/register', {
             email,
-            password
+            password,
+            zipcode
         })
             .then(data => {
                 setEmail('')
                 setPassword('')
+                setZipcode('')
                 setLoading(false)
                 setError('')
                 setComplete(true)
@@ -43,48 +46,53 @@ function HomePageRegistration() {
             <form onSubmit={handleSubmit} >
                 {complete && (
                     <SmoothList transitionDuration={600}>
-                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
-                        <AlertIcon />
-                        Registration successful!&nbsp; <Link as={RouterLink} to="/login"> Click here to log in. </Link>
-                    </Alert>
+                        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
+                            <AlertIcon />
+                            Registration successful!&nbsp; <Link as={RouterLink} to="/login"> Click here to log in. </Link>
+                        </Alert>
                     </SmoothList>
                 )}
 
                 {error && (
                     <SmoothList transitionDuration={600}>
-                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
-                        <AlertIcon />
-                        Error!&nbsp; {error.data.error}
-                    </Alert>
+                        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
+                            <AlertIcon />
+                            Error!&nbsp; {error.data.error}
+                        </Alert>
                     </SmoothList>
                 )}
-<SmoothList transitionDuration={1400}>
-                <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
-                    <Center p={'10'} height='60vh'>
-                        <HomePageHero />
+                <SmoothList transitionDuration={1400}>
+                    <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
+                        <Center p={'10'} height='60vh'>
+                            <HomePageHero />
 
-                        <Divider borderColor={'transparent'} orientation='vertical' mx={'10%'} />
+                            <Divider borderColor={'transparent'} orientation='vertical' mx={'10%'} />
 
-                        <Flex
-                            boxShadow={'lg'}
-                            bgColor={'rgba(255 255 255 /70%)'}
-                            backdropFilter={'blur(2px)'}
+                            <Flex
+                                boxShadow={'lg'}
+                                bgColor={'rgba(255 255 255 /70%)'}
+                                backdropFilter={'blur(2px)'}
 
-                            direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={'xl'} p={'8'} borderRadius={'10'} border={'2px'} color={'brand.201'}>
-                            <FormControl color={'black'} mb={'5'}>
-                                <FormLabel>Email</FormLabel>
-                                <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
-                                <FormErrorMessage>Error message</FormErrorMessage>
-                            </FormControl>
-                            <FormControl color={'black'} mb={'5'}>
-                                <FormLabel>Password</FormLabel>
-                                <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
-                                <FormErrorMessage>Error message</FormErrorMessage>
-                            </FormControl>
-                            <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Sign Up</Button>
-                        </Flex>
-                    </Center>
-                </Flex>
+                                direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={'xl'} p={'8'} borderRadius={'10'} border={'2px'} color={'brand.201'}>
+                                <FormControl color={'black'} mb={'5'}>
+                                    <FormLabel>Email</FormLabel>
+                                    <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
+                                    <FormErrorMessage>Error message</FormErrorMessage>
+                                </FormControl>
+                                <FormControl color={'black'} mb={'5'}>
+                                    <FormLabel>Password</FormLabel>
+                                    <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    <FormErrorMessage>Error message</FormErrorMessage>
+                                </FormControl>
+                                <FormControl color={'black'} mb={'5'}>
+                                    <FormLabel>Zipcode</FormLabel>
+                                    <Input required value={zipcode} onChange={(e) => setZipcode(e.target.value)} type={'zipcode'} />
+                                    <FormErrorMessage>Error message</FormErrorMessage>
+                                </FormControl>
+                                <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Sign Up</Button>
+                            </Flex>
+                        </Center>
+                    </Flex>
                 </SmoothList>
             </form>
         </div>

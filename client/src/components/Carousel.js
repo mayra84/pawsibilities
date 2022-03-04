@@ -50,7 +50,9 @@ export default function Carousel() {
     'https://cdn.pixabay.com/photo/2020/03/31/19/21/corgi-4988987_1280.jpg',
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pu2352634-image-kwvy8lx7.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=1a8cabb8058fff8ea7a09e10645eaab0',
     'https://cdn.pixabay.com/photo/2019/02/13/11/26/dog-3994180_1280.jpg',   
+
    'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/px657141-image-kwvxm781.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=2969861f941b5584a930089413667d4a',
+
     'https://www.maxpixel.net/static/photo/1x/Flower-Portrait-Dog-Rottweiler-Nature-Dogshooting-5290550.jpg',
     'https://live.staticflickr.com/65535/51352284590_c37d8d1c8d_b.jpg',
  

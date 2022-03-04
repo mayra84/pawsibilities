@@ -12,6 +12,7 @@ import {
   } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { dogReducer } from 'src/redux/reducers/dogReducer';
+import React from 'react';
   
   export default function DogCalendarCard(props) {
     const { log } = props

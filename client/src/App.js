@@ -29,6 +29,10 @@ function App() {
 
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
+<Route path="/map" element={<Map/>} />
+ {/* how to route to to dog stuff?? */}
+ <Route path="/dogprofileForm" element={<DogProfileForm />} />
+
         <Route path="/map" element={<Map />} />
 
         <Route path="/map" element={<Map/>} />

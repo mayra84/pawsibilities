@@ -10,9 +10,14 @@ const apiUsersRouter = require('./routes/api/users');
 const apiDogsRouter = require('./routes/api/dogs');
 
 const apiHealthRouter = require('./routes/api/health')
+const upload = require('./upload')
 
 
 const app = express();
+
+
+// Define POST route
+
 
 app.use(logger('dev'));
 app.use(express.json());

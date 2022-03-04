@@ -25,7 +25,8 @@ import { Link, Link as RouterLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addDog } from 'src/redux/reducers/dogReducer';
 import AllDogs from './AllDogs';
-import React from 'react';
+import SmoothList from 'react-smooth-list';
+import FileUpload from './FileUpload';
 
 export default function DogProfileForm(props) {
     // const { dog } = props
@@ -42,25 +43,36 @@ export default function DogProfileForm(props) {
     const [temperament, setTemperament] = useState('')
     const [coat, setCoat] = useState('')
     const [bio, setBio] = useState('')
+    const [image, setImage] = useState([])
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [complete, setComplete] = useState(false)
 
+
+    // const handleCreateTask = () => {
+    //     console.log(activity)
+    //     dispatch(createTask(activity, date))
+    //     onClose()
+    //     setDisplayAlert(true)
+    // }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         setLoading(true)
-        // dispatch(addDog(dogs))
-        axios.post('api/v1/dogs/register', {
-            name,
-            breed,
-            weight,
-            size,
-            age,
-            temperament,
-            coat,
-            bio
-        })
+        
+        const formData = new FormData()
+        
+        formData.append('name', name);
+        formData.append('breed', breed);
+        formData.append('weight', weight);
+        formData.append('size', size);
+        formData.append('age', age);
+        formData.append('temperament', temperament);
+        formData.append('coat', coat);
+        formData.append('bio', bio);  
+        formData.append('image', image[0])      // dispatch(addDog(dogs))
+        axios.post('api/v1/dogs/register', formData)
             .then(data => {
                 setName('')
                 setBreed('')
@@ -73,6 +85,9 @@ export default function DogProfileForm(props) {
                 setLoading(false)
                 setError('')
                 setComplete(true)
+                if (props.onSuccess) {
+                    props.onSuccess()
+                }
                
             })
             .catch(error => {
@@ -94,23 +109,24 @@ export default function DogProfileForm(props) {
         return (
 
             <Box>
-
-           
-
+                
             <form onSubmit={handleSubmit}>
                 {complete && (
+                    <SmoothList transitionDuration={600}>
                     <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
                         <AlertIcon />
                         Profile successfully created!
                     </Alert>
+                    </SmoothList>
                 )}
 
                 {error && (
-
-                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
+                    <SmoothList transitionDuration={600}>
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error' mt={'5'}>
                         <AlertIcon />
                         Error!&nbsp; {error.data.error}
                     </Alert>
+                    </SmoothList>
                 )}
                 <Flex
                     // bgSize={'100vh'}
@@ -123,6 +139,7 @@ export default function DogProfileForm(props) {
                     // align={'center'}
                     justify={'center'}
                 >
+                    
                     <Stack
 
                         boxShadow={'lg'}
@@ -138,8 +155,9 @@ export default function DogProfileForm(props) {
                         // rounded={'xl'}
 
                         p={6}
-                        my={12}
+                        mt={10}
                     >
+                        <SmoothList transitionDuration={1200} delay={200}>
                         <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
                             Dog Profile
                         </Heading>
@@ -147,7 +165,7 @@ export default function DogProfileForm(props) {
                             <FormLabel>User Icon</FormLabel>
                             <Stack direction={['column', 'row']} spacing={6}>
                                 <Center>
-                                    <Avatar border={'2px'} color={'brand.201'} size="xl" src="./IMG_0096.jpg">
+                                    <Avatar border={'2px'} color={'brand.201'} size="xl" src={image}>
                                         {/* <AvatarBadge
                                     as={IconButton}
                                     size="sm"
@@ -160,11 +178,13 @@ export default function DogProfileForm(props) {
                                     </Avatar>
                                 </Center>
                                 <Center w="full">
-                                    <Button w="full">Change Profile Picture</Button>
+                                    
+                                <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Profile Image</FileUpload>
                                 </Center>
                             </Stack>
                         </FormControl>
-                        <Stack direction={'row'}>
+                        <Stack py={10}>
+                        <Stack direction={'row'} >
                             <FormControl id="name" isRequired>
                                 <FormLabel>Name</FormLabel>
                                 <Input
@@ -249,11 +269,17 @@ export default function DogProfileForm(props) {
                                 required value={bio} onChange={(e) => setBio(e.target.value)}
                                 placeholder='THIS WILL BE A MODAL also pls provide a short bio thx' />
                         </FormControl>
+                        </Stack>
+
+
+                        
+
 
                         <Stack>
 
                             <Box alignSelf={'flex-end'}>
                                 <Button
+                               
                                     // onClick={handleAddDog}
                                     isLoading={loading} loadingText='Submitting' type={'submit'}
                                     alignSelf={'flex-end'}
@@ -288,6 +314,7 @@ export default function DogProfileForm(props) {
                         Submit
                     </Button> */}
                         </Stack>
+                    </SmoothList>
                     </Stack>
                 </Flex>
             </form>

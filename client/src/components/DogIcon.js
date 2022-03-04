@@ -3,9 +3,10 @@ import { Box, Image } from '@chakra-ui/react'
 import React from 'react'
 
 function DogIcon(props) {
+    console.log(props)
     return (
        
-            <Box>
+            <Box position={'relative'}>
                 <Image
                 
                 border={'2px'} color={'brand.201'}
@@ -20,7 +21,9 @@ function DogIcon(props) {
                     boxSize='115'
                     objectFit='fill'
                     src={props.src}
-                    alt='happy'
+                    alt={`Picture of ${props.alt}`}
+                    // key={props.key}
+                    
                 />
                 {props.isActive && (
 

@@ -1,8 +1,8 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component, useEffect, useMemo, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Box, Container, Flex, useDisclosure, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Modal} from "@chakra-ui/react";
+import { Box, Container, Flex, useDisclosure, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, ModalBody, Modal } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import SmoothList from 'react-smooth-list';
 import { fetchHealth } from "src/redux/reducers/calendarReducer";
@@ -19,7 +19,8 @@ const newColor = () => {
 
 export default function DogCalendar(props) {
   //falsy
-  const [info, setInfo] = useState(null) 
+  const [info, setInfo] = useState(null)
+
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch()
@@ -29,27 +30,33 @@ export default function DogCalendar(props) {
     dispatch(fetchHealth)
   }, [dispatch])
 
-  let colors = {}
-
-
-  const events = calendar.logs.map((log) => {
-    // console.log(event)
-    if (!(log.Dog.id in colors)) {
-      colors[log.Dog.id] = newColor()
+  
+  const { events, colors } = useMemo(() => {
+    let colors = {
+      
     }
+    const events = calendar.logs.map((log) => {
+      // console.log(event)
+      if (!(log.Dog.id in colors)) {
+        colors[log.Dog.id] = newColor()
+      }
 
-    const start = new Date(log.createdAt)
-    const end = new Date(log.createdAt)
-    end.setTime(end.getTime() + 360000)
-    // console.log(start, end)
+      const start = new Date(log.createdAt)
+      const end = new Date(log.createdAt)
+      end.setTime(end.getTime() + 360000)
+      // console.log(start, end)
+      return {
+        title: log.Dog.name,
+        start: start,
+        end: end,
+        resource: log
+      }
+    })
     return {
-      title: log.Dog.name,
-      start: start,
-      end: end,
-      resource: log
+      events, colors
     }
-  })
-
+  }, [calendar.logs]
+  )
   // console.log(colors)
 
   // (console.log(target.onClick()))
@@ -85,26 +92,26 @@ export default function DogCalendar(props) {
               setInfo(event)
               onOpen()
 
-            } }
+            }}
           />
         </Box>
-        <Modal size={'6xl'} isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
+        <Modal size={'3xl'} isOpen={isOpen} onClose={onClose} >
+          <ModalOverlay />
+          <ModalContent>
 
-                        <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>
-                          {info.resource.Dog.name}
-                          </ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>
-                           <DogCalendarCard log={info.resource} />
-                        </ModalBody>
+            <ModalHeader m={'0 auto'} mt={'5'} fontSize={'3xl'} color={'black'}>
+              {info && info.resource.Dog.name}
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              {info && <DogCalendarCard log={info.resource} />}
+            </ModalBody>
 
-                        {/* <ModalFooter>
+            <ModalFooter>
                                 
-                            </ModalFooter> */}
-                    </ModalContent>
-                </Modal>
+                            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Flex>
     </SmoothList>
   );

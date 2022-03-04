@@ -70,6 +70,7 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         physical: req.body.physical,
         activity: req.body.activity,
         notes: req.body.notes,
+        // ImageId: req.body.image.id
     })
     
     //send response

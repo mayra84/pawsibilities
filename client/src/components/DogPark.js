@@ -28,9 +28,6 @@ function DogPark ({currentUser}) {
 //       })
 // }
 
-function DogPark ({currentUser}) {
-  // const [currentWeather, setCurrentWeather] = useState(null);
-  console.log ("this is the ", currentUser)
 
 //   useEffect (() => {
 //     fetchWeather(currentUser)
@@ -85,7 +82,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
     </div>
   );
 }
-}
+
 
 // Geocode.setLanguage('en');
 // Geocode.setApiKey("AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" );

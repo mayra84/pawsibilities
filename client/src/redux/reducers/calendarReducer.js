@@ -2,75 +2,39 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const defaultState = {
-    activities: [],
+    logs: [],
     date: ''
      // uuid: ''
 }
 
-const CREATE_TASK = 'CREATE_TASK'
-const  COMPLETE_TASK = 'COMPLETE_TASK'
+const SET_HEALTH = 'SET_HEALTH'
 
-//can pass two arguments
-export function createTask(activity, date) {
+export function setHealth(health) {
     return {
-        type: CREATE_TASK,
-        activity,
-        date
+        type: SET_HEALTH,
+        health
     }
 }
 
-export function completeTask(uuid) {
-    return {
-        type: COMPLETE_TASK,
-        uuid
-    }
+//fetch info from backend
+export function fetchHealth(dispatch) {
+    fetch('/api/v1/health')
+        .then(res => res.json())
+        .then(health => {
+            dispatch(setHealth(health))
+        })
 }
 
 //can two separate cases work on one thing together? 
 export function calendarReducer(state = defaultState, action) {
     switch (action.type) {
-        case CREATE_TASK:
+        case SET_HEALTH:
             return {
                 ...state,
-                activities: [ ...state.activities, {
-                    activity: action.activity,
-                    date: action.date,
-                    uuid: uuidv4()
-                }]
-            }
-   
-            
-        case COMPLETE_TASK: 
-            return { 
-                ...state,
-                activities: state.activities.filter((activity) => {
-                    return activity.uuid !== action.uuid
-                })
+                logs: action.health 
             }
         default:
             return state
     }
 } 
-
-// export function createTask(activity) {
-//     return {
-//         type: CREATE_TASK,
-//         activity
-       
-//     }
-// }
-
-// export function createDate(date) {
-//     return {
-//         type: CREATE_DATE,
-//         date
-//     }
-// }
-
-// export function deleteTask(date) {
-//     return {
-//         type: DELETE_TASK,
-//         date
-//     }
-// }
 

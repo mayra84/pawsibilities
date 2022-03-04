@@ -9,6 +9,9 @@ const indexRouter = require('./routes/index');
 const apiUsersRouter = require('./routes/api/users');
 const apiDogsRouter = require('./routes/api/dogs');
 
+const apiHealthRouter = require('./routes/api/health')
+
+
 const app = express();
 
 app.use(logger('dev'));
@@ -35,5 +38,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // app.use('/', indexRouter);
 app.use('/api/v1/users', apiUsersRouter);
 app.use('/api/v1/dogs', apiDogsRouter)
+
+app.use('/api/v1/health', apiHealthRouter)
+
 
 module.exports = app;

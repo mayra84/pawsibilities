@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Link, Link as RouterLink, useNavigate } from 'react-router-dom'
 import { loggedIn } from '../redux/reducers/userReducer'
 import Carousel from '../components/Carousel'
+import SmoothList from 'react-smooth-list';
 
 
 function Login() {
@@ -58,12 +59,15 @@ function Login() {
 
       {error && (
 
+        <SmoothList transitionDuration={600}>
+
         <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
           <AlertIcon />
           Error!&nbsp; {error.data.error}
         </Alert>
+        </SmoothList>
       )}
-
+<SmoothList transitionDuration={1400}>
       <Flex
       boxShadow={'lg'}
       bgColor={'rgba(255 255 255 /70%)'}
@@ -82,6 +86,7 @@ function Login() {
         </FormControl>
         <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Login</Button>
       </Flex>
+      </SmoothList>
     </form>
     </>
 

@@ -10,7 +10,7 @@ import HomePageRegistration from 'src/components/HomePageRegistration'
 import Carousel from '../components/Carousel'
 // import DogProfileForm from './DogProfileForm'
 import Login from './Login'
-import Register from './Register'
+
 // import Features from '../Features'
 
 function Home() {

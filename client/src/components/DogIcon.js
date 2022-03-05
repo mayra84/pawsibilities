@@ -9,7 +9,7 @@ function DogIcon(props) {
             <Box position={'relative'}>
                 <Image
                 
-                border={'2px'} color={'brand.201'}
+                border={'2px'} color={'brand.301'}
                 m={'0 auto'}
                 mb={'6'}
                     cursor={'pointer'}

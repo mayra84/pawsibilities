@@ -82,7 +82,7 @@ export default function WithSubnavigation(props) {
                         borderRadius={'75'}
                         boxSize='125'
                         objectFit='fill'
-                        src='../Pawsibilities_Logo_3.png'
+                        src='../Pawssible_Pawsibilities_Logo.png'
                         alt='Pawsibilities' />
 
                     {/* <Text

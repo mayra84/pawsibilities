@@ -2,58 +2,94 @@ import { connect, useSelector } from 'react-redux'
 import React, { useEffect, useState } from "react";
 import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
-import { render } from '@testing-library/react';
-import { Center } from '@chakra-ui/react';
+import ParkCard from './DogParkCard';
+import { Image, SimpleGrid } from '@chakra-ui/react';
 
-
-
-function DogPark({ currentUser }) {
+function DogPark() {
+  const currentUser = useSelector(state => state.user.currentUser)
   const [store, setStore] = useState([]);
   const [map, setMap] = useState(null);
-  console.log("this is the ", currentUser)
+  const [maps, setMaps] = useState(null);
+  const [coor, setCoor] = useState()
+    // console.log("this  is the ", currentUser)
   useEffect(() => {
-    if (!currentUser) {
+    if (!currentUser || !maps || !map) {
       return
     }
     fetchZipcode(currentUser)
-  }, [currentUser]);
+  }, [currentUser, map, maps]);
 
-  const fetchZipcode = async (currentUser, props) => {
-    console.log(currentUser)
+
+
+  const fetchZipcode = async (currentUser) => {
     await Geocode.setLanguage('en');
     Geocode.setApiKey("AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4");
     Geocode.fromAddress(currentUser.zipcode).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
-        console.log(lat)
-        const google = { props };
-        const service = new google.maps.places.PlacesService(map);
-        const startPoint = new google.maps.LatLng(lat, lng);
+        const service = new maps.places.PlacesService(map);
+        const startPoint = new maps.LatLng(lat, lng);
         var request = {
           location: startPoint,
           radius: '50000',
           query: ['dog park'],
           fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
         };
+        setCoor({lat, lng})
         service.textSearch(request, (results, status) => {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
-            setStore(
-              store = results
-            )
+          if (status === maps.places.PlacesServiceStatus.OK) {
+            setStore(results)
+            console.log(results)
           }
         })
       })
   }
+  
+  const defaultProps = {
+
+    center: {
+      lat: 37.8059887,
+      lng: -122.4099154
+    },
+    zoom: 11
+  };
+  const handleApiLoaded = (map, maps) => {
+    console.log("loaded map")
+    setMaps(maps)
+    setMap(map)
+  };
+  const AnyReactComponent = () => <div><Image
+  rounded={'lg'}
+  height={100}
+  width={100}
+  objectFit={'cover'}
+  src={store.icon}
+/>
+</div>;
   return (
     <div>
-      <h1>Header</h1>
-      {store?.length && store.map((result) => {
-        <div>
-          <h4>{result.name}</h4>
-          <h6>{result.formatted_address}</h6>
-          <p>Rating: {result.rating}/5</p>
-        </div>
-      })}
+      <div>
+        <h1>Header</h1>
+        {store.map((park) => {
+            return <SimpleGrid columns={{ sm: 2, md: 4, lg: 4 }}> <ParkCard key = {park.name} park = {park}/> </SimpleGrid>
+        })}
+      </div>
+      <div style={{ height: '400px', width: '100%' }}>
+        <GoogleMapReact
+          defaultCenter={defaultProps.center}
+          center={coor}
+          defaultZoom={defaultProps.zoom}
+          bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4", libraries: ['places'] }}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+        >
+  <AnyReactComponent
+    lat={coor.lat}
+    lng={coor.lng}
+    src={store.icon}
+  />
+        </GoogleMapReact>
+      </div>
     </div>
   )
 }
@@ -122,12 +158,4 @@ function DogPark({ currentUser }) {
 //     <div style={{ height: '50vh', width: '50%' }}>
 //       <GoogleMapReact
 
-const mapStateToProps = (state) => {
-  console.log("Dog park componenet", state)
-  const {currentUser} = state.user 
-  return {
-    currentUser
-  }
-}
-
-export default connect(mapStateToProps) (DogPark)
+export default DogPark

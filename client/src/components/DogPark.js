@@ -68,7 +68,6 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
         />
       </GoogleMapReact>
     </div>
-    </Center>
   );
 }
 

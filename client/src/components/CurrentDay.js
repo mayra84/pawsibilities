@@ -56,11 +56,12 @@ export default function CurrentDay(props) {
 
     //when page refreshes, dot not set on first item
     useEffect(() => {
-        if (!activeDog) {
-            setActiveDog(dogs[0])
+        if (dogs.length === 0) {
+            return
         }
+        setActiveDog(dogs[0])
         // dispatch(fetchDogs)
-    }, [activeDog])
+    }, [dogs])
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -71,7 +72,8 @@ export default function CurrentDay(props) {
 
             <SmoothList transitionDuration={1400}>
                 <Center py={6}>
-                    <Stack alignItems={'center'}>
+                    <Stack alignItems={'center'} flexGrow={1}
+                    >
 
                         <Stack direction={'row'} spacing={'68'} m={'10'}>
 
@@ -91,6 +93,7 @@ export default function CurrentDay(props) {
                             ))}
                         </Stack>
                         <Box
+                        
                             borderRadius={'10'} border={'2px'} color={'brand.201'}
                             maxW={'320px'}
                             w={'full'}
@@ -101,7 +104,7 @@ export default function CurrentDay(props) {
                             p={6}
                             textAlign={'center'}>
 
-                            <Heading p={'2'} color={'black'} fontSize={'4xl'} fontFamily={'body'}>
+                            <Heading p={'2'} color={'black'} fontSize={'4xl'} fontFamily={'body'} >
                                 {/* February */}
                                 {/* {currentDay.getMonth()} */}
                                 {curMonth}

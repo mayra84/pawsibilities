@@ -2,7 +2,6 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { Box, Button, Heading, Link, propNames, useRangeSlider } from '@chakra-ui/react'
 import ProductSimple from './WeatherCard';
-import axios from 'axios';
 import { render } from '@testing-library/react';
 import { connect } from 'react-redux';
 
@@ -13,17 +12,13 @@ console.log ("this is the ", currentUser)
     // const {users} = props;
     
 
-    useEffect(() => {
+    useEffect (() => {
         if (!currentUser) {
-          return
+            return 
         }
-      fetchWeather(currentUser)
-    }, [currentUser]);
+        fetchWeather(currentUser)
+    }, [currentUser])
 
-
-    // useEffect (() => {
-    //     fetchWeather(currentUser)
-    // }, [])
 
     const fetchWeather = async (currentUser) => {
 
@@ -37,11 +32,11 @@ console.log ("this is the ", currentUser)
             })
 }
 
-    axios.get('/api/v1/users')
-    .then(res => {
-        console.log(res.data[0].zipcode)
-        fetchWeather(res.data)
-    })
+    // axios.get('/api/v1/users')
+    // .then(res => {
+    //     console.log(res.data[0].zipcode)
+    //     fetchWeather(res.data)
+    // })
 
 
     return (

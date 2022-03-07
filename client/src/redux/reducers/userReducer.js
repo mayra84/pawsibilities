@@ -31,6 +31,9 @@ export const checkUser = (dispatch, getState) => {
         fetch('/api/v1/users/current')
         .then(res => res.json())
         .then((data) => {
+            if (data.error) {
+                return
+            }
             dispatch(loggedIn(data))
         })
 }

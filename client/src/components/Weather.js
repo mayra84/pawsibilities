@@ -12,9 +12,18 @@ function Weather({currentUser}) {
 console.log ("this is the ", currentUser)
     // const {users} = props;
     
-    useEffect (() => {
-        fetchWeather(currentUser)
-    }, [])
+
+    useEffect(() => {
+        if (!currentUser) {
+          return
+        }
+      fetchWeather(currentUser)
+    }, [currentUser]);
+
+
+    // useEffect (() => {
+    //     fetchWeather(currentUser)
+    // }, [])
 
     const fetchWeather = async (currentUser) => {
 

@@ -58,7 +58,6 @@ export default function CurrentDay(props) {
         dispatch(fetchDogs)
     }, [dispatch, user])
 
-    //when page refreshes, dot not set on first item
     useEffect(() => {
         if (dogs.length === 0) {
             return

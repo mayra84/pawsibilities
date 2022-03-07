@@ -11,13 +11,12 @@ function Weather({currentUser}) {
 console.log ("this is the ", currentUser)
     // const {users} = props;
     
-    useEffect(() => {
+    useEffect (() => {
         if (!currentUser) {
-          return
+            return 
         }
-      fetchWeather(currentUser)
-    }, [currentUser]);
-    
+        fetchWeather(currentUser)
+    }, [currentUser])
 
     const fetchWeather = async (currentUser) => {
 
@@ -30,6 +29,12 @@ console.log ("this is the ", currentUser)
                 setCurrentWeather(weather)
             })
 }
+
+    // axios.get('/api/v1/users')
+    // .then(res => {
+    //     console.log(res.data[0].zipcode)
+    //     fetchWeather(res.data)
+    // })
 
 
     return (

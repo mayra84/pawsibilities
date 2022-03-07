@@ -50,7 +50,7 @@ function App() {
         <Route path="/dogprofile" element={<DogProfile/>} />
         <Route path="/healthcalendar" element={<HealthCalendar />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/discover" element={<Discover />} />
+        <Route path="/map" element={<Discover />} />
 
 
         {/* <Route path="dogdrop" element={ <DogDrop /> } /> */}

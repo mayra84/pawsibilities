@@ -58,21 +58,32 @@ function DogPark({ currentUser }) {
   )
 }
 
-const mapStateToProps = (state) => {
-  console.log("Dog Park componenet", state)
-  const { currentUser } = state.user
-  return {
-    currentUser
-  }
-}
 
-export default connect(mapStateToProps)(DogPark)
+//   useEffect (() => {
+//     fetchWeather(currentUser)
+// }, [])
+
+
+// const fetchWeather = async (currentUser) => {
+
+//   await fetch(`http://api.weatherapi.com/v1/current.json?key=ca26e518dd18404c95f191858222702&q=${currentUser.zipcode}&`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//           var weather = data
+//           console.log(weather)
+//           console.log(weather.current.condition.text)
+//           setCurrentWeather(weather)
+//       })
+// }
+
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 //   const defaultProps = {
 //     center: {
-
-//         lat: 34.05,
-//         lng: -84.38
+//       lat: 34.05,
+//       lng: -84.38
+//     },
+//     zoom: 11
+//   };
 
 //     },
 //     zoom: 11
@@ -86,10 +97,8 @@ export default connect(mapStateToProps)(DogPark)
 //   //   })
 
 
-
 //   return (
 //     // Important! Always set the container height explicitly
-
 //     <div style={{ height: '50vh', width: '50%' }}>
 //       <GoogleMapReact
 
@@ -107,4 +116,18 @@ export default connect(mapStateToProps)(DogPark)
 //   );
 // }
 
+//   return (
+//     // Important! Always set the container height explicitly
 
+//     <div style={{ height: '50vh', width: '50%' }}>
+//       <GoogleMapReact
+
+const mapStateToProps = (state) => {
+  console.log("Dog park componenet", state)
+  const {currentUser} = state.user 
+  return {
+    currentUser
+  }
+}
+
+export default connect(mapStateToProps) (DogPark)

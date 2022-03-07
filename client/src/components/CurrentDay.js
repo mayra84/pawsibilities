@@ -20,6 +20,7 @@ import {
     ModalFooter,
     useDisclosure,
     Image,
+    Flex,
 } from '@chakra-ui/react';
 import HealthLog from './HealthLog';
 import { useEffect, useState } from 'react';
@@ -28,6 +29,9 @@ import Card from './Card';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDogs } from 'src/redux/reducers/dogReducer';
 import { CheckCircleIcon } from '@chakra-ui/icons';
+import Card2 from './Card2';
+import HomePageDogs from './HomePageDogs';
+import HeroHero from './Hero';
 
 export default function CurrentDay(props) {
     const currentDay = new Date()
@@ -67,18 +71,18 @@ export default function CurrentDay(props) {
     const { isOpen, onOpen, onClose } = useDisclosure()
  
     return (
-        <>
-
-
             <SmoothList transitionDuration={1400}>
-                <Center py={6}>
-                    <Stack alignItems={'center'} flexGrow={1}
+                <Flex justify={'center'}>
+                    <Stack alignItems={'center'} 
                     >
-
                         <Stack direction={'row'} spacing={'68'} m={'10'}>
+                            {dogs.length === 0 &&
+
+                    <HeroHero />
+                            }
 
                             {dogs.map(dog => (
-                                <Box>
+                                <Box >
                                     <DogIcon                                    
                                    
                                     // key={dog.Image?.id}
@@ -93,13 +97,14 @@ export default function CurrentDay(props) {
                             ))}
                         </Stack>
                         <Box
-                        
+                        // mn={0}
                             borderRadius={'10'} border={'2px'} color={'brand.201'}
                             maxW={'320px'}
                             w={'full'}
                             bg={useColorModeValue('white', 'gray.900')}
                             boxShadow={'2xl'}
                             borderRadius={'500'}
+                            // minW={'320px'}
                             //   rounded={'lg'}
                             p={6}
                             textAlign={'center'}>
@@ -146,17 +151,14 @@ export default function CurrentDay(props) {
                                 <HealthLog dog={activeDog} />
                             </ModalBody>
 
-                            {/* <ModalFooter>
-                                
-                            </ModalFooter> */}
+                            <ModalFooter>
+                
+                            </ModalFooter>
                         </ModalContent>
                     </Modal>
 
-                </Center>
-                <SmoothList transitionDuration={1400}>
-                    <Card />
-                </SmoothList>
+                </Flex>
+                <HomePageDogs />
             </SmoothList>
-        </>
     );
 }

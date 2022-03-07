@@ -1,3 +1,4 @@
+const { ConnectContactLens } = require('aws-sdk');
 const express = require('express');
 const checkAuth = require('../../checkAuth');
 const router = express.Router();
@@ -74,7 +75,7 @@ router.post('/register', checkAuth, upload.array('image'), async (req, res) => {
         return
     }
     res.status(500).json({
-        error: 'oops! something went wrong'
+        error: 'Oops! something went wrong'
     })
 
 })
@@ -95,6 +96,16 @@ router.delete('/:id', checkAuth, async (req, res) => {
         return
     }
     //delete movie
+    const logs = await db.Health.findAll({
+        where: {
+            DogId: req.params.id
+        }
+    })
+
+    for (let i = 0; i < logs.length; i++) {
+        //*cries*
+        await logs[i].destroy()
+    }
     const deleted = await dog.destroy()
 
     //send response
@@ -114,6 +125,44 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 //update maybe later
+router.put('/:id', checkAuth, async (req, res, next) => {
+    const dog = await db.Dog.findOne({
+        where: {
+            UserId: req.session.user.id,
+            id: req.params.id
+        }
+    })
+
+    if (!dog) {
+        res.status(404).json({ error: 'could not find dog with that name' })
+        return
+    }
+
+    dog.set({
+        name: req.body.name,
+        breed: req.body.breed,
+        weight: req.body.weight,
+        size: req.body.size,
+        age: req.body.age,
+        temperament: req.body.temperament,
+        coat: req.body.coat,
+        bio: req.body.bio,
+        UserId: req.session.user.id,
+        Image: {
+            name: req.files[0].originalname,
+            location: req.files[0].location,
+            data: req.files[0]
+        }
+    }, {
+        include: db.Image
+    })
+    await dog.save();
+
+    //send response
+    res.status(200).json({ success: 'dog successfully updated!' })
+})
+
+
 
 
 module.exports = router; 

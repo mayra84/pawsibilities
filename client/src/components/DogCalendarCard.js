@@ -49,6 +49,23 @@ export default function DogCalendarCard(props) {
   }
 
 
+
+//   onClick={
+//     async () => {
+//         const res = await fetch(`/api/v1/dogs/${dog.id}`, {
+//           method: 'DELETE',
+//           body: JSON.stringify(dog),
+//           headers: {
+//             'Content-Type': 'application/json'
+//           }
+//         })
+    
+//         dispatch(fetchDogs)
+//       }
+//     // () => dispatch(removeDog(dog))
+// }
+
+
   return (
     <Center py={6}>
       <SmoothList transitionDuration={1200} delay={200}>

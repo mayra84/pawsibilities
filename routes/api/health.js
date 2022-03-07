@@ -25,9 +25,6 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         return
     }
 
-
-    //HOW TO KEEP FROM DUPLICATING??
-
     // check if log for specific dog already exists
     const dayStart = new Date()
     dayStart.setHours(0, 0, 0, 0)
@@ -71,6 +68,9 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         physical: req.body.physical,
         activity: req.body.activity,
         notes: req.body.notes,
+        HealthImages: [{
+            name: req.files.originalname, location: req.files.location, data: req.files
+        }]
         // Image: {
         //     name: req.files[0].originalname,
         //     location: req.files[0].location,
@@ -78,13 +78,14 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         // }
         // ImageId: req.body.image.id
     }, {
-        include: db.Image
+        include: db.HealthImages
+        // include: db.Image
     })
     
     //send response
     if (log) {
         res.status(201).json({
-            success: 'Dalton\'s log for today has been successfully created!'
+            success: 'Health has been successfully logged!'
         })
         return
     }
@@ -105,13 +106,13 @@ router.delete('/:id', checkAuth, async (req, res) => {
 
     //if no log, 404
     if (!log) {
-        res.status(404).json({ error: 'could not find log for that date'})
+        res.status(404).json({ error: 'Could not find log for that date'})
         return
     }
     //delete log
     const deleted = await log.destroy()
 
-    res.status(204).json({ success: 'log successfully deleted'})
+    res.status(204).json({ success: 'Log successfully deleted'})
 })
 
 //read

@@ -35,6 +35,9 @@ export function fetchDogs(dispatch, getState) {
     fetch('/api/v1/dogs')
         .then(res => res.json())
         .then(dogs => {
+            if (dogs.error) {
+                return
+            }
             dispatch(setDogs(dogs))
         })
 }

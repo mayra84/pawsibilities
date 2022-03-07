@@ -35,6 +35,7 @@ import CurrentDay from './CurrentDay';
 import DogDropDown from './DogDropDown';
 import ImageButton from './ImageButton';
 import SmoothList from 'react-smooth-list';
+import FileUpload from './FileUpload';
 
 function HealthLog(props) {
 
@@ -45,6 +46,7 @@ function HealthLog(props) {
     const [physical, setPhysical] = useState([])
     const [activity, setActivity] = useState([])
     const [notes, setNotes] = useState('')
+    const [image, setImage] = useState([])
 
     const [complete, setComplete] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -75,6 +77,43 @@ function HealthLog(props) {
                 setError(error.response)
             })
     }
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     setLoading(true)
+
+    //     const formData = new FormData()
+
+    //     formData.append('mood', mood)
+    //     formData.append('physical', physical)
+    //     formData.append('activity', activity)
+    //     formData.append('notes', notes)
+    //     formData.append('image', image[0])
+
+    //     axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
+    //     // {
+    //     //     mood,
+    //     //     physical,
+    //     //     activity,
+    //     //     notes
+    //     // }
+    //     // )
+    //         .then(data => {
+    //             setMood([])
+    //             //check this??????
+    //             setPhysical('')
+    //             setActivity('')
+    //             setNotes('')
+    //             setLoading(false)
+    //             setError('')
+    //             setComplete(true)
+
+    //         })
+    //         .catch(error => {
+    //             setLoading(false)
+    //             setError(error.response)
+    //         })
+    // }
 
     const toggleMood = (value) => {
         setMood([...mood, value])
@@ -140,9 +179,10 @@ function HealthLog(props) {
                             boxShadow={'lg'}
                             bgColor={'rgba(255 255 255 /90%)'}
                             backdropFilter={'blur(2px)'}
-                            borderRadius={'10'} border={'2px'} color={'brand.201'}
+                            borderRadius={'10'} border={'2px'} color={'black'}
                             rounded={'lg'}
-                            p={12}>
+                            p={12}
+                            fontSize={'2xl'}>
 
                             <Stack spacing={2}>
                                 <SmoothList transitionDuration={1200} delay={200}>
@@ -228,8 +268,12 @@ ADD PICTURES FOR THAT DAY */}
 
                                     <FormControl id="other">
                                         <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
-                                        <Textarea color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
+                                        <Textarea mb={'10'} color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
                                     </FormControl>
+                                    {/* <FormControl isRequired={false}> */}
+                                    {/* HOW TO ALTER STYLE OF THIS COMPONENT */}
+{/* <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Optional Image</FileUpload>
+</FormControl> */}
                                     <Stack>
                                         <Box alignSelf={'flex-end'} spacing={10}>
                                             <Button isLoading={loading} loadingText='Submitting' type={'submit'}

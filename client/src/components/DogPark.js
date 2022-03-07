@@ -112,45 +112,7 @@ function DogPark() {
 //       })
 // }
 
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
-//   const defaultProps = {
-//     center: {
-//       lat: 34.05,
-//       lng: -84.38
-//     },
-//     zoom: 11
-//   };
 
-//     },
-//     zoom: 11
-//   };
-
-
-//   // axios.get('/api/v1/users')
-//   //   .then(res => {
-//   //       console.log(res.data[0].zipcode)
-//   //       fetchWeather(res.data)
-//   //   })
-
-
-//   return (
-//     // Important! Always set the container height explicitly
-//     <div style={{ height: '50vh', width: '50%' }}>
-//       <GoogleMapReact
-
-//         bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" }}
-//         defaultCenter={defaultProps.center}
-//         defaultZoom={defaultProps.zoom}
-//       >
-//         <AnyReactComponent
-//           lat={34.05}
-//           lng={-84.38}
-//           text="My Marker"
-//         />
-//       </GoogleMapReact>
-//     </div>
-//   );
-// }
 
 //   return (
 //     // Important! Always set the container height explicitly

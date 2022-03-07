@@ -2,11 +2,12 @@ import React, { Component, useEffect, useMemo, useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import { Box, Container, Flex, useDisclosure, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, ModalBody, Modal } from "@chakra-ui/react";
+import { Box, Container, Flex, useDisclosure, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalCloseButton, ModalBody, Modal, Stack, Button } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import SmoothList from 'react-smooth-list';
 import { fetchHealth } from "src/redux/reducers/calendarReducer";
 import DogCalendarCard from "./DogCalendarCard";
+import { fetchDogs } from "src/redux/reducers/dogReducer";
 
 const localizer = momentLocalizer(moment);
 
@@ -30,10 +31,10 @@ export default function DogCalendar(props) {
     dispatch(fetchHealth)
   }, [dispatch])
 
-  
+
   const { events, colors } = useMemo(() => {
     let colors = {
-      
+
     }
     const events = calendar.logs.map((log) => {
       // console.log(event)
@@ -107,9 +108,52 @@ export default function DogCalendar(props) {
               {info && <DogCalendarCard log={info.resource} />}
             </ModalBody>
 
-            <ModalFooter>
-                                
+            
+            {/* <ModalFooter>
+                            <Stack mt={8} direction={'row'} spacing={4}>
+                                <Button
+                                onClick={
+                                    async () => {
+                                        const res = await fetch(`/api/health/${info.resource.id}`, {
+                                          method: 'DELETE',
+                                          body: JSON.stringify(info.resource),
+                                          headers: {
+                                            'Content-Type': 'application/json'
+                                          }
+                                        })
+                                    
+                                        dispatch(fetchDogs)
+                                      }
+                                    // () => dispatch(removeDog(dog))
+                                }
+                                    flex={1}
+                                    fontSize={'sm'}
+                                    rounded={'full'}
+                                    _focus={{
+                                        bg: 'gray.200',
+                                    }}>
+                                    Delete
+                                </Button>
+                                <Button
+                                    flex={1}
+                                    fontSize={'sm'}
+                                    rounded={'full'}
+                                    bg={'blue.400'}
+                                    color={'white'}
+                                    boxShadow={
+                                        '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+                                    }
+                                    _hover={{
+                                        bg: 'blue.500',
+                                    }}
+                                    _focus={{
+                                        bg: 'blue.500',
+                                    }}>
+                                    Update
+                                </Button>
+                            </Stack>
                             </ModalFooter>
+        */}
           </ModalContent>
         </Modal>
       </Flex>

@@ -1,18 +1,99 @@
 import { connect, useSelector } from 'react-redux'
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
+import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
+import ParkCard from './DogParkCard';
+import { Image, SimpleGrid } from '@chakra-ui/react';
 
-import Weather from './Weather';
-import axios from 'axios';
-import { render } from '@testing-library/react';
+function DogPark() {
+  const currentUser = useSelector(state => state.user.currentUser)
+  const [store, setStore] = useState([]);
+  const [map, setMap] = useState(null);
+  const [maps, setMaps] = useState(null);
+  const [coor, setCoor] = useState()
+    // console.log("this  is the ", currentUser)
+  useEffect(() => {
+    if (!currentUser || !maps || !map) {
+      return
+    }
+    fetchZipcode(currentUser)
+  }, [currentUser, map, maps]);
 
-import { Center } from '@chakra-ui/react';
 
 
+  const fetchZipcode = async (currentUser) => {
+    await Geocode.setLanguage('en');
+    Geocode.setApiKey("AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4");
+    Geocode.fromAddress(currentUser.zipcode).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location;
+        const service = new maps.places.PlacesService(map);
+        const startPoint = new maps.LatLng(lat, lng);
+        var request = {
+          location: startPoint,
+          radius: '50000',
+          query: ['dog park'],
+          fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
+        };
+        setCoor({lat, lng})
+        service.textSearch(request, (results, status) => {
+          if (status === maps.places.PlacesServiceStatus.OK) {
+            setStore(results)
+            console.log(results)
+          }
+        })
+      })
+  }
+  
+  const defaultProps = {
 
-function DogPark ({currentUser}) {
-  // const [currentWeather, setCurrentWeather] = useState(null);
-  console.log ("this is the ", currentUser)
+    center: {
+      lat: 37.8059887,
+      lng: -122.4099154
+    },
+    zoom: 11
+  };
+  const handleApiLoaded = (map, maps) => {
+    console.log("loaded map")
+    setMaps(maps)
+    setMap(map)
+  };
+  const AnyReactComponent = () => <div><Image
+  rounded={'lg'}
+  height={100}
+  width={100}
+  objectFit={'cover'}
+  src={store.icon}
+/>
+</div>;
+  return (
+    <div>
+      <div>
+        <h1>Header</h1>
+        {store.map((park) => {
+            return <SimpleGrid columns={{ sm: 2, md: 4, lg: 4 }}> <ParkCard key = {park.name} park = {park}/> </SimpleGrid>
+        })}
+      </div>
+      <div style={{ height: '400px', width: '100%' }}>
+        <GoogleMapReact
+          defaultCenter={defaultProps.center}
+          center={coor}
+          defaultZoom={defaultProps.zoom}
+          bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4", libraries: ['places'] }}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+        >
+  <AnyReactComponent
+    lat={coor.lat}
+    lng={coor.lng}
+    src={store.icon}
+  />
+        </GoogleMapReact>
+      </div>
+    </div>
+  )
+}
+
 
 //   useEffect (() => {
 //     fetchWeather(currentUser)
@@ -31,69 +112,12 @@ function DogPark ({currentUser}) {
 //       })
 // }
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-  const defaultProps = {
-    center: {
-
-        lat: 34.05,
-        lng: -84.38
-
-    },
-    zoom: 11
-  };
 
 
-  // axios.get('/api/v1/users')
-  //   .then(res => {
-  //       console.log(res.data[0].zipcode)
-  //       fetchWeather(res.data)
-  //   })
+//   return (
+//     // Important! Always set the container height explicitly
 
+//     <div style={{ height: '50vh', width: '50%' }}>
+//       <GoogleMapReact
 
-
-  return (
-    // Important! Always set the container height explicitly
-
-    <div style={{ height: '50vh', width: '50%' }}>
-      <GoogleMapReact
-
-        bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <AnyReactComponent
-          lat={34.05}
-          lng={-84.38}
-          text="My Marker"
-        />
-      </GoogleMapReact>
-    </div>
-  );
-}
-
-
-// Geocode.setLanguage('en');
-// Geocode.setApiKey("AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" );
-// Geocode.fromAddress(currentUser.zipCode).then(
-//     response => {
-//         const { lat, lng } = response.results[0].geometry.location;
-//         const { google } = this.props;
-//         const service = new google.maps.places.PlacesService(this.state.map);
-//         const startPoint = new google.maps.LatLng(lat, lng);
-//         var request = {
-//             location: startPoint,
-//             radius: '50000',
-//             query: ['dog park'], //vet, adoption center
-//             fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
-//         };
-
-const mapStateToProps = (state) => {
-  console.log("Weather componenet", state)
-  const {currentUser} = state.user 
-  return {
-    currentUser
-  }
-}
-
-export default connect(mapStateToProps) (DogPark)
-
+export default DogPark

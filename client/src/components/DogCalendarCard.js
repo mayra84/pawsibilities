@@ -20,7 +20,9 @@ import SmoothList from 'react-smooth-list';
 export default function DogCalendarCard(props) {
   const { log } = props
   console.log(log)
-  const date = log.createdAt
+  const date = new Date(log.createdAt)
+  const {dog} = props
+  console.log(dog)
   // const curDate= date.toLocaleString()
 
   const images = {
@@ -85,7 +87,7 @@ export default function DogCalendarCard(props) {
           <SmoothList transitionDuration={1200} delay={200}>
             <Avatar
               size={'xl'}
-              src={'IMG_0096.jpg'}
+              src={log.Dog.Image.location}
               alt={'Avatar Alt'}
               mb={4}
               pos={'relative'}
@@ -95,7 +97,7 @@ export default function DogCalendarCard(props) {
               {log.name}
             </Heading>
             <Text fontWeight={600} color={'gray.500'} mb={4}>
-              {date}
+              {date.toLocaleDateString()}
             </Text>
             <Stack justify={'center'} alignItems={'center'} direction={'column'}>
               <Stack direction={'row'}>

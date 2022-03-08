@@ -164,7 +164,7 @@ export default function DogProfileForm(props) {
                                 Dog Profile
                             </Heading>
                             <FormControl id="userName">
-                                <FormLabel>User Icon</FormLabel>
+                                <FormLabel></FormLabel>
                                 <Stack direction={['column', 'row']} spacing={6}>
                                     <Center>
                                         <Avatar border={'2px'} color={'brand.201'} size="xl" src={image}>
@@ -181,7 +181,7 @@ export default function DogProfileForm(props) {
                                     </Center>
                                     <Center w="full">
 
-                                        <FileUpload value={image} onChange={((e) => { setImage(e.target.files) })}>Profile Image</FileUpload>
+                                        <FileUpload isRequired value={image} onChange={((e) => { setImage(e.target.files) })}>Profile Image</FileUpload>
                                     </Center>
                                 </Stack>
                             </FormControl>

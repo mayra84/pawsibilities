@@ -42,6 +42,9 @@ function HealthLog(props) {
     //HOW TO ADD MULTIPLE THINGS TO STATE? SPREAD? SELECTING MULTIPLE THINGS
     //VALUE? ONCHANGE?
 
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     const [mood, setMood] = useState([])
     const [physical, setPhysical] = useState([])
     const [activity, setActivity] = useState([])
@@ -54,6 +57,7 @@ function HealthLog(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        // onclose()
         setLoading(true)
 
         const formData = new FormData()
@@ -64,29 +68,31 @@ function HealthLog(props) {
         formData.append('notes', notes)
         formData.append('image', image[0])
 
-        axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
-        // {
-        //     mood,
-        //     physical,
-        //     activity,
-        //     notes
-        // }
-        // )
-            .then(data => {
-                setMood([])
-                //check this??????
-                setPhysical('')
-                setActivity('')
-                setNotes('')
-                setLoading(false)
-                setError('')
-                setComplete(true)
+        props.onSuccess()
 
-            })
-            .catch(error => {
-                setLoading(false)
-                setError(error.response)
-            })
+        // axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
+        // // {
+        // //     mood,
+        // //     physical,
+        // //     activity,
+        // //     notes
+        // // }
+        // // )
+        //     .then(data => {
+        //         setMood([])
+        //         //check this??????
+        //         setPhysical('')
+        //         setActivity('')
+        //         setNotes('')
+        //         setLoading(false)
+        //         setError('')
+        //         setComplete(true)
+
+        //     })
+        //     .catch(error => {
+        //         setLoading(false)
+        //         setError(error.response)
+        //     })
     }
 
     const toggleMood = (value) => {

@@ -178,7 +178,8 @@ export default function AllDogs(props) {
                             key={dog.id}
                             bgColor={'rgba(255 255 255 /90%)'}
                             backdropFilter={'blur(2px)'}
-                            borderRadius={'10'} border={'2px'} color={'brand.201'}
+                            borderRadius={'10'} 
+                            // border={'2px'} color={'brand.201'}
                             maxW={'800px'}
                             w={'full'}
 

@@ -22,6 +22,9 @@ import {
     Image,
     Flex,
     SimpleGrid,
+    Alert,
+    AlertIcon,
+    CloseButton,
 } from '@chakra-ui/react';
 import HealthLog from './HealthLog';
 import React, { useEffect, useState } from 'react';
@@ -67,6 +70,7 @@ export default function CurrentDay(props) {
     const [activeDog, setActiveDog] = useState(null)
 
     const { dogs, user } = useSelector((state) => state)
+    const [complete, setComplete] = useState(false)
 
     useEffect(() => {
         if (!user) {
@@ -85,9 +89,28 @@ export default function CurrentDay(props) {
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const handleSuccess = () => {
+        dispatch(fetchDogs)
+        onClose()
+        setComplete(true)
+
+        console.log('yay')
+    }
  
     return (
+
             <SmoothList transitionDuration={1400}>
+                {complete && (
+                <SmoothList transitionDuration={600}>
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
+                        <AlertIcon />
+                        Successfully logged!
+                        <CloseButton onClick={() => setComplete(false)} position='absolute' right='8px' top='8px' />
+                    </Alert>
+
+                </SmoothList>
+            )}
                 <Flex justify={'center'} w={'100%'}>
                     <Stack alignItems={'center'} w={'100%'}
                     >
@@ -129,7 +152,7 @@ export default function CurrentDay(props) {
                         order={{lg: 0, sm: -1}}
                         // m={'0 auto'}
                         // mn={0}
-                             border={'2px'} color={'brand.201'}
+                            //  border={'2px'} color={'brand.201'}
                             // maxW={'320px'}
                             // w={'full'}
                             bg={useColorModeValue('white', 'gray.900')}
@@ -206,7 +229,7 @@ export default function CurrentDay(props) {
                             <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>Log {activeDog?.name}'s health for today</ModalHeader>
                             <ModalCloseButton />
                             <ModalBody>
-                                <HealthLog dog={activeDog} />
+                                <HealthLog dog={activeDog} onSuccess={handleSuccess} />
                             </ModalBody>
 
                             <ModalFooter>

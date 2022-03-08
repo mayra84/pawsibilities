@@ -72,9 +72,12 @@ router.post('/log/:id', checkAuth, upload.array('image'), async (req, res) => {
         physical,
         activity,
         notes: req.body.notes,
-        Images: [{
-            name: req.files[0]?.originalname, location: req.files[0]?.location, data: req.files[0]
-        }]
+        Images: req.files.map(file => {
+            return {
+                name: file.originalname, location: file.location, data: file
+            }
+        })
+        
         // Image: {
         //     name: req.files[0].originalname,
         //     location: req.files[0].location,
@@ -134,6 +137,7 @@ router.get('/', checkAuth, async (req, res) => {
             where: {
                 UserId: req.session.user.id
             },
+            include: db.Image
         },
         {
             model: db.Image

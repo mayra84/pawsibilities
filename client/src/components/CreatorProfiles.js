@@ -36,17 +36,17 @@ export default function CreatorProfiles() {
                         alt={'Avatar Alt'}
                         mb={4}
                         pos={'relative'}
-                        _after={{
-                            content: '""',
-                            w: 4,
-                            h: 4,
-                            bg: 'green.300',
-                            border: '2px solid white',
-                            rounded: 'full',
-                            pos: 'absolute',
-                            bottom: 0,
-                            right: 3,
-                        }}
+                        // _after={{
+                        //     content: '""',
+                        //     w: 4,
+                        //     h: 4,
+                        //     bg: 'green.300',
+                        //     border: '2px solid white',
+                        //     rounded: 'full',
+                        //     pos: 'absolute',
+                        //     bottom: 0,
+                        //     right: 3,
+                        // }}
                     />
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
                         Mayra Estrella
@@ -112,17 +112,17 @@ export default function CreatorProfiles() {
                         alt={'Avatar Alt'}
                         mb={4}
                         pos={'relative'}
-                        _after={{
-                            content: '""',
-                            w: 4,
-                            h: 4,
-                            bg: 'green.300',
-                            border: '2px solid white',
-                            rounded: 'full',
-                            pos: 'absolute',
-                            bottom: 0,
-                            right: 3,
-                        }}
+                        // _after={{
+                        //     content: '""',
+                        //     w: 4,
+                        //     h: 4,
+                        //     bg: 'green.300',
+                        //     border: '2px solid white',
+                        //     rounded: 'full',
+                        //     pos: 'absolute',
+                        //     bottom: 0,
+                        //     right: 3,
+                        // }}
                     />
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
                         Zaria Mcburrows

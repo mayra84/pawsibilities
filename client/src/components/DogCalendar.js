@@ -11,7 +11,8 @@ import { fetchDogs } from "src/redux/reducers/dogReducer";
 
 const localizer = momentLocalizer(moment);
 
-const colors = ['#FED9B7', '#F07167', '#006D77', '#00AFB9', '#0081A7']
+const colors = ['#FED9B7', '#F07167', '#006D77']
+// , '#00AFB9', '#0081A7'
 let currentColor = 0
 
 const newColor = () => {

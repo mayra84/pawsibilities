@@ -11,7 +11,7 @@ import {
 import React from 'react';
 
 
-export default function ParkCard(props) {
+export default function MarkerCard(props) {
     const { park } = props
     // console.log(park)
     return (
@@ -21,24 +21,13 @@ export default function ParkCard(props) {
                 <Heading fontSize={'m'} fontFamily={'body'} fontWeight={500} pt="5px">
                     {park.name}
                 </Heading>
-                <Text color={'gray.500'} fontSize={'md'}>
+                <Text color={'gray.500'} fontSize={'m'}>
                     Rating: {park.rating}/5
                 </Text>
-                <Text fontWeight={800} fontSize={'s'} pl="5px" pr="5px" pb= "5px">
+                <Text fontWeight={800} fontSize={'m'} pl="5px" pr="5px" pb= "5px">
                     {park.formatted_address}
                 </Text>
             </div>
-            <Center mt={'auto'}>
-                <Image
-                mb= "10px"
-                    rounded={'lg'}
-                    height={100}
-                    width={100}
-                    objectFit={'cover'}
-                    src={park.icon}
-                />
-             
-            </Center>
         </Flex>   
 
 

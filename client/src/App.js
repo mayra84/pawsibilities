@@ -16,6 +16,7 @@ import Discover from './pages/Discover';
 import DogProfile from './pages/DogProfile';
 import { useEffect } from 'react';
 import { checkUser } from './redux/reducers/userReducer';
+import Healthcare from './pages/Healthcare';
 
 
 
@@ -41,9 +42,9 @@ function App() {
 
         <Route path="/map" element={<Map />} />
 
-        <Route path="/map" element={<Map/>} />
+        <Route path="/discover" element={<Discover/>} />
 
-
+        <Route path="/healthcare" element={<Healthcare/>} />
 
         {/* how to route to to dog stuff?? */}
         <Route path="/dogprofile" element={<DogProfile/>} />

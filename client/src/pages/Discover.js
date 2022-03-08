@@ -1,8 +1,11 @@
 import React from 'react'
+import Adoption from 'src/components/Adoption'
 
 function Discover() {
   return (
-    <div>Discover</div>
+    <div>Discover
+      <Adoption/>
+    </div>
   )
 }
 

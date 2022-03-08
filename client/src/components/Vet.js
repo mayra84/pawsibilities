@@ -7,7 +7,7 @@ import { Box, Image, SimpleGrid } from '@chakra-ui/react';
 import Marker from './Marker';
 import SmoothList from 'react-smooth-list';
 
-function DogPark( { props }) {
+function Vet( { props }) {
   const currentUser = useSelector(state => state.user.currentUser)
   const [store, setStore] = useState([]);
   const [map, setMap] = useState(null);
@@ -41,7 +41,7 @@ function DogPark( { props }) {
         var request = {
           location: startPoint,
           radius: '50000',
-          query: ['dog park'],
+          query: ['veterinarian'],
           fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
         };
         setCoor({ lat, lng })
@@ -65,7 +65,7 @@ function DogPark( { props }) {
         var request = {
           location: startPoint,
           radius: '50000',
-          query: ['dog park'],
+          query: ['veterinarian'],
           fields: [ 'geometry'],
         };
         service.textSearch(request, (results, status) => {
@@ -116,7 +116,7 @@ function DogPark( { props }) {
           </GoogleMapReact>
         </div>
         <SmoothList transitionDuration={1400}>
-        <div onClick={_onClick}> Click to show all Local Dog Parks
+        <div onClick={_onClick}> Click to show all Local Veterinarians
         {show &&
         <SmoothList transitionDuration={1400}>
         <Box bg = "#83C5BE" maxW='lg' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
@@ -200,4 +200,4 @@ function DogPark( { props }) {
 //     <div style={{ height: '50vh', width: '50%' }}>
 //       <GoogleMapReact
 
-export default DogPark
+export default Vet

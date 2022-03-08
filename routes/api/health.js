@@ -6,6 +6,7 @@ const checkAuth = require('../../checkAuth');
 const router = express.Router();
 const db = require('../../models')
 const { Op } = require("sequelize");
+const upload = require('../../upload');
 
 //create
 router.post('/log/:id', checkAuth, async (req, res) => {
@@ -70,7 +71,14 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         physical: req.body.physical,
         activity: req.body.activity,
         notes: req.body.notes,
+        // Image: {
+        //     name: req.files[0].originalname,
+        //     location: req.files[0].location,
+        //     data: req.files[0]
+        // }
         // ImageId: req.body.image.id
+    }, {
+        include: db.Image
     })
     
     //send response
@@ -107,6 +115,9 @@ router.delete('/:id', checkAuth, async (req, res) => {
 })
 
 //read
+
+//INCLUDE: DB.IMAGE????????????
+
 router.get('/', checkAuth, async (req, res) => {
     //find all logs for dog
     const health = await db.Health.findAll({
@@ -117,7 +128,9 @@ router.get('/', checkAuth, async (req, res) => {
             where: {
                 UserId: req.session.user.id
             },
+            // db.Image,
         }
+        // include: db.Image,
     })
     res.json(health)
 })

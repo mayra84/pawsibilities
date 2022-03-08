@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
-import CardCarousel from './CardCarousel';
+import CardCarousel2 from './CardCarousel2';
 
 
 
@@ -58,11 +58,13 @@ const TestimonialAvatarAltered = ({
     );
 };
 
-function Card() {
+function Card2() {
     return (
-        <Flex alignItems="center" justifyContent="flex-start">
+        <Flex 
+        // p={50} 
+        alignItems="center" justifyContent="flex-start">
             <Box
-            mt={'-150'}
+            mt={'-200'}
                 borderRadius={'10'} border={'2px'} borderColor={'brand.201'}
                 bg={useColorModeValue('white', 'gray.800')}
                 maxW="sm"
@@ -81,7 +83,7 @@ function Card() {
           )} */}
 
                 {/* <Stack direction={'row'}> */}
-                <CardCarousel />
+                <CardCarousel2 />
                 {/* <Image objectFit={'fill'}
             src={'https://pbs.twimg.com/media/FM4eMpZUYAYWLfN?format=jpg&name=large'}
             alt={`Picture of ${data.name}`}
@@ -99,7 +101,7 @@ function Card() {
                                 as="h4"
                                 lineHeight="tight"
                                 isTruncated>
-                                Dog of the Week
+                                Dog in Need
                             </Box>
                             <Box
 
@@ -109,21 +111,21 @@ function Card() {
                                 as="h4"
                                 lineHeight="tight"
                                 isTruncated>
-                                The Banana Bandit
+                                Adorable Adoptee
 
                             </Box>
                             <Text pb={'2'}>
-                                This is Vixen. He really likes bananas. Steals them when he thinks nobody's watching. 13/10 opportunistic as h*ck
+                            Lyiam is still available for adoption! He is a five year old lab mix. He gets along with other dogs, knows basic commands, and is potty trained. He is doing well with his foster but would love a forever home soon ❤️‍🩹
                             </Text>
                             <TestimonialAvatar
                                 src={
-                                    'https://pbs.twimg.com/profile_images/1478141668159148033/IOD8SZvx_400x400.jpg'
+                                    'https://pbs.twimg.com/profile_images/1459964963137540097/CNe5hgKB_400x400.jpg'
                                 }
                             //   name={'WeRateDogs'}
 
                             />
-                            <Link fontWeight={'bold'} href="https://twitter.com/dog_rates/status/1499168931671511045?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Etweet">WeRateDogs</Link>
-                            <TestimonialAvatarAltered title={'@dog_rates'} />
+                            <Link fontWeight={'bold'} href="https://twitter.com/15outof10/status/1495893143878877190">15/10</Link>
+                            <TestimonialAvatarAltered title={'@15outof10'} />
                         </Stack>
                     </Flex>
 
@@ -139,4 +141,4 @@ function Card() {
     );
 }
 
-export default Card;
+export default Card2;

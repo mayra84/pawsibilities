@@ -82,7 +82,7 @@ export default function WithSubnavigation(props) {
                         borderRadius={'75'}
                         boxSize='125'
                         objectFit='fill'
-                        src='../Pawsibilities_Logo_3.png'
+                        src='../Possible_Pawsibilities_Logo_2.png'
                         alt='Pawsibilities' />
 
                     {/* <Text
@@ -321,59 +321,82 @@ const MobileNavItem = ({ label, children, href }) => {
 
 
 const NAV_ITEMS = [
-    {
-        label: 'Calendar',
-        children: [
+
+    // <Link as={RouterLink} to="/">Home</Link>
+    //         <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
+    //         <Link as={RouterLink} to="/map">Discover</Link>
+    //         <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
+    //         <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+
             {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
+                label: 'Home',
+                href: '/',
             },
             {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
-                href: '#',
-            },
-        ],
-    },
-    {
-        label: 'Dog Profile',
-        children: [
-            //maybe have several dog options?
-            {
-                label: 'Dog 1',
-                subLabel: 'Find your dream design job',
-                href: '/dogprofile',
-                // href: <Link as={RouterLink} to="/dogprofile"></Link>,
+                label: 'Calendar',
+                href: '/healthcalendar',
             },
             {
-                label: 'Dog 2',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
-            },
-        ],
-    },
-    {
-        label: 'Discover',
-        children: [
-            //maybe have several dog options?
-            {
-                label: 'Dog Parks',
-                subLabel: 'Find your dream design job',
+                label: 'Discover',
                 href: '/map',
             },
             {
-                label: 'Adoption',
-                subLabel: 'Find your dream design job',
-                href: '/discover',
+                label: 'Dog Profile',
+                href: '/dogprofile',
             },
-            {
-                label: 'Veterinarians',
-                subLabel: 'Find your dream design job',
-                href: '/healthcare',
-            },
-        ],
-    },
+    // {
+    //     label: 'Calendar',
+    //     children: [
+    //         {
+    //             label: 'Explore Design Work',
+    //             subLabel: 'Trending Design to inspire you',
+    //             href: '#',
+    //         },
+    //         {
+    //             label: 'New & Noteworthy',
+    //             subLabel: 'Up-and-coming Designers',
+    //             href: '#',
+    //         },
+    //     ],
+    // },
+    // {
+    //     label: 'Dog Profile',
+    //     children: [
+    //         //maybe have several dog options?
+    //         {
+    //             label: 'Dog 1',
+    //             subLabel: 'Find your dream design job',
+    //             href: '/dogprofile',
+    //             // href: <Link as={RouterLink} to="/dogprofile"></Link>,
+    //         },
+    //         {
+    //             label: 'Dog 2',
+    //             subLabel: 'An exclusive list for contract work',
+    //             href: '#',
+    //         },
+    //     ],
+    // },
+    // {
+    //     label: 'Discover',
+    //     children: [
+    //         //maybe have several dog options?
+    //         {
+    //             label: 'Dog Parks',
+    //             subLabel: 'Find your dream design job',
+    //             href: '/map',
+    //         },
+    //         {
+    //             label: 'Adoption',
+    //             subLabel: 'Find your dream design job',
+    //             href: '/discover',
+    //         },
+    // {
+    //     label: 'Veterinarians',
+    //     subLabel: 'Find your dream design job',
+    //     href: '/healthcare',
+    // },
+    //     ],
+    // },
     {
         label: 'About M&Z',
         href: '/aboutus',

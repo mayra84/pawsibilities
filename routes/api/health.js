@@ -73,7 +73,7 @@ router.post('/log/:id', checkAuth, upload.array('image'), async (req, res) => {
         activity,
         notes: req.body.notes,
         Images: [{
-            name: req.files[0].originalname, location: req.files[0].location, data: req.files[0]
+            name: req.files[0]?.originalname, location: req.files[0]?.location, data: req.files[0]
         }]
         // Image: {
         //     name: req.files[0].originalname,

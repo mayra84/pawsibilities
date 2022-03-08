@@ -45,6 +45,7 @@ export default function DogCalendarCard(props) {
       'limping': '../Limping.png',
       'nausea': '../Nausea.png',
       'constipation': '../Constipation.png',
+      'noAppetite': '../No_Appetite.png',
       'none': '../None_Bone.png'
     }
   }
@@ -125,12 +126,16 @@ export default function DogCalendarCard(props) {
                   {/* log.physical !== 'none' && () */}
                 </SimpleGrid>
               </Box>
-              <Box>
-            {log.Images.map((Images) => {
-              console.log(Images)
-              return <img my={'8'} src={Images.location} alt='s3pic'/>
-            })}
-</Box>
+              {log.Images.length !== 0 && (
+            
+                <Box>
+                  {log.Images.map((Images) => {
+                    console.log(Images)
+                    return <Image boxSize={'60'} borderRadius={'10'} my={'8'} src={Images.location} alt='s3pic' />
+                  })}
+                </Box>
+                
+              )}
             </Stack>
             {log.notes ? (
               <Box pt={'5'}>

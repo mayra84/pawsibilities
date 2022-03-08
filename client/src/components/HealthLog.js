@@ -52,33 +52,6 @@ function HealthLog(props) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     setLoading(true)
-    //     axios.post(`/api/v1/health/log/${props.dog.id}`, {
-    //         mood,
-    //         physical,
-    //         activity,
-    //         notes,
-
-    //     })
-    //         .then(data => {
-    //             setMood([])
-    //             //check this??????
-    //             setPhysical('')
-    //             setActivity('')
-    //             setNotes('')
-    //             setLoading(false)
-    //             setError('')
-    //             setComplete(true)
-
-    //         })
-    //         .catch(error => {
-    //             setLoading(false)
-    //             setError(error.response)
-    //         })
-    // }
-
     const handleSubmit = (e) => {
         e.preventDefault()
         setLoading(true)
@@ -249,6 +222,8 @@ function HealthLog(props) {
 
                                                 <ImageButton onClick={() => { togglePhysical('constipation') }} src={'../Constipation.png'} isActive={physical.includes('constipation')} />
 
+                                                <ImageButton onClick={() => { togglePhysical('noAppetite') }} src={'../No_Appetite.png'} isActive={physical.includes('noAppetite')} />
+
                                                 <ImageButton onClick={() => { togglePhysical('none') }} src={'../None_Bone.png'} isActive={physical.includes('none')} />
 
                                                 {/* <Checkbox value='abnormalAppetite'>Abnormal Appetite</Checkbox> */}
@@ -278,12 +253,15 @@ ADD PICTURES FOR THAT DAY */}
                                     <Stack>
                                         <Box alignSelf={'flex-end'} spacing={10}>
                                             <Button isLoading={loading} loadingText='Submitting' type={'submit'}
+                                            fontSize={'sm'}
+                                            rounded={'full'}
                                                 alignSelf={'flex-end'}
                                                 marginTop={'5'}
                                                 colorScheme={'teal'}
                                                 color={'white'}
+                                                bgColor={'teal.500'}
                                                 _hover={{
-                                                    bg: 'teal.200',
+                                                    bg: 'teal.300',
                                                 }}>
                                                 Submit
                                             </Button>

@@ -11,34 +11,33 @@ import {
     useColorModeValue,
   } from '@chakra-ui/react';
   
-  export default function SocialProfileSimple() {
+  export default function WhyPawsibilities() {
     return (
-      <Center py={6}>
+      <Center py={10}>
         <Box
-          maxW={'320px'}
+          maxW={'675px'}
           w={'full'}
           bg={useColorModeValue('white', 'gray.900')}
           boxShadow={'2xl'}
           rounded={'lg'}
-          p={6}
+          p={10}
           textAlign={'center'}>
           
-          <Heading fontSize={'2xl'} fontFamily={'body'}>
+          <Heading fontSize={'2xl'} fontFamily={'body'} mb={'10'}>
             Why Pawsibilities?
           </Heading>
           
-          <Text
+          <Text 
             textAlign={'center'}
             color={useColorModeValue('gray.700', 'gray.400')}
             px={3}>
-            Actress, musician, songwriter and artist. PM for work inquires or{' '}
-            <Link href={'#'} color={'blue.400'}>
-              #tag
-            </Link>{' '}
-            me in your posts
+            Having a pet is not a only a privilege, but a responsibility. It is our obligation to care for our pets to the absolute best of our abilities. How can you, a person with a non-stop, busy life filled with countless obligations, pawssibly keep track of yet another aspect of your life? 
+            <br></br>
+            <br></br>
+            Do not fret! Pawsibilities is here to help. With this app you can track your pet's health daily. So, you can carry a clean conscience to your next vet visit knowing you have monitored your pets behavior and health to the best pawssible extent.
           </Text>
   
-          <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
+          {/* <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
             <Badge
               px={2}
               py={1}
@@ -60,9 +59,9 @@ import {
               fontWeight={'400'}>
               #music
             </Badge>
-          </Stack>
+          </Stack> */}
   
-          <Stack mt={8} direction={'row'} spacing={4}>
+          {/* <Stack mt={8} direction={'row'} spacing={4}>
             <Button
               flex={1}
               fontSize={'sm'}
@@ -89,7 +88,7 @@ import {
               }}>
               Follow
             </Button>
-          </Stack>
+          </Stack> */}
         </Box>
       </Center>
     );

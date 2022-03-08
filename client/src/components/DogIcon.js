@@ -28,7 +28,7 @@ function DogIcon(props) {
                 {props.isActive && (
 
                     <CheckCircleIcon
-                    
+                    color={'teal.500'}
                         boxSize={'8'}
                         borderRadius={'50%'}
                         bgColor={'white'}

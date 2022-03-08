@@ -99,13 +99,13 @@ export default function Hero() {
                         position={'relative'}>
                         {/* <Button onClick={onOpen} bgColor={'gray.200'}>Add Dog Profile</Button> */}
                         {/* <Link textUnderlineOffset={'none'} as={RouterLink} to="/dogprofile"><Button */}
-                        <Button onClick={onOpen} bgColor={'teal'}
+                        <Button onClick={onOpen} bgColor={'teal.500'}
                             colorScheme={'teal.500'}
                             bg={'teal.500'}
                             borderRadius={'8'}
                             px={6}
                             _hover={{
-                                bg: 'teal.500',
+                                bg: 'teal.300',
                             }}>
                             Dog Profile Form
                         </Button>

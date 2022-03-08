@@ -2,7 +2,8 @@ import React from 'react'
 import Card from './Card'
 import Card2 from './Card2'
 import SmoothList from 'react-smooth-list'
-import { Box,
+import {
+  Box,
   Flex,
   Heading,
   Text,
@@ -11,21 +12,22 @@ import { Box,
   Avatar,
   useColorModeValue,
   Link,
-  SimpleGrid,} from '@chakra-ui/react'
+  SimpleGrid,
+} from '@chakra-ui/react'
 import Testimonials from './Testimonials'
 
-const Testimonial = ({ children } ) => {
+const Testimonial = ({ children }) => {
   return <Box display={'flex'} flexDirection={'column'}>{children}</Box>;
 };
 
 const TestimonialContent = ({ children }) => {
   return (
     <Stack
-    m={0}
-    flexGrow={'1'}
+      m={0}
+      flexGrow={'1'}
       bg={useColorModeValue('white', 'gray.800')}
       boxShadow={'lg'}
-    //   alignItems={'stretch'}
+      //   alignItems={'stretch'}
       p={8}
       rounded={'xl'}
       align={'stretch'}
@@ -62,7 +64,7 @@ const TestimonialHeading = ({ children }) => {
 const TestimonialText = ({ children }) => {
   return (
     <Text
-    // alignItems={'stretch'}
+      // alignItems={'stretch'}
       textAlign={'center'}
       color={useColorModeValue('gray.600', 'gray.400')}
       fontSize={'sm'}>
@@ -93,85 +95,88 @@ function HomePageDogs() {
   return (
     <div>
       <SmoothList transitionDuration={1400}>
-        <Stack direction={'row'} justify={'space-between'} p={6}>
-        <Card />
-        {/* <Testimonials /> */}
-        <Box >
-        {/* <SimpleGrid m={0}> */}
-      {/* <Container maxW={'70%'} pt={175} as={Stack} spacing={10} alignSelf={'flex-end'} > */}
-        <Stack >
-          <Heading>Helpful Resources</Heading>
-          {/* <Text>We have been working with clients around the world</Text> */}
-        </Stack>
-        <Stack
-        // alignItems={'stretch'}
+        <Stack 
         
-        
-          direction={{ base: 'column', md: 'row' }}
-          // spacing={{ base: 10, md: 4, lg: 10 }}
-          >
-            <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>Common Pet Health Issues</TestimonialHeading>
-              <TestimonialText >
-              "The benefits can only increase when a pet owner knows more about the proper care and nutrition that their pet should be receiving."
-              <br></br>
-              <br></br>
-              <Link fontWeight={'bold'} href="https://www.ardmoreah.com/pet-care/common-pet-health-issues/">Common Pet Health Issues</Link>
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar bg={'#FFFFFF'}
-              src={
-                'https://www.ardmoreah.com/images/logos/Logo.png'
-              }
-            //   name={'Jane Cooper'}
-              title={'Ardmore Animal Hospital'}
-            />
-          </Testimonial>
-          <Testimonial >
-            <TestimonialContent >
-              <TestimonialHeading >Healthy Dog</TestimonialHeading>
-              <TestimonialText >
-              "Like many first-time parents, new pet owners may over think every little quirk their dog displays. The good news is, there are signs that tell you when your dog is thriving."
-              <br></br>
-              <br></br>
-              <Link fontWeight={'bold'} href="https://www.petinsurance.com/healthzone/pet-health/health-conditions/6-signs-your-dog-is-healthy/">6 Signs Your Dog is Healthy</Link>
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={
-                'https://images.ctfassets.net/440y9b545yd9/73igBtU9JzgwFD1leYxEIk/4fcdd46e9dde4d5c14a36abea1ad1529/PHZ-logo.png'
-              }
-              title={'Cambridge University Press'}
-            />
-          </Testimonial>
-          {/* <Testimonial>
-            <TestimonialContent>
-              <TestimonialHeading>How to Support a Loved One</TestimonialHeading>
-              <TestimonialText >
-              "If you are a caregiver of someone with a mental illness, it is normal to feel unprepared or confused on how to help them. Feelings of inadequacy are common but remember, you are not alone and there is always professional help available."
-              <br></br>
-              <br></br>
-              <Link fontWeight={'bold'} href="https://www.mhanational.org/being-effective-caregiver">Being an Effective Caregiver</Link>
-              </TestimonialText>
-            </TestimonialContent>
-            <TestimonialAvatar
-              src={ 
+        direction={{ base: 'column', md: 'row' }}
+        // direction={'row'} columns={{ sm: 2, md: 3, lg: 4 }} 
+        justify={'center'} p={''} spacing={20} >
+          {/* <Card /> */}
+          {/* <Testimonials /> */}
+          <Box maxW={'1500'}>
+            <Stack mb={'10'}>
+              <Heading>Helpful Resources</Heading>
+            </Stack>
+            <Stack
+              // alignItems={'stretch'}
 
-                '../Mental_Health_America.png'
-              }
-            //   name={'Jane Cooper'}
-              title={'CEO at ABC Corporation'}
-            />
-          </Testimonial> */}
-          
+
+              direction={{ base: 'column', md: 'row' }}
+            // spacing={{ base: 10, md: 4, lg: 10 }}
+            >
+
+              <Testimonial >
+                <TestimonialContent >
+                  <TestimonialHeading >Healthy Dog</TestimonialHeading>
+                  <TestimonialText >
+                    "Like many first-time parents, new pet owners may over think every little quirk their dog displays. The good news is, there are signs that tell you when your dog is thriving."
+                    <br></br>
+                    <br></br>
+                    <Link fontWeight={'bold'} href="https://www.petinsurance.com/healthzone/pet-health/health-conditions/6-signs-your-dog-is-healthy/">6 Signs Your Dog is Healthy</Link>
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAvatar
+                  src={
+                    'https://images.ctfassets.net/440y9b545yd9/73igBtU9JzgwFD1leYxEIk/4fcdd46e9dde4d5c14a36abea1ad1529/PHZ-logo.png'
+                  }
+                  title={'Pet Health Zone'}
+                />
+              </Testimonial>
+
+              <Testimonial >
+                <TestimonialContent maxW={'200px'}>
+                  <TestimonialHeading>Common Pet Health Issues</TestimonialHeading>
+                  <TestimonialText >
+                    "The benefits can only increase when a pet owner knows more about the proper care and nutrition that their pet should be receiving."
+                    <br></br>
+                    <br></br>
+                    <Link fontWeight={'bold'} href="https://www.ardmoreah.com/pet-care/common-pet-health-issues/">Common Pet Health Issues</Link>
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAvatar bg={'#FFFFFF'}
+                  src={
+                    'https://www.ardmoreah.com/images/logos/Logo.png'
+                  }
+                  //   name={'Jane Cooper'}
+                  title={'Ardmore Animal Hospital'}
+                />
+              </Testimonial>
+
+              <Testimonial >
+                <TestimonialContent >
+                  <TestimonialHeading>Articles</TestimonialHeading>
+                  <TestimonialText >
+                    "As a dog owner, there is no higher priority than ensuring your dog's health and happiness. Get the best health advice from our experts for every stage of a dog’s life, from puppy to senior."
+                    <br></br>
+                    <br></br>
+                    <Link fontWeight={'bold'} href="https://www.akc.org/expert-advice/health/">Expert Advice</Link>
+                  </TestimonialText>
+                </TestimonialContent>
+                <TestimonialAvatar
+                  src={
+                    'https://www.akc.org/wp-content/uploads/2020/09/AKC_Horizontal_1884_blue-2-768x297.png'
+                  }
+                  title={'American Kennel Club'}
+                />
+              </Testimonial>
+
+
+            </Stack>
+            {/* </Container> */}
+            {/* </SimpleGrid> */}
+          </Box>
+          {/* <Card2 /> */}
         </Stack>
-      {/* </Container> */}
-      {/* </SimpleGrid> */}
-    </Box>
-        <Card2 />
-        </Stack>
-    </SmoothList>
+      </SmoothList>
     </div>
   )
 }

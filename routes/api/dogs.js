@@ -124,13 +124,15 @@ router.get('/', checkAuth, async (req, res) => {
         where: {
             UserId: req.session.user.id,
         },
-        include: db.Image
+        include: db.Image,
+        order: ['createdAt']
     })
     res.json(dogs)
 })
 
 //update maybe later
-router.put('/:id', checkAuth, async (req, res, next) => {
+router.put('/:id', checkAuth, upload.array('image'), async (req, res, next) => {
+    /** @type {import('sequelize').Model} */
     const dog = await db.Dog.findOne({
         where: {
             UserId: req.session.user.id,
@@ -143,7 +145,8 @@ router.put('/:id', checkAuth, async (req, res, next) => {
         return
     }
 
-    dog.set({
+    console.log(req.body)
+   const newDog = await dog.update({
         name: req.body.name,
         breed: req.body.breed,
         weight: req.body.weight,
@@ -152,18 +155,20 @@ router.put('/:id', checkAuth, async (req, res, next) => {
         temperament: req.body.temperament,
         coat: req.body.coat,
         bio: req.body.bio,
-        UserId: req.session.user.id,
         //create new image in db
         //dog.addImage(image.id)
-        Image: {
+        
+    })
+   console.log(newDog)
+    if (req.files.length) {
+        console.log('updating image')
+        await dog.createImage({
             name: req.files[0].originalname,
             location: req.files[0].location,
             data: req.files[0]
-        }
-    }, {
-        include: db.Image
-    })
-    await dog.save();
+        })
+    }
+    
 
     //send response
     res.status(200).json({ success: 'dog successfully updated!' })

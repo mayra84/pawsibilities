@@ -18,7 +18,7 @@ const FileUpload = ({ name, placeholder, acceptedFileTypes, onChange, children, 
                 <Input
                     placeholder={placeholder || "Your file ..."}
                     onClick={() => inputRef.current.click()}
-                    value={value[0]?.name}
+                    value={value?.[0]?.name}
                 />
             </InputGroup>
             <FormErrorMessage>

@@ -7,7 +7,7 @@ const FileUpload = ({ name, placeholder, acceptedFileTypes, onChange, children, 
     const inputRef = useRef();
 
     return (
-        <FormControl isInvalid={invalid} isRequired>
+        <FormControl isInvalid={invalid} >
             <FormLabel htmlFor="writeUpFile">{children}</FormLabel>
             <InputGroup>
                 <InputLeftElement

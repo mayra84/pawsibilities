@@ -52,52 +52,16 @@ function HealthLog(props) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setLoading(true)
-        axios.post(`/api/v1/health/log/${props.dog.id}`, {
-            mood,
-            physical,
-            activity,
-            notes
-        })
-            .then(data => {
-                setMood([])
-                //check this??????
-                setPhysical('')
-                setActivity('')
-                setNotes('')
-                setLoading(false)
-                setError('')
-                setComplete(true)
-
-            })
-            .catch(error => {
-                setLoading(false)
-                setError(error.response)
-            })
-    }
-
     // const handleSubmit = (e) => {
     //     e.preventDefault()
     //     setLoading(true)
+    //     axios.post(`/api/v1/health/log/${props.dog.id}`, {
+    //         mood,
+    //         physical,
+    //         activity,
+    //         notes,
 
-    //     const formData = new FormData()
-
-    //     formData.append('mood', mood)
-    //     formData.append('physical', physical)
-    //     formData.append('activity', activity)
-    //     formData.append('notes', notes)
-    //     formData.append('image', image[0])
-
-    //     axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
-    //     // {
-    //     //     mood,
-    //     //     physical,
-    //     //     activity,
-    //     //     notes
-    //     // }
-    //     // )
+    //     })
     //         .then(data => {
     //             setMood([])
     //             //check this??????
@@ -114,6 +78,43 @@ function HealthLog(props) {
     //             setError(error.response)
     //         })
     // }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setLoading(true)
+
+        const formData = new FormData()
+
+        formData.append('mood', mood)
+        formData.append('physical', physical)
+        formData.append('activity', activity)
+        formData.append('notes', notes)
+        formData.append('image', image[0])
+
+        axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
+        // {
+        //     mood,
+        //     physical,
+        //     activity,
+        //     notes
+        // }
+        // )
+            .then(data => {
+                setMood([])
+                //check this??????
+                setPhysical('')
+                setActivity('')
+                setNotes('')
+                setLoading(false)
+                setError('')
+                setComplete(true)
+
+            })
+            .catch(error => {
+                setLoading(false)
+                setError(error.response)
+            })
+    }
 
     const toggleMood = (value) => {
         setMood([...mood, value])
@@ -270,10 +271,10 @@ ADD PICTURES FOR THAT DAY */}
                                         <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
                                         <Textarea mb={'10'} color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
                                     </FormControl>
-                                    {/* <FormControl isRequired={false}> */}
+                                    <FormControl isRequired={false}>
                                     {/* HOW TO ALTER STYLE OF THIS COMPONENT */}
-{/* <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Optional Image</FileUpload>
-</FormControl> */}
+ <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Optional Image</FileUpload> 
+</FormControl> 
                                     <Stack>
                                         <Box alignSelf={'flex-end'} spacing={10}>
                                             <Button isLoading={loading} loadingText='Submitting' type={'submit'}

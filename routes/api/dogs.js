@@ -89,6 +89,7 @@ router.delete('/:id', checkAuth, async (req, res) => {
             id: req.params.id
         }
     })
+    // dog.destroyHealth
 
     //if no dog, 404
     if (!dog) {
@@ -102,6 +103,10 @@ router.delete('/:id', checkAuth, async (req, res) => {
         }
     })
 
+    //Health.destroy({
+    //     where: 
+    // }
+    // )
     for (let i = 0; i < logs.length; i++) {
         //*cries*
         await logs[i].destroy()
@@ -148,6 +153,8 @@ router.put('/:id', checkAuth, async (req, res, next) => {
         coat: req.body.coat,
         bio: req.body.bio,
         UserId: req.session.user.id,
+        //create new image in db
+        //dog.addImage(image.id)
         Image: {
             name: req.files[0].originalname,
             location: req.files[0].location,

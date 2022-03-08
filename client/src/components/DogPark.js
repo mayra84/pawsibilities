@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
 import ParkCard from './DogParkCard';
-import { Image, SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
+import Marker from './Marker';
 
 function DogPark() {
   const currentUser = useSelector(state => state.user.currentUser)
@@ -58,18 +59,13 @@ function DogPark() {
     setMaps(maps)
     setMap(map)
   };
-  const AnyReactComponent = () => <div><Image
-  rounded={'lg'}
-  height={100}
-  width={100}
-  objectFit={'cover'}
-  src={store.icon}
-/>
-</div>;
+  // const AnyReactComponent = ({ text }) => <div>{text}</div>;
+ console.log(coor)
   return (
     <div>
       <div>
         <h1>Header</h1>
+
         {store.map((park) => {
             return <SimpleGrid columns={{ sm: 2, md: 4, lg: 4 }}> <ParkCard key = {park.name} park = {park}/> </SimpleGrid>
         })}
@@ -83,11 +79,11 @@ function DogPark() {
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         >
-  <AnyReactComponent
-    lat={coor.lat}
-    lng={coor.lng}
-    src={store.icon}
-  />
+        {/* <AnyReactComponent
+        lat={coor.lat}
+        lng={coor.lng}
+        text="Marker"
+      />  */}
         </GoogleMapReact>
       </div>
     </div>

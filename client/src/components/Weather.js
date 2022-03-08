@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { Box, Button, Heading, Link, propNames, useRangeSlider } from '@chakra-ui/react'
+import { Box, Button, Center, Heading, Link, propNames, useRangeSlider } from '@chakra-ui/react'
 import ProductSimple from './WeatherCard';
 import { render } from '@testing-library/react';
 import { connect } from 'react-redux';
@@ -40,14 +40,15 @@ console.log ("this is the ", currentUser)
     return (
 
         <div >
+            <Center>
             {currentWeather&& (
-            <Box>
+            <Box mt = "10px">
                     {/* <h1>Weather</h1>
                     <div>{currentWeather.location.name}</div> */}
                     <ProductSimple key={currentWeather.lat} weather = {currentWeather} />
             </Box>
             )}
-
+</Center>
 
 
         </div>

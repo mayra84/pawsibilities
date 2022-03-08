@@ -12,21 +12,21 @@ import DogPark from 'src/components/DogPark';
 
 import Weather from 'src/components/Weather';
 
-import { SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 
 
 
 function Map(status) {
-    const currentUser = useSelector(state => state.user.currentUser)
-    const render = status
-    //display login false, click on link -> true
+  const currentUser = useSelector(state => state.user.currentUser)
+  const render = status
+  //display login false, click on link -> true
 
   return (
     <div>
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 2}}>
-                <DogPark />
-                <Weather />
-            </SimpleGrid>
+      <SimpleGrid columns={{ sm: 2, md: 2, lg: 2 }}>
+          <DogPark />
+          <Weather />
+      </SimpleGrid>
 
     </div>
   )

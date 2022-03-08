@@ -12,7 +12,7 @@ import React from 'react';
 
 export default function ParkCard(props) {
     const { park } = props
-    console.log(park)
+    // console.log(park)
     return (
 
         //   <Center py={12}>

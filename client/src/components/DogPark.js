@@ -1,10 +1,11 @@
-import { connect, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import React, { useEffect, useState } from "react";
 import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
 import ParkCard from './DogParkCard';
-import { SimpleGrid } from '@chakra-ui/react';
+import { Box, Image, SimpleGrid } from '@chakra-ui/react';
 import Marker from './Marker';
+
 
 function DogPark() {
   const currentUser = useSelector(state => state.user.currentUser)
@@ -12,9 +13,9 @@ function DogPark() {
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
   const [coor, setCoor] = useState()
-    // console.log("this  is the ", currentUser)
+  // console.log("this  is the ", currentUser)
   useEffect(() => {
-    if (!currentUser || !maps || !map) {
+    if (!currentUser || !maps || !map ) {
       return
     }
     fetchZipcode(currentUser)
@@ -36,7 +37,7 @@ function DogPark() {
           query: ['dog park'],
           fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
         };
-        setCoor({lat, lng})
+        setCoor({ lat, lng })
         service.textSearch(request, (results, status) => {
           if (status === maps.places.PlacesServiceStatus.OK) {
             setStore(results)
@@ -45,7 +46,7 @@ function DogPark() {
         })
       })
   }
-  
+
   const defaultProps = {
 
     center: {
@@ -54,23 +55,18 @@ function DogPark() {
     },
     zoom: 11
   };
+  
   const handleApiLoaded = (map, maps) => {
     console.log("loaded map")
     setMaps(maps)
     setMap(map)
   };
-  // const AnyReactComponent = ({ text }) => <div>{text}</div>;
- console.log(coor)
+
+
   return (
     <div>
       <div>
-        <h1>Header</h1>
-
-        {store.map((park) => {
-            return <SimpleGrid columns={{ sm: 2, md: 4, lg: 4 }}> <ParkCard key = {park.name} park = {park}/> </SimpleGrid>
-        })}
-      </div>
-      <div style={{ height: '400px', width: '100%' }}>
+        <div style={{ height: '400px', width: '100%', padding: "10px" }}>
         <GoogleMapReact
           defaultCenter={defaultProps.center}
           center={coor}
@@ -79,12 +75,15 @@ function DogPark() {
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
         >
-        {/* <AnyReactComponent
-        lat={coor.lat}
-        lng={coor.lng}
-        text="Marker"
-      />  */}
         </GoogleMapReact>
+      </div>
+        <Box maxW='lg' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
+        <SimpleGrid columns={{ sm: 2, md: 2, lg: 3 }}>
+          {store.map((park) => {
+            return <ParkCard key={park.name} park={park} />
+          })}
+        </SimpleGrid>
+        </Box>
       </div>
     </div>
   )

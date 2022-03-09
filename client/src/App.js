@@ -16,7 +16,11 @@ import Discover from './pages/Discover';
 import DogProfile from './pages/DogProfile';
 import { useEffect } from 'react';
 import { checkUser } from './redux/reducers/userReducer';
+
+import PawsibilitiesLogo from './pages/PawsibilitiesLogo';
+
 import Healthcare from './pages/Healthcare';
+
 
 
 
@@ -36,13 +40,15 @@ function App() {
 
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
-<Route path="/map" element={<Map/>} />
+
  {/* how to route to to dog stuff?? */}
  <Route path="/dogprofileForm" element={<DogProfileForm />} />
 
         <Route path="/map" element={<Map />} />
 
+
         <Route path="/discover" element={<Discover/>} />
+
 
         <Route path="/healthcare" element={<Healthcare/>} />
 
@@ -50,8 +56,6 @@ function App() {
         <Route path="/dogprofile" element={<DogProfile/>} />
         <Route path="/healthcalendar" element={<HealthCalendar />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/map" element={<Discover />} />
-
 
         {/* <Route path="dogdrop" element={ <DogDrop /> } /> */}
         {/* <Route path="/currentday" element={<Current} */}

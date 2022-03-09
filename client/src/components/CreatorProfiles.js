@@ -60,7 +60,7 @@ export default function CreatorProfiles() {
                         px={3}>
                         I'm the "M" in M&amp;Z!
                         <br></br>
-                        My inspiration for Pawsibilities is born from my love for my three dogs: Dalton, Emma, and Cooper. They are my whole world and I want to make sure to always be the most responsible version of myself for them. I hope it helps other pet owners in proving their love and care for their Pawesome Pals.
+                        My inspiration for Pawsibilities is born from my love for my three dogs: Dalton, Emma, and Cooper. I wanted to make sure to always be the most responsible version of myself for them. I hope it helps other pet owners in proving their love and care for their Pawesome Pals.
                         {/* came from taking my eldest dog, Dalton, to the vet. We needed to give very precise information about Dalton's timeline and I realized.. I couldn't exactly remember. I was profoundly disappointed in my lack of responsibility. This was the exact moment I thought of Pawsibilities.  */}
                     </Text>
 
@@ -134,7 +134,9 @@ export default function CreatorProfiles() {
                         textAlign={'center'}
                         color={useColorModeValue('gray.700', 'gray.400')}
                         px={3}>
-                            My inspiration came from some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers
+                            My inspiration came from 
+                            seeing adoption centers overflow with dogs people returned once they had to go back to work in person. By incorporating certain technologies, Pawsibilities makes it easier to find adoption centers near you, among other things.
+                            {/* some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers */}
                     </Text>
 
                     <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>

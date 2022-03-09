@@ -457,6 +457,7 @@ const NAV_ITEMS = [
                 href: '/healthcalendar',
             },
             {
+
                      label: 'Discover',
                      children: [
                          //maybe have several dog options?
@@ -477,6 +478,7 @@ const NAV_ITEMS = [
                  },
                      ],
                  },
+
             {
                 label: 'Dog Profile',
                 href: '/dogprofile',

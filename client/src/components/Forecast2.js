@@ -18,7 +18,7 @@ function Weather2({ currentUser }) {
 
     const fetchForecast = async (currentUser) => {
 
-        await fetch(`http://api.weatherapi.com/v1/forecast.json?key=ca26e518dd18404c95f191858222702&q=${currentUser.zipcode}&`)
+        await fetch(`https://api.weatherapi.com/v1/forecast.json?key=ca26e518dd18404c95f191858222702&q=${currentUser.zipcode}&`)
             .then((res) => res.json())
             .then((data) => {
                 var weather = data

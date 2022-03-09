@@ -14,7 +14,7 @@ function DogIcon(props) {
                 mb={'6'}
                     cursor={'pointer'}
                     onClick={props.onClick}
-                    boxShadow={'lg'}
+                    boxShadow="2xl"
                     // isActive={'true'}
                     alignSelf={'center'}
                     borderRadius={'75'}

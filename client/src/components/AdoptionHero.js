@@ -1,4 +1,3 @@
-// import Head from 'next/Head';
 import {
     Box,
     Heading,
@@ -22,7 +21,7 @@ import { Link, Link as RouterLink } from 'react-router-dom';
 import { fetchDogs } from 'src/redux/reducers/dogReducer';
 import DogProfileForm from './DogProfileForm';
 
-export default function Hero() {
+export default function AdoptionHero() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { dogs, user } = useSelector((state) => state)
@@ -83,7 +82,7 @@ export default function Hero() {
                         fontWeight={500}
                         fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                         lineHeight={'110%'}>
-                        You currently don't have any dogs registered!<br />
+                        Adoption centers near you!<br />
                         {/* <Text as={'span'} color={'green.400'}>
               your audience
             </Text> */}
@@ -140,7 +139,7 @@ export default function Hero() {
                         {/* <Button variant={'link'} colorScheme={'blue'} size={'sm'}>
               Learn more
             </Button> */}
-                        <Box>
+                        {/* <Box>
                             <Icon
                                 as={Arrow}
                                 color={useColorModeValue('gray.800', 'gray.300')}
@@ -158,7 +157,7 @@ export default function Hero() {
                                 transform={'rotate(10deg)'}>
                                 Register a dog here!
                             </Text>
-                        </Box>
+                        </Box> */}
                     </Stack>
                 </Stack>
             </Container>

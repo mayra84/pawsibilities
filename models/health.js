@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Health.belongsTo(models.Dog)
-      Health.belongsToMany(models.Image, {through:'HealthImages'})
+      Health.belongsToMany(models.Image, {through:'HealthImages', onDelete: 'CASCADE'})
     }
   }
   Health.init({

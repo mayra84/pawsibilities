@@ -32,6 +32,7 @@ module.exports = {
         model: 'Images',
         key: 'id'
       },
+      onDelete: 'CASCADE'
     })
     await queryInterface.createTable('HealthImages', {
       id: {
@@ -46,7 +47,8 @@ module.exports = {
           model: 'Images',
           key: 'id'
         },
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE'
       },
       HealthId: {
         type: Sequelize.INTEGER,
@@ -54,7 +56,8 @@ module.exports = {
           model: 'Health',
           key: 'id'
         },
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

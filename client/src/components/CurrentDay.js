@@ -98,6 +98,11 @@ export default function CurrentDay(props) {
         console.log('yay')
     }
  
+    const timer = setTimeout(() => {
+        setComplete(false);
+    }, 7000)
+
+
     return (
 
             <SmoothList transitionDuration={1400}>
@@ -158,7 +163,7 @@ export default function CurrentDay(props) {
                             // w={'full'}
 
                             bg={useColorModeValue('white', 'gray.900')}
-                            boxShadow={'2xl'}
+                            boxShadow={'dark-lg'}
                             borderRadius={'500'}
                             minW={'325px'}
                             //   rounded={'lg'}
@@ -201,7 +206,7 @@ export default function CurrentDay(props) {
                             colorScheme={'teal.500'}
                             bg={'teal.500'}
                             borderRadius={'8'}
-                            px={6}
+                            px={4}
                             _hover={{
                                 bg: 'teal.300',
                             }}

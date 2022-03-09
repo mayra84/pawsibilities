@@ -16,7 +16,7 @@ import {
   ModalCloseButton,
 } from '@chakra-ui/react'
 
-function DogPark( { props }) {
+function DogParkButton( { props }) {
   const currentUser = useSelector(state => state.user.currentUser)
   const [store, setStore] = useState([]);
   const [map, setMap] = useState(null);
@@ -107,7 +107,7 @@ function DogPark( { props }) {
     <SmoothList transitionDuration={1400}>
     <div>
       <div>
-      <Button colorScheme = {'teal'} mt={'12px'} onClick={onOpen}>Show all local Dog Parks</Button>
+      <Button mt={'12px'} onClick={onOpen}>Show all local Dog Parks</Button>
         <div style={{ height: '400px', width: '100%', padding: "12px" }}>
           <GoogleMapReact
             defaultCenter={defaultProps.center}
@@ -131,7 +131,7 @@ function DogPark( { props }) {
           <ModalCloseButton />
           <ModalBody>
             <SmoothList transitionDuration={1400}>
-        <Box bg = "#83C5BE" maxW='xl' borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
+        <Box bg = "#83C5BE" maxW='lg' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
           <SimpleGrid columns={{ sm: 2, md: 2, lg: 2 }}>
             {store.map((park) => {
               return  <ParkCard key={park.reference} park={park} />
@@ -142,9 +142,10 @@ function DogPark( { props }) {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='teal' mr={3} onClick={onClose}>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
+            <Button variant='ghost'>Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -180,4 +181,4 @@ function DogPark( { props }) {
 //     <div style={{ height: '50vh', width: '50%' }}>
 //       <GoogleMapReact
 
-export default DogPark
+export default DogParkButton

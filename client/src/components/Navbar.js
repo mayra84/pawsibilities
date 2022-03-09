@@ -447,6 +447,11 @@ const NAV_ITEMS = [
     //             subLabel: 'Find your dream design job',
     //             href: '/discover',
     //         },
+    // {
+    //     label: 'Veterinarians',
+    //     subLabel: 'Find your dream design job',
+    //     href: '/healthcare',
+    // },
     //     ],
     // },
     {

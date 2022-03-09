@@ -1,20 +1,23 @@
 import React from 'react'
 import { useEffect, useState } from "react";
-import { Box, Button, Heading, Link, propNames, useRangeSlider } from '@chakra-ui/react'
+import { Box, Button, Center, Heading, Link, propNames, SimpleGrid, useRangeSlider } from '@chakra-ui/react'
 import ProductSimple from './WeatherCard';
 import { render } from '@testing-library/react';
 import { connect } from 'react-redux';
+import ForecastCard from './Forecast';
+import SmoothList from 'react-smooth-list';
 
 
-function Weather({currentUser}) {
+function Weather({ currentUser }) {
     const [currentWeather, setCurrentWeather] = useState(null);
-console.log ("this is the ", currentUser)
-    // const {users} = props;
-    
 
-    useEffect (() => {
+    // console.log("this is the ", currentUser)
+    // const {users} = props;
+
+
+    useEffect(() => {
         if (!currentUser) {
-            return 
+            return
         }
         fetchWeather(currentUser)
     }, [currentUser])
@@ -26,11 +29,13 @@ console.log ("this is the ", currentUser)
             .then((res) => res.json())
             .then((data) => {
                 var weather = data
-                console.log(weather)
-                console.log(weather.current.condition.text)
+                // console.log(weather)
+                // console.log(weather.current.condition.text)
                 setCurrentWeather(weather)
             })
-}
+    }
+
+    console.log('Current weather loaded')
 
     // axios.get('/api/v1/users')
     // .then(res => {
@@ -40,29 +45,29 @@ console.log ("this is the ", currentUser)
 
 
     return (
-
-        <div >
-            {currentWeather&& (
-            <Box>
-                    {/* <h1>Weather</h1>
+        <SmoothList transitionDuration={1400} >
+            <div >
+                
+                    {currentWeather && (
+                        <Box m="10px" mt={'65px'}>
+                            {/* <h1>Weather</h1>
                     <div>{currentWeather.location.name}</div> */}
-                    <ProductSimple key={currentWeather.lat} weather = {currentWeather} />
-            </Box>
-            )}
-
-
-
-        </div>
+                            <SmoothList transitionDuration={1400}><ProductSimple key={currentWeather.lat} weather={currentWeather} />      </SmoothList>
+                        </Box>
+                    )}
+        </div >
+        </SmoothList >
+        
     )
 
 }
 
 const mapStateToProps = (state) => {
-    console.log("Weather componenet" , state)
-    const {currentUser} = state.user
+    // console.log("Weather componenet", state)
+    const { currentUser } = state.user
     return {
         currentUser
     }
 }
 
-export default connect(mapStateToProps) (Weather) 
+export default connect(mapStateToProps)(Weather) 

@@ -3,27 +3,18 @@ import React, { useEffect, useState } from "react";
 import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
 import ParkCard from './DogParkCard';
-import { Box, Button, Image, SimpleGrid, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Image, SimpleGrid } from '@chakra-ui/react';
 import Marker from './Marker';
 import SmoothList from 'react-smooth-list';
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from '@chakra-ui/react'
 
-function DogPark( { props }) {
+function Adoption( { props }) {
   const currentUser = useSelector(state => state.user.currentUser)
   const [store, setStore] = useState([]);
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
   const [coor, setCoor] = useState()
   const [mark, setMark] = useState([])
-  
+  const [show, setShow] = useState(false);
   // console.log("this  is the ", currentUser)
   useEffect(() => {
     if (!currentUser || !maps || !map) {
@@ -50,7 +41,7 @@ function DogPark( { props }) {
         var request = {
           location: startPoint,
           radius: '50000',
-          query: ['dog park'],
+          query: ['dog adoption'],
           fields: ['name', 'geometry', 'formatted_address', 'formatted_phone_number', 'website'],
         };
         setCoor({ lat, lng })
@@ -61,6 +52,7 @@ function DogPark( { props }) {
         })
       })
   }
+
 
 
    const fetchThing = async (currentUser) => {
@@ -74,7 +66,7 @@ function DogPark( { props }) {
         var request = {
           location: startPoint,
           radius: '50000',
-          query: ['dog park'],
+          query: ['dog adoption'],
           fields: [ 'geometry'],
         };
         service.textSearch(request, (results, status) => {
@@ -99,15 +91,15 @@ function DogPark( { props }) {
     setMaps(maps)
     setMap(map)
   };
-  const { isOpen, onOpen, onClose } = useDisclosure()
+
  
+  const _onClick = () => setShow(!show)
 
   return (
 
     <SmoothList transitionDuration={1400}>
     <div>
       <div>
-      <Button colorScheme = {'teal'} mt={'12px'} onClick={onOpen}>Show all local Dog Parks</Button>
         <div style={{ height: '400px', width: '100%', padding: "12px" }}>
           <GoogleMapReact
             defaultCenter={defaultProps.center}
@@ -124,14 +116,11 @@ function DogPark( { props }) {
   
           </GoogleMapReact>
         </div>
-      <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>All local Dog Parks</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <SmoothList transitionDuration={1400}>
-        <Box bg = "#83C5BE" maxW='xl' borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
+        <SmoothList transitionDuration={1400}>
+        <div onClick={_onClick}> Click to show all Local Adoption Centers
+        {show &&
+        <SmoothList transitionDuration={1400}>
+        <Box bg = "#83C5BE" maxW='lg' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
           <SimpleGrid columns={{ sm: 2, md: 2, lg: 2 }}>
             {store.map((park) => {
               return  <ParkCard key={park.reference} park={park} />
@@ -139,15 +128,9 @@ function DogPark( { props }) {
           </SimpleGrid>
         </Box>
         </SmoothList>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme='teal' mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+         }
+        </div>
+        </SmoothList>
       </div>
     </div>
     </SmoothList>
@@ -172,7 +155,45 @@ function DogPark( { props }) {
 //       })
 // }
 
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
+//   const defaultProps = {
+//     center: {
+//       lat: 34.05,
+//       lng: -84.38
+//     },
+//     zoom: 11
+//   };
 
+//     },
+//     zoom: 11
+//   };
+
+
+//   // axios.get('/api/v1/users')
+//   //   .then(res => {
+//   //       console.log(res.data[0].zipcode)
+//   //       fetchWeather(res.data)
+//   //   })
+
+
+//   return (
+//     // Important! Always set the container height explicitly
+//     <div style={{ height: '50vh', width: '50%' }}>
+//       <GoogleMapReact
+
+//         bootstrapURLKeys={{ key: "AIzaSyCdA5mxV4NJuOjewdQpY7-fBqxTbPqUbR4" }}
+//         defaultCenter={defaultProps.center}
+//         defaultZoom={defaultProps.zoom}
+//       >
+//         <AnyReactComponent
+//           lat={34.05}
+//           lng={-84.38}
+//           text="My Marker"
+//         />
+//       </GoogleMapReact>
+//     </div>
+//   );
+// }
 
 //   return (
 //     // Important! Always set the container height explicitly
@@ -180,4 +201,4 @@ function DogPark( { props }) {
 //     <div style={{ height: '50vh', width: '50%' }}>
 //       <GoogleMapReact
 
-export default DogPark
+export default Adoption

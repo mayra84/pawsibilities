@@ -152,9 +152,11 @@ export default function CurrentDay(props) {
                         order={{lg: 0, sm: -1}}
                         // m={'0 auto'}
                         // mn={0}
+
                             //  border={'2px'} color={'brand.201'}
                             // maxW={'320px'}
                             // w={'full'}
+
                             bg={useColorModeValue('white', 'gray.900')}
                             boxShadow={'2xl'}
                             borderRadius={'500'}
@@ -243,3 +245,4 @@ export default function CurrentDay(props) {
             </SmoothList>
     );
 }
+

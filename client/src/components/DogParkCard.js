@@ -6,38 +6,41 @@ import {
     Text,
     Stack,
     Image,
+    Flex,
 } from '@chakra-ui/react';
 import React from 'react';
 
 
 export default function ParkCard(props) {
     const { park } = props
-    console.log(park)
+    // console.log(park)
     return (
 
-        //   <Center py={12}>
-        <Box maxW='sm' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='resultBox'>
-            <div className='textBox'>
-                <Heading fontSize={'m'} fontFamily={'body'} fontWeight={500}>
+        <Flex direction = "column" bg="white" maxW='sm' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='resultBox'>
+            <Flex  direction = "column" className='textBox' ml={'5px'} >
+                <Heading fontSize={'m'} fontFamily={'body'} fontWeight={500} p="5px">
                     {park.name}
                 </Heading>
-                <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    {park.rating}
+                <Text color={'gray.500'} fontSize={'md'} pl="5px">
+                    Rating: {park.rating}/5
                 </Text>
-                <Text fontWeight={800} fontSize={'s'}>
+                <Text fontWeight={800} fontSize={'s'} pl="5px" pr="5px" pb= "5px" p="5px">
                     {park.formatted_address}
                 </Text>
-            </div>
-            <Center>
+            </Flex>
+            <Center mt={'auto'}>
                 <Image
+                    mb= "10px"
                     rounded={'lg'}
                     height={100}
                     width={100}
                     objectFit={'cover'}
                     src={park.icon}
                 />
+             
             </Center>
-        </Box>
+        </Flex>   
+
 
     )
 }

@@ -3,7 +3,7 @@ import Adoption from 'src/components/Adoption'
 
 function Discover() {
   return (
-    <div>Discover
+    <div>
       <Adoption/>
     </div>
   )

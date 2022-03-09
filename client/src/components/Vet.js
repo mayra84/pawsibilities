@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Geocode from 'react-geocode';
 import GoogleMapReact from 'google-map-react';
 import ParkCard from './DogParkCard';
-import { Box, Image, SimpleGrid } from '@chakra-ui/react';
+import { Box, Center, Image, SimpleGrid } from '@chakra-ui/react';
 import Marker from './Marker';
 import SmoothList from 'react-smooth-list';
 
@@ -96,6 +96,7 @@ function Vet( { props }) {
 
   return (
 
+    <SimpleGrid columns={{ sm: 2, md: 2, lg: 2 }} mb= "10px">
     <SmoothList transitionDuration={1400}>
     <div>
       <div>
@@ -112,27 +113,26 @@ function Vet( { props }) {
    return <Marker  lat={park.geometry.location.lat()}
    lng={park.geometry.location.lng()} key = {park.reference} park = {park}/>
 })}
-  
           </GoogleMapReact>
         </div>
+      </div>
+    </div>
+    </SmoothList>
+    <SmoothList transitionDuration={1400}>
+       
         <SmoothList transitionDuration={1400}>
-        <div onClick={_onClick}> Click to show all Local Veterinarians
-        {show &&
-        <SmoothList transitionDuration={1400}>
-        <Box bg = "#83C5BE" maxW='lg' m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
-          <SimpleGrid columns={{ sm: 2, md: 2, lg: 2 }}>
+            <Center >
+        <Box bg = "#83C5BE" w={'auto'} m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
+          <SimpleGrid columns={{ sm: 2, md: 2, lg: 3 }}>
             {store.map((park) => {
               return  <ParkCard key={park.reference} park={park} />
             })}
           </SimpleGrid>
         </Box>
+        </Center>
         </SmoothList>
-         }
-        </div>
         </SmoothList>
-      </div>
-    </div>
-    </SmoothList>
+    </SimpleGrid>
   )
 }
 

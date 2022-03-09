@@ -395,6 +395,18 @@ const NAV_ITEMS = [
             },
             {
                 label: 'Discover',
+                children: [
+                            {
+                                label: 'Explore Design Work',
+                                subLabel: 'Trending Design to inspire you',
+                                href: '#',
+                            },
+                            {
+                                label: 'New & Noteworthy',
+                                subLabel: 'Up-and-coming Designers',
+                                href: '#',
+                            },
+                        ],
                 href: '/map',
             },
             {

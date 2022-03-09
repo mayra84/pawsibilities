@@ -169,7 +169,7 @@ export default function AllDogs(props) {
                     </ModalContent>
                 </Modal>
 
-
+                <SmoothList transitionDuration={1000} delay={100}>
                 <SimpleGrid columns={{ sm: 1, lg: 2 }} alignItems='stretch' spacing={20} m={10}>
 
                     {dogs.map((dog) => (
@@ -280,6 +280,7 @@ export default function AllDogs(props) {
                         </Box>
                     ))}
                 </SimpleGrid>
+                </SmoothList>
             </Center>
         </Box >
     );

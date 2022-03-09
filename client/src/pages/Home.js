@@ -10,7 +10,6 @@ import HomePageRegistration from 'src/components/HomePageRegistration'
 import Carousel from '../components/Carousel'
 // import DogProfileForm from './DogProfileForm'
 import Login from './Login'
-
 // import Features from '../Features'
 
 function Home() {
@@ -35,16 +34,7 @@ function Home() {
           <Carousel />
 
           <HomePageRegistration />
-          
-          {/* <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
-            <Center p={'10'} height='60vh'>
-              <HomePageHero />
-
-              <Divider borderColor={'transparent'} orientation='vertical' mx={'15%'} />
-
-              <Register />
-            </Center>
-          </Flex> */}
+      
 
 
         </div>

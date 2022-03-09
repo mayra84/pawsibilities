@@ -26,7 +26,8 @@ module.exports = {
           model: 'Dogs',
           key: 'id'
         },
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

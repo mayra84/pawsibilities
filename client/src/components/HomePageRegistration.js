@@ -48,7 +48,8 @@ function HomePageRegistration() {
                     <SmoothList transitionDuration={600}>
                         <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
                             <AlertIcon />
-                            Registration successful!&nbsp; <Link as={RouterLink} to="/login"> Click here to log in. </Link>
+                            {/* Registration successful!&nbsp;<Link style={{ textDecoration: 'underline' }} to="/login">Click Here to log in.</Link> */}
+                            Registration successful!&nbsp; <Link style={{ textDecoration: 'underline' }} as={RouterLink} to="/login"> Click here to log in. </Link>
                         </Alert>
                     </SmoothList>
                 )}
@@ -73,7 +74,7 @@ function HomePageRegistration() {
                                 bgColor={'rgba(255 255 255 /70%)'}
                                 backdropFilter={'blur(2px)'}
 
-                                direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={'xl'} p={'8'} borderRadius={'10'} border={'2px'} color={'brand.201'}>
+                                direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={'xl'} p={'8'} borderRadius={'10'} >
                                 <FormControl color={'black'} mb={'5'}>
                                     <FormLabel>Email</FormLabel>
                                     <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
@@ -89,7 +90,7 @@ function HomePageRegistration() {
                                     <Input required value={zipcode} onChange={(e) => setZipcode(e.target.value)} type={'zipcode'} />
                                     <FormErrorMessage>Error message</FormErrorMessage>
                                 </FormControl>
-                                <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Sign Up</Button>
+                                <Button isLoading={loading} color={'teal'} loadingText='Submitting' type={'submit'}>Sign Up</Button>
                             </Flex>
                         </Center>
                     </Flex>

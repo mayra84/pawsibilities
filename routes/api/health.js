@@ -67,6 +67,7 @@ router.post('/log/:id', checkAuth, upload.array('image'), async (req, res) => {
 
     //create new item
     //magic method 
+    console.log('oh no')
     const log = await dog.createHealth({
         mood,
         physical,

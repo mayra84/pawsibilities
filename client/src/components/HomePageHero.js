@@ -8,7 +8,7 @@ function HomePageHero() {
         <Container boxShadow={'lg'}
                 bgColor={'rgba(255 255 255 /60%)'}
                 backdropFilter={'blur(2px)'}
-                borderRadius={'10'} border={'2px'} color={'brand.201'} maxW={'xl'} justifyContent={'center'} alignItems={'center'}>
+                borderRadius={'10'} maxW={'xl'} justifyContent={'center'} alignItems={'center'}>
         <SimpleGrid minChildWidth='120px' spacing='40px'>
         <Stack
         p={'10'}

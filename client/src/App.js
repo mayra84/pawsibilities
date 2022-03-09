@@ -17,6 +17,7 @@ import Discover from './pages/Discover';
 import DogProfile from './pages/DogProfile';
 import { useEffect } from 'react';
 import { checkUser } from './redux/reducers/userReducer';
+import PawsibilitiesLogo from './pages/PawsibilitiesLogo';
 
 
 
@@ -43,6 +44,8 @@ function App() {
         <Route path="/map" element={<Map />} />
 
         <Route path="/map" element={<Map/>} />
+
+        <Route path="/pawsibilities" element={<PawsibilitiesLogo/>} />
 
 
 

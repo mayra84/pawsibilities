@@ -35,7 +35,7 @@ import {
             Having a pet is not a only a privilege, but a responsibility. It is our obligation to care for our pets to the absolute best of our abilities. How can you, a person with a non-stop, busy life filled with countless obligations, pawssibly keep track of yet another aspect of your life? 
             <br></br>
             <br></br>
-            Do not fret! Pawsibilities is here to help. With this app you can track your pet's health daily. So, you can carry a clean conscience to your next vet visit knowing you have monitored your pets behavior and health to the best pawssible extent.
+            Do not fret! Pawsibilities is here to help. With this app you can track your pet's health daily. So, you can carry a clean conscience to your next vet visit knowing you have monitored your pets health to the best pawssible extent.
           </Text>
         </Box>
       </Center>

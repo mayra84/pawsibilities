@@ -48,7 +48,7 @@ app.use('/api/v1/dogs', apiDogsRouter)
 app.use('/api/v1/health', apiHealthRouter)
 
 app.use('*', (req, res) => {
-  res.send(path.join(__dirname, 'client/build/index.html'))
+  res.sendFile(path.join(__dirname, 'client/build/index.html'))
 })
 
 module.exports = app;

@@ -40,7 +40,7 @@ export default function Carousel() {
     'https://cdn.pixabay.com/photo/2020/06/21/14/04/border-collie-5324985_1280.jpg',
     'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/upwk62174353-wikimedia-image.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=ad86a8f60950da5faf2f06d6351c1bc8', 
     './IMG_1751.JPG',   
-    './IMG_1784_2.JPG',
+    './IMG_1784_2.jpg',
 
     'https://cdn.pixabay.com/photo/2019/02/13/11/26/dog-3994180_1280.jpg',
     'https://www.maxpixel.net/static/photo/1x/Welsh-Corgi-Pembroke-Corgi-Dog-Pet-Cute-Animal-4237619.jpg',

@@ -134,7 +134,9 @@ export default function CreatorProfiles() {
                         textAlign={'center'}
                         color={useColorModeValue('gray.700', 'gray.400')}
                         px={3}>
-                            My inspiration came from some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers
+                            My inspiration came from 
+                            seeing adoption centers overflow with dogs people returned once they had to go back to work in person. By incorporating certain technologies, Pawsibilities makes it easier to find adoption centers near you, among other things.
+                            {/* some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers */}
                     </Text>
 
                     <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>

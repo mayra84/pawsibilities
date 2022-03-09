@@ -100,6 +100,15 @@ function DogPark( { props }) {
     setMap(map)
   };
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const OverlayOne = () => (
+    <ModalOverlay
+        bg='blackAlpha.300'
+        backdropFilter='blur(10px)'
+    />
+)
+
+const [overlay, setOverlay] = React.useState(<OverlayOne />)
  
 
   return (
@@ -125,6 +134,7 @@ function DogPark( { props }) {
           </GoogleMapReact>
         </div>
       <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose} >
+      {overlay}
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>All local Dog Parks</ModalHeader>

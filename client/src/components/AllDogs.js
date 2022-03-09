@@ -21,19 +21,23 @@ import {
     AlertIcon,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { fetchDogs } from 'src/redux/reducers/dogReducer';
 import DogProfileForm from './DogProfileForm';
 import SmoothList from 'react-smooth-list';
 import { removeDog } from 'src/redux/reducers/dogReducer';
+import Hero from './Hero';
+import DogProfileUpdateForm from './DogProfileUpdateForm';
 
 export default function AllDogs(props) {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const { dogs, user } = useSelector((state) => state)
+
+    const [selectedDog, setSelectedDog] = useState(null)
 
     const dispatch = useDispatch()
 
@@ -53,9 +57,20 @@ export default function AllDogs(props) {
 
     const [displayAlert, setDisplayAlert] = useState(false)
     // useEffect(() => {
-        const timer = setTimeout(() => {
-            setDisplayAlert(false);
-        }, 7000)
+    const timer = setTimeout(() => {
+        setDisplayAlert(false);
+    }, 7000)
+
+
+    const OverlayOne = () => (
+        <ModalOverlay
+            bg='blackAlpha.300'
+            backdropFilter='blur(10px)'
+        />
+    )
+
+    const [overlay, setOverlay] = React.useState(<OverlayOne />)
+
 
     // const handleRemoveDog = () => {
     //     dispatch(removeDog)
@@ -95,26 +110,56 @@ export default function AllDogs(props) {
 
         <Box>
             {displayAlert && (
-                    <SmoothList transitionDuration={600}>
-                        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
-                            <AlertIcon />
-                            Profile successfully created!
-                        </Alert>
-                    </SmoothList>
-                )}
-            <Stack maxW={'40'} m={'0 auto'}>
+                <SmoothList transitionDuration={600}>
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
+                        <AlertIcon />
+                        Profile successfully created!
+                    </Alert>
+                </SmoothList>
+            )}
+            <Stack >
+                <SmoothList transitionDuration={1400}>
+                    <Stack direction={'row'} spacing={'68'} m={''}>
+                        {dogs.length === 0 ? (
+                            <Hero />
 
-                <Button onClick={onOpen} bgColor={'gray.200'}>Add Dog Profile</Button>
+                        ) : (
+                            <Stack mt={'0'} maxW={'40'} m={'0 auto'}>
+
+                                <Button onClick={onOpen} bgColor={'teal'}
+                                    fontSize={'sm'}
+                                    rounded={'full'}
+                                    colorScheme={'teal.500'}
+                                    bg={'teal'}
+                                    borderRadius={'8'}
+                                    px={6}
+                                    _hover={{
+                                        bg: 'teal.300',
+                                    }}>Add Dog Profile</Button>
+                            </Stack>
+
+                        )
+
+                        }
+                    </Stack>
+                </SmoothList>
             </Stack>
             <Center py={6}>
 
                 <Modal isOpen={isOpen} onClose={onClose} size={'lg'}>
+                    {overlay}
                     <ModalOverlay />
                     <ModalContent>
                         <ModalCloseButton />
                         <ModalBody>
 
-                            <DogProfileForm onSuccess={handleSuccess} />
+                            {selectedDog ? (
+                                <DogProfileUpdateForm dog={selectedDog}/>
+                            ) : (
+
+                                <DogProfileForm onSuccess={handleSuccess} />
+                            )}
+
 
                         </ModalBody>
 
@@ -133,7 +178,8 @@ export default function AllDogs(props) {
                             key={dog.id}
                             bgColor={'rgba(255 255 255 /90%)'}
                             backdropFilter={'blur(2px)'}
-                            borderRadius={'10'} border={'2px'} color={'brand.201'}
+                            borderRadius={'10'} 
+                            // border={'2px'} color={'brand.201'}
                             maxW={'800px'}
                             w={'full'}
 
@@ -211,36 +257,22 @@ export default function AllDogs(props) {
                                     </Button>
                                     <Button
 
-                                        onClick={
-                                            
-                                            async () => {
-                                                const res = await fetch(`/api/v1/dogs/${dog.id}`, {
-                                                    method: 'PUT',
-                                                    body: JSON.stringify(dog),
-                                                    headers: {
-                                                        'Content-Type': 'application/json'
-                                                    }
-                                                })
-
-                                                dispatch(fetchDogs)
-                                            }
-                                            // () => dispatch(removeDog(dog))
-                                        }
+                                        onClick={() => {
+                                            onOpen()
+                                            setSelectedDog(dog)
+                                        }}
 
                                         flex={1}
-                                        fontSize={'sm'}
-                                        rounded={'full'}
-                                        bg={'blue.400'}
-                                        color={'white'}
-                                        boxShadow={
-                                            '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                                        }
-                                        _hover={{
-                                            bg: 'blue.500',
-                                        }}
-                                        _focus={{
-                                            bg: 'blue.500',
-                                        }}>
+                                        bgColor={'teal'}
+                                    fontSize={'sm'}
+                                    rounded={'full'}
+                                    colorScheme={'teal.500'}
+                                    bg={'teal'}
+                                    borderRadius={'8'}
+                                    px={6}
+                                    _hover={{
+                                        bg: 'teal.300',
+                                    }}>
                                         Update
                                     </Button>
                                 </Stack>

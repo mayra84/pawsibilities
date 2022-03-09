@@ -3,12 +3,12 @@ import { Box, Image } from '@chakra-ui/react'
 import React from 'react'
 
 function ImageButton(props) {
-console.log(props)
+// console.log(props)
   return (
 
     <Box position={'relative'} >
     <Image
-    border={'2px'} color={'brand.201'}
+    // border={'2px'} color={'brand.201'}
     cursor={'pointer'}
     onClick={props.onClick}
     boxShadow={'lg'}
@@ -24,6 +24,7 @@ console.log(props)
     { props.isActive && (
 
     <CheckCircleIcon
+    color={'teal.500'}
     boxSize={'8'}
     borderRadius={'50%'}
     bgColor={'white'}

@@ -9,7 +9,7 @@ const { Op } = require("sequelize");
 const upload = require('../../upload');
 
 //create
-router.post('/log/:id', checkAuth, async (req, res) => {
+router.post('/log/:id', checkAuth, upload.array('image'), async (req, res) => {
 
     //when on home page
     //get all dogs for that user 
@@ -61,16 +61,23 @@ router.post('/log/:id', checkAuth, async (req, res) => {
     }
 
 
+    const mood = typeof req.body.mood === "string" ? req.body.mood.split(',') : req.body.mood
+    const physical = typeof req.body.physical === "string" ? req.body.physical.split(',') : req.body.physical
+    const activity = typeof req.body.activity === "string" ? req.body.activity.split(',') : req.body.activity
+
     //create new item
     //magic method 
     const log = await dog.createHealth({
-        mood: req.body.mood,
-        physical: req.body.physical,
-        activity: req.body.activity,
+        mood,
+        physical,
+        activity,
         notes: req.body.notes,
-        HealthImages: [{
-            name: req.files.originalname, location: req.files.location, data: req.files
-        }]
+        Images: req.files.map(file => {
+            return {
+                name: file.originalname, location: file.location, data: file
+            }
+        })
+        
         // Image: {
         //     name: req.files[0].originalname,
         //     location: req.files[0].location,
@@ -78,7 +85,7 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         // }
         // ImageId: req.body.image.id
     }, {
-        include: db.HealthImages
+        include: db.Image
         // include: db.Image
     })
     
@@ -115,6 +122,7 @@ router.delete('/:id', checkAuth, async (req, res) => {
     res.status(204).json({ success: 'Log successfully deleted'})
 })
 
+
 //read
 
 //INCLUDE: DB.IMAGE????????????
@@ -124,14 +132,17 @@ router.get('/', checkAuth, async (req, res) => {
     const health = await db.Health.findAll({
         //nested where
         
-        include: {
+        include: [{
             model: db.Dog,
             where: {
                 UserId: req.session.user.id
             },
-            // db.Image,
-        }
-        // include: db.Image,
+            include: db.Image
+        },
+        {
+            model: db.Image
+        }]
+       
     })
     res.json(health)
 })

@@ -21,9 +21,13 @@ import {
     useDisclosure,
     Image,
     Flex,
+    SimpleGrid,
+    Alert,
+    AlertIcon,
+    CloseButton,
 } from '@chakra-ui/react';
 import HealthLog from './HealthLog';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DogIcon from './DogIcon';
 import Card from './Card';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,11 +49,28 @@ export default function CurrentDay(props) {
     //map over them
     //onClick={() => setDog(dog)}
 
+
+    // const handleModalOnClick = () => {
+    //     onOpen()
+    //     setOverlay(<OverlayOne />)
+    // }
+
+    const OverlayOne = () => (
+        <ModalOverlay
+            bg='blackAlpha.300'
+            backdropFilter='blur(10px)'
+        />
+    )
+
+    const [overlay, setOverlay] = React.useState(<OverlayOne />)
+
+
     const dispatch = useDispatch()
 
     const [activeDog, setActiveDog] = useState(null)
 
     const { dogs, user } = useSelector((state) => state)
+    const [complete, setComplete] = useState(false)
 
     useEffect(() => {
         if (!user) {
@@ -68,11 +89,30 @@ export default function CurrentDay(props) {
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const handleSuccess = () => {
+        dispatch(fetchDogs)
+        onClose()
+        setComplete(true)
+
+        console.log('yay')
+    }
  
     return (
+
             <SmoothList transitionDuration={1400}>
-                <Flex justify={'center'}>
-                    <Stack alignItems={'center'} 
+                {complete && (
+                <SmoothList transitionDuration={600}>
+                    <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='success'>
+                        <AlertIcon />
+                        Successfully logged!
+                        <CloseButton onClick={() => setComplete(false)} position='absolute' right='8px' top='8px' />
+                    </Alert>
+
+                </SmoothList>
+            )}
+                <Flex justify={'center'} w={'100%'}>
+                    <Stack alignItems={'center'} w={'100%'}
                     >
                         <Stack direction={'row'} spacing={'68'} m={'10'}>
                             {dogs.length === 0 &&
@@ -95,18 +135,35 @@ export default function CurrentDay(props) {
                                 </Box>
                             ))}
                         </Stack>
+
+{/* <SimpleGrid direction={'row'} columns={{ sm: 1, md: 2, lg: 3 }}  */}
+{/* // direction={{ base: 'column', md: 'row' }}
+> */}
+
+{/* direction={{ base: 'row', sm: 'column',  }} justifyContent={'space-between'} */}
+                        <Stack alignItems={{sm: 'center', lg: 'flex-start'}} direction={{ lg: 'row', sm: 'column',  }} w={'95%'} maxW={'2300px'} justifyContent={'space-between'}
+                        // gap={'650'}
+                        >
+                            {/* <Box> */}
+                            <Box>
+                            <Card />
+                            </Box>
                         <Box
+                        order={{lg: 0, sm: -1}}
+                        // m={'0 auto'}
                         // mn={0}
-                            borderRadius={'10'} border={'2px'} color={'brand.201'}
-                            maxW={'320px'}
-                            w={'full'}
+                            //  border={'2px'} color={'brand.201'}
+                            // maxW={'320px'}
+                            // w={'full'}
                             bg={useColorModeValue('white', 'gray.900')}
                             boxShadow={'2xl'}
                             borderRadius={'500'}
-                            // minW={'320px'}
+                            minW={'325px'}
                             //   rounded={'lg'}
+                            maxH={'350'}
                             p={6}
-                            textAlign={'center'}>
+                            textAlign={'center'}
+                            >
 
                             <Heading p={'2'} color={'black'} fontSize={'4xl'} fontFamily={'body'} >
                                 {/* February */}
@@ -124,30 +181,55 @@ export default function CurrentDay(props) {
                                 <Button
                                     m={'0 auto'}
                                     // size={'xs'}
+
+//IF SOMETHING BROKE IT MIGHT HAVE BEEN HERE WITH THE ONCLICK
+
+
                                     onClick={onOpen}
                                     // alignSelf={'center'}
                                     //   flex={1}
+                                    
                                     fontSize={'sm'}
                                     rounded={'full'}
-                                    _focus={{
-                                        bg: 'gray.200',
-                                    }}>
+                                    // _focus={{
+                                    //     bg: 'gray.200',
+                                    // }}
+
+                                    bgColor={'teal.500'}
+                            colorScheme={'teal.500'}
+                            bg={'teal.500'}
+                            borderRadius={'8'}
+                            px={6}
+                            _hover={{
+                                bg: 'teal.300',
+                            }}
+
+
+                                    >
                                     Open Health Survey
                                 </Button>
                             </Stack>
                         </Box>
+                        <Box>
+                        <Card2 />
+                        </Box>
+                        {/* </Box> */}
+                        </Stack>
+                        {/* </SimpleGrid> */}
+
                     </Stack>
 
                     {/* </Link> */}
 
                     <Modal size={'6xl'} isOpen={isOpen} onClose={onClose}>
+                        {overlay}
                         <ModalOverlay />
                         <ModalContent>
 
                             <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>Log {activeDog?.name}'s health for today</ModalHeader>
                             <ModalCloseButton />
                             <ModalBody>
-                                <HealthLog dog={activeDog} />
+                                <HealthLog dog={activeDog} onSuccess={handleSuccess} />
                             </ModalBody>
 
                             <ModalFooter>

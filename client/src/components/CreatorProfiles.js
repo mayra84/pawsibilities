@@ -18,7 +18,7 @@ export default function CreatorProfiles() {
     
     return (
             <SmoothList transitionDuration={1200} delay={200}>
-        <Center p={'10'} height='80vh'>
+        <Center p={'10'} height='50vh'>
             {/* <Center py={6}> */}
                 <Box
                     maxW={'320px'}
@@ -26,7 +26,7 @@ export default function CreatorProfiles() {
                     bg={useColorModeValue('white', 'gray.900')}
                     boxShadow={'2xl'}
                     rounded={'lg'}
-                    p={6}
+                    p={10}
                     textAlign={'center'}>
                     <Avatar
                         size={'xl'}
@@ -36,17 +36,17 @@ export default function CreatorProfiles() {
                         alt={'Avatar Alt'}
                         mb={4}
                         pos={'relative'}
-                        _after={{
-                            content: '""',
-                            w: 4,
-                            h: 4,
-                            bg: 'green.300',
-                            border: '2px solid white',
-                            rounded: 'full',
-                            pos: 'absolute',
-                            bottom: 0,
-                            right: 3,
-                        }}
+                        // _after={{
+                        //     content: '""',
+                        //     w: 4,
+                        //     h: 4,
+                        //     bg: 'green.300',
+                        //     border: '2px solid white',
+                        //     rounded: 'full',
+                        //     pos: 'absolute',
+                        //     bottom: 0,
+                        //     right: 3,
+                        // }}
                     />
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
                         Mayra Estrella
@@ -64,7 +64,7 @@ export default function CreatorProfiles() {
                         {/* came from taking my eldest dog, Dalton, to the vet. We needed to give very precise information about Dalton's timeline and I realized.. I couldn't exactly remember. I was profoundly disappointed in my lack of responsibility. This was the exact moment I thought of Pawsibilities.  */}
                     </Text>
 
-                    <Stack mt={8} direction={'row'} spacing={4}>
+                    {/* <Stack mt={8} direction={'row'} spacing={4}>
                         <Button
                             flex={1}
                             fontSize={'sm'}
@@ -91,10 +91,10 @@ export default function CreatorProfiles() {
                             }}>
                             Follow
                         </Button>
-                    </Stack>
+                    </Stack> */}
                 </Box>
 
-                <Divider lineHeight={'20'} orientation='vertical' borderColor={'gray'} mx={'10%'} />
+                <Divider lineHeight={'20'} orientation='vertical' borderColor={'gray'} mx={'20%'} />
 
                 <Box
                     maxW={'320px'}
@@ -102,7 +102,7 @@ export default function CreatorProfiles() {
                     bg={useColorModeValue('white', 'gray.900')}
                     boxShadow={'2xl'}
                     rounded={'lg'}
-                    p={6}
+                    p={10}
                     textAlign={'center'}>
                     <Avatar
                         size={'xl'}
@@ -112,17 +112,17 @@ export default function CreatorProfiles() {
                         alt={'Avatar Alt'}
                         mb={4}
                         pos={'relative'}
-                        _after={{
-                            content: '""',
-                            w: 4,
-                            h: 4,
-                            bg: 'green.300',
-                            border: '2px solid white',
-                            rounded: 'full',
-                            pos: 'absolute',
-                            bottom: 0,
-                            right: 3,
-                        }}
+                        // _after={{
+                        //     content: '""',
+                        //     w: 4,
+                        //     h: 4,
+                        //     bg: 'green.300',
+                        //     border: '2px solid white',
+                        //     rounded: 'full',
+                        //     pos: 'absolute',
+                        //     bottom: 0,
+                        //     right: 3,
+                        // }}
                     />
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
                         Zaria Mcburrows
@@ -161,7 +161,7 @@ export default function CreatorProfiles() {
                         </Badge>
                     </Stack>
 
-                    <Stack mt={8} direction={'row'} spacing={4}>
+                    {/* <Stack mt={8} direction={'row'} spacing={4}>
                         <Button
                             flex={1}
                             fontSize={'sm'}
@@ -188,7 +188,7 @@ export default function CreatorProfiles() {
                             }}>
                             Follow
                         </Button>
-                    </Stack>
+                    </Stack> */}
                 </Box>
             {/* </Center> */}
         </Center>

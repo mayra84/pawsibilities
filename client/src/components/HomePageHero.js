@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Image, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Heading, Image, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 import React from 'react'
 import { Link, Link as RouterLink } from 'react-router-dom'
 
@@ -9,6 +9,7 @@ function HomePageHero() {
                 bgColor={'rgba(255 255 255 /60%)'}
                 backdropFilter={'blur(2px)'}
                 borderRadius={'10'} border={'2px'} color={'brand.201'} maxW={'xl'} justifyContent={'center'} alignItems={'center'}>
+        <SimpleGrid minChildWidth='120px' spacing='40px'>
         <Stack
         p={'10'}
         justifyContent={'center'}
@@ -29,6 +30,7 @@ function HomePageHero() {
             
 
         </Stack>
+        </SimpleGrid>
       </Container>
     </div>
   )

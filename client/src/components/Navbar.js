@@ -71,7 +71,7 @@ export default function WithSubnavigation(props) {
                         aria-label={'Toggle Navigation'}
                     />
                 </Flex>
-                <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+                <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'center' }}>
                     <Image
                    cursor={'pointer'}
                         boxShadow={'lg'}
@@ -168,55 +168,112 @@ const DesktopNav = () => {
     const linkColor = useColorModeValue('gray.600', 'gray.200');
     const linkHoverColor = useColorModeValue('gray.800', 'white');
     const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+    const currentUser = useSelector(state => state.user.currentUser)
 
     return (
         // <SmoothList transitionDuration={1200} delay={200}>
-        <Stack justify={'center'}
-            align={'center'} direction={'row'} spacing={28}>
- 
-            <Link as={RouterLink} to="/">Home</Link>
-            <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
-            <Link as={RouterLink} to="/map">Discover</Link>
-            <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
-            <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
-
-            {/* {NAV_ITEMS.map((navItem) => (
-                <Box key={navItem.label}>
-                    <Popover trigger={'hover'} placement={'bottom-start'}>
-                        <PopoverTrigger>
-                            <Link
-                                p={2}
-                                href={navItem.href ?? '#'}
-                                fontSize={'sm'}
-                                fontWeight={500}
-                                color={linkColor}
-                                _hover={{
-                                    textDecoration: 'none',
-                                    color: linkHoverColor,
-                                }}>
-                                {navItem.label}
-                            </Link>
-                        </PopoverTrigger>
-
-                        {navItem.children && (
-                            <PopoverContent
-                                border={0}
-                                boxShadow={'xl'}
-                                bg={popoverContentBgColor}
-                                p={4}
-                                rounded={'xl'}
-                                minW={'sm'}>
-                                <Stack>
-                                    {navItem.children.map((child) => (
-                                        <DesktopSubNav key={child.label} {...child} />
-                                    ))}
-                                </Stack>
-                            </PopoverContent>
-                        )}
-                    </Popover>
-                </Box>
-            ))} */}
-        </Stack>
+<Flex>
+        {currentUser ? (
+<>
+            <Stack justify={'center'}
+                align={'center'} direction={'row'} spacing={28}>
+     
+                <Link as={RouterLink} to="/">Home</Link>
+                <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
+                <Link as={RouterLink} to="/map">Discover</Link>
+                
+                <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
+                <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+    
+                {/* {NAV_ITEMS.map((navItem) => (
+                    <Box key={navItem.label}>
+                        <Popover trigger={'hover'} placement={'bottom-start'}>
+                            <PopoverTrigger>
+                                <Link
+                                    p={2}
+                                    href={navItem.href ?? '#'}
+                                    fontSize={'sm'}
+                                    fontWeight={500}
+                                    color={linkColor}
+                                    _hover={{
+                                        textDecoration: 'none',
+                                        color: linkHoverColor,
+                                    }}>
+                                    {navItem.label}
+                                </Link>
+                            </PopoverTrigger>
+    
+                            {navItem.children && (
+                                <PopoverContent
+                                    border={0}
+                                    boxShadow={'xl'}
+                                    bg={popoverContentBgColor}
+                                    p={4}
+                                    rounded={'xl'}
+                                    minW={'sm'}>
+                                    <Stack>
+                                        {navItem.children.map((child) => (
+                                            <DesktopSubNav key={child.label} {...child} />
+                                        ))}
+                                    </Stack>
+                                </PopoverContent>
+                            )}
+                        </Popover>
+                    </Box>
+                ))} */}
+            </Stack>
+            </>
+        ) : (
+<>
+            <Stack justify={'center'}
+                align={'center'} direction={'row'} spacing={28}>
+     
+                {/* <Link as={RouterLink} to="/">Home</Link>
+                <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
+                <Link as={RouterLink} to="/map">Discover</Link>
+                <Link as={RouterLink} to="/dogprofile">Dog Profile</Link> */}
+                <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+    
+                {/* {NAV_ITEMS.map((navItem) => (
+                    <Box key={navItem.label}>
+                        <Popover trigger={'hover'} placement={'bottom-start'}>
+                            <PopoverTrigger>
+                                <Link
+                                    p={2}
+                                    href={navItem.href ?? '#'}
+                                    fontSize={'sm'}
+                                    fontWeight={500}
+                                    color={linkColor}
+                                    _hover={{
+                                        textDecoration: 'none',
+                                        color: linkHoverColor,
+                                    }}>
+                                    {navItem.label}
+                                </Link>
+                            </PopoverTrigger>
+    
+                            {navItem.children && (
+                                <PopoverContent
+                                    border={0}
+                                    boxShadow={'xl'}
+                                    bg={popoverContentBgColor}
+                                    p={4}
+                                    rounded={'xl'}
+                                    minW={'sm'}>
+                                    <Stack>
+                                        {navItem.children.map((child) => (
+                                            <DesktopSubNav key={child.label} {...child} />
+                                        ))}
+                                    </Stack>
+                                </PopoverContent>
+                            )}
+                        </Popover>
+                    </Box>
+                ))} */}
+            </Stack>
+            </>
+        )}
+        </Flex>
         // </SmoothList>
     );
 };

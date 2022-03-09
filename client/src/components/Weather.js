@@ -14,6 +14,7 @@ function Weather({ currentUser }) {
     // console.log("this is the ", currentUser)
     // const {users} = props;
 
+
     useEffect(() => {
         if (!currentUser) {
             return

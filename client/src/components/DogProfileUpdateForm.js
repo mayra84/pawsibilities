@@ -28,22 +28,24 @@ import AllDogs from './AllDogs';
 import SmoothList from 'react-smooth-list';
 import FileUpload from './FileUpload';
 
-export default function DogProfileForm(props) {
-    // const { dog } = props
+export default function DogProfileUpdateForm(props) {
+    const { dog } = props
+    console.log(dog)
 
     const dispatch = useDispatch()
     // const dogs = useSelector((state) => state.dog)
 
-    const [name, setName] = useState('')
-    const [breed, setBreed] = useState('')
+    const [name, setName] = useState(dog.name)
+    const [breed, setBreed] = useState(dog.breed)
     //weight is an integer, does this affect default state? 
-    const [weight, setWeight] = useState('')
-    const [size, setSize] = useState('')
-    const [age, setAge] = useState('')
-    const [temperament, setTemperament] = useState('')
-    const [coat, setCoat] = useState('')
-    const [bio, setBio] = useState('')
-    const [image, setImage] = useState([])
+    const [weight, setWeight] = useState(dog.weight)
+    const [size, setSize] = useState(dog.size)
+    const [age, setAge] = useState(dog.age)
+    const [temperament, setTemperament] = useState(dog.temperament)
+    const [coat, setCoat] = useState(dog.coat)
+    const [bio, setBio] = useState(dog.bio)
+    const [image, setImage] = useState(dog.Image?.location)
+    const [newImage, setNewImage] = useState([])
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
@@ -71,8 +73,8 @@ export default function DogProfileForm(props) {
         formData.append('temperament', temperament);
         formData.append('coat', coat);
         formData.append('bio', bio);
-        formData.append('image', image[0])      // dispatch(addDog(dogs))
-        axios.post('api/v1/dogs/register', formData)
+        formData.append('image', newImage[0])      // dispatch(addDog(dogs))
+        axios.put(`/api/v1/dogs/${props.dog.id}`, formData)
             .then(data => {
                 setName('')
                 setBreed('')
@@ -164,7 +166,7 @@ export default function DogProfileForm(props) {
                                 Dog Profile
                             </Heading>
                             <FormControl id="userName">
-                                <FormLabel></FormLabel>
+                                <FormLabel>User Icon</FormLabel>
                                 <Stack direction={['column', 'row']} spacing={6}>
                                     <Center>
                                         <Avatar border={'2px'} color={'brand.201'} size="xl" src={image}>
@@ -181,7 +183,7 @@ export default function DogProfileForm(props) {
                                     </Center>
                                     <Center w="full">
 
-                                        <FileUpload isRequired value={image} onChange={((e) => { setImage(e.target.files) })}>Profile Image</FileUpload>
+                                        <FileUpload value={newImage} onChange={((e) => { setNewImage(e.target.files) })}>Profile Image</FileUpload>
                                     </Center>
                                 </Stack>
                             </FormControl>

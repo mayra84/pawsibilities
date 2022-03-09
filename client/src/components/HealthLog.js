@@ -42,6 +42,9 @@ function HealthLog(props) {
     //HOW TO ADD MULTIPLE THINGS TO STATE? SPREAD? SELECTING MULTIPLE THINGS
     //VALUE? ONCHANGE?
 
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+
     const [mood, setMood] = useState([])
     const [physical, setPhysical] = useState([])
     const [activity, setActivity] = useState([])
@@ -54,66 +57,43 @@ function HealthLog(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        // onclose()
         setLoading(true)
-        axios.post(`/api/v1/health/log/${props.dog.id}`, {
-            mood,
-            physical,
-            activity,
-            notes
-        })
-            .then(data => {
-                setMood([])
-                //check this??????
-                setPhysical('')
-                setActivity('')
-                setNotes('')
-                setLoading(false)
-                setError('')
-                setComplete(true)
 
-            })
-            .catch(error => {
-                setLoading(false)
-                setError(error.response)
-            })
+        const formData = new FormData()
+
+        formData.append('mood', mood)
+        formData.append('physical', physical)
+        formData.append('activity', activity)
+        formData.append('notes', notes)
+        formData.append('image', image[0])
+
+        props.onSuccess()
+
+        // axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
+        // // {
+        // //     mood,
+        // //     physical,
+        // //     activity,
+        // //     notes
+        // // }
+        // // )
+        //     .then(data => {
+        //         setMood([])
+        //         //check this??????
+        //         setPhysical('')
+        //         setActivity('')
+        //         setNotes('')
+        //         setLoading(false)
+        //         setError('')
+        //         setComplete(true)
+
+        //     })
+        //     .catch(error => {
+        //         setLoading(false)
+        //         setError(error.response)
+        //     })
     }
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     setLoading(true)
-
-    //     const formData = new FormData()
-
-    //     formData.append('mood', mood)
-    //     formData.append('physical', physical)
-    //     formData.append('activity', activity)
-    //     formData.append('notes', notes)
-    //     formData.append('image', image[0])
-
-    //     axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
-    //     // {
-    //     //     mood,
-    //     //     physical,
-    //     //     activity,
-    //     //     notes
-    //     // }
-    //     // )
-    //         .then(data => {
-    //             setMood([])
-    //             //check this??????
-    //             setPhysical('')
-    //             setActivity('')
-    //             setNotes('')
-    //             setLoading(false)
-    //             setError('')
-    //             setComplete(true)
-
-    //         })
-    //         .catch(error => {
-    //             setLoading(false)
-    //             setError(error.response)
-    //         })
-    // }
 
     const toggleMood = (value) => {
         setMood([...mood, value])
@@ -248,6 +228,8 @@ function HealthLog(props) {
 
                                                 <ImageButton onClick={() => { togglePhysical('constipation') }} src={'../Constipation.png'} isActive={physical.includes('constipation')} />
 
+                                                <ImageButton onClick={() => { togglePhysical('noAppetite') }} src={'../No_Appetite.png'} isActive={physical.includes('noAppetite')} />
+
                                                 <ImageButton onClick={() => { togglePhysical('none') }} src={'../None_Bone.png'} isActive={physical.includes('none')} />
 
                                                 {/* <Checkbox value='abnormalAppetite'>Abnormal Appetite</Checkbox> */}
@@ -270,19 +252,22 @@ ADD PICTURES FOR THAT DAY */}
                                         <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
                                         <Textarea mb={'10'} color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
                                     </FormControl>
-                                    {/* <FormControl isRequired={false}> */}
+                                    <FormControl isRequired={false}>
                                     {/* HOW TO ALTER STYLE OF THIS COMPONENT */}
-{/* <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Optional Image</FileUpload>
-</FormControl> */}
+ <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Optional Image</FileUpload> 
+</FormControl> 
                                     <Stack>
                                         <Box alignSelf={'flex-end'} spacing={10}>
                                             <Button isLoading={loading} loadingText='Submitting' type={'submit'}
+                                            fontSize={'sm'}
+                                            rounded={'full'}
                                                 alignSelf={'flex-end'}
                                                 marginTop={'5'}
                                                 colorScheme={'teal'}
                                                 color={'white'}
+                                                bgColor={'teal.500'}
                                                 _hover={{
-                                                    bg: 'teal.200',
+                                                    bg: 'teal.300',
                                                 }}>
                                                 Submit
                                             </Button>

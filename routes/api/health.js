@@ -9,7 +9,7 @@ const { Op } = require("sequelize");
 const upload = require('../../upload');
 
 //create
-router.post('/log/:id', checkAuth, async (req, res) => {
+router.post('/log/:id', checkAuth, upload.array('image'), async (req, res) => {
 
     //when on home page
     //get all dogs for that user 
@@ -24,9 +24,6 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         res.status(400).json({ error: 'Please include all required fields'})
         return
     }
-
-
-    //HOW TO KEEP FROM DUPLICATING??
 
     // check if log for specific dog already exists
     const dayStart = new Date()
@@ -64,13 +61,23 @@ router.post('/log/:id', checkAuth, async (req, res) => {
     }
 
 
+    const mood = typeof req.body.mood === "string" ? req.body.mood.split(',') : req.body.mood
+    const physical = typeof req.body.physical === "string" ? req.body.physical.split(',') : req.body.physical
+    const activity = typeof req.body.activity === "string" ? req.body.activity.split(',') : req.body.activity
+
     //create new item
     //magic method 
     const log = await dog.createHealth({
-        mood: req.body.mood,
-        physical: req.body.physical,
-        activity: req.body.activity,
+        mood,
+        physical,
+        activity,
         notes: req.body.notes,
+        Images: req.files.map(file => {
+            return {
+                name: file.originalname, location: file.location, data: file
+            }
+        })
+        
         // Image: {
         //     name: req.files[0].originalname,
         //     location: req.files[0].location,
@@ -79,12 +86,13 @@ router.post('/log/:id', checkAuth, async (req, res) => {
         // ImageId: req.body.image.id
     }, {
         include: db.Image
+        // include: db.Image
     })
     
     //send response
     if (log) {
         res.status(201).json({
-            success: 'Dalton\'s log for today has been successfully created!'
+            success: 'Health has been successfully logged!'
         })
         return
     }
@@ -105,14 +113,15 @@ router.delete('/:id', checkAuth, async (req, res) => {
 
     //if no log, 404
     if (!log) {
-        res.status(404).json({ error: 'could not find log for that date'})
+        res.status(404).json({ error: 'Could not find log for that date'})
         return
     }
     //delete log
     const deleted = await log.destroy()
 
-    res.status(204).json({ success: 'log successfully deleted'})
+    res.status(204).json({ success: 'Log successfully deleted'})
 })
+
 
 //read
 
@@ -123,14 +132,17 @@ router.get('/', checkAuth, async (req, res) => {
     const health = await db.Health.findAll({
         //nested where
         
-        include: {
+        include: [{
             model: db.Dog,
             where: {
                 UserId: req.session.user.id
             },
-            // db.Image,
-        }
-        // include: db.Image,
+            include: db.Image
+        },
+        {
+            model: db.Image
+        }]
+       
     })
     res.json(health)
 })

@@ -64,8 +64,9 @@ function Card2() {
         // p={50} 
         alignItems="center" justifyContent="flex-start">
             <Box
-            mt={'-200'}
-                borderRadius={'10'} border={'2px'} borderColor={'brand.201'}
+            // mt={'-200'}
+                borderRadius={'10'} 
+                // border={'2px'} borderColor={'brand.201'}
                 bg={useColorModeValue('white', 'gray.800')}
                 maxW="sm"
                 // borderWidth="1px"

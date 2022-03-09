@@ -11,7 +11,8 @@ import { fetchDogs } from "src/redux/reducers/dogReducer";
 
 const localizer = momentLocalizer(moment);
 
-const colors = ['#FED9B7', '#F07167', '#006D77', '#00AFB9', '#0081A7']
+const colors = ['#FED9B7', '#F07167', '#006D77']
+// , '#00AFB9', '#0081A7'
 let currentColor = 0
 
 const newColor = () => {
@@ -58,9 +59,28 @@ export default function DogCalendar(props) {
     }
   }, [calendar.logs]
   )
+
+
+  const handleModalOnClick = () => {
+    onOpen()
+    setOverlay(<OverlayOne />)
+}
+
+const OverlayOne = () => (
+    <ModalOverlay
+        bg='blackAlpha.300'
+        backdropFilter='blur(10px)'
+    />
+)
+
+const [overlay, setOverlay] = React.useState(<OverlayOne />)
+
+
   // console.log(colors)
 
   // (console.log(target.onClick()))
+
+  // console.log(info)
 
   return (
     <SmoothList transitionDuration={1400}>
@@ -97,6 +117,7 @@ export default function DogCalendar(props) {
           />
         </Box>
         <Modal size={'3xl'} isOpen={isOpen} onClose={onClose} >
+          {overlay}
           <ModalOverlay />
           <ModalContent>
 
@@ -107,53 +128,6 @@ export default function DogCalendar(props) {
             <ModalBody>
               {info && <DogCalendarCard log={info.resource} />}
             </ModalBody>
-
-            
-            {/* <ModalFooter>
-                            <Stack mt={8} direction={'row'} spacing={4}>
-                                <Button
-                                onClick={
-                                    async () => {
-                                        const res = await fetch(`/api/health/${info.resource.id}`, {
-                                          method: 'DELETE',
-                                          body: JSON.stringify(info.resource),
-                                          headers: {
-                                            'Content-Type': 'application/json'
-                                          }
-                                        })
-                                    
-                                        dispatch(fetchDogs)
-                                      }
-                                    // () => dispatch(removeDog(dog))
-                                }
-                                    flex={1}
-                                    fontSize={'sm'}
-                                    rounded={'full'}
-                                    _focus={{
-                                        bg: 'gray.200',
-                                    }}>
-                                    Delete
-                                </Button>
-                                <Button
-                                    flex={1}
-                                    fontSize={'sm'}
-                                    rounded={'full'}
-                                    bg={'blue.400'}
-                                    color={'white'}
-                                    boxShadow={
-                                        '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                                    }
-                                    _hover={{
-                                        bg: 'blue.500',
-                                    }}
-                                    _focus={{
-                                        bg: 'blue.500',
-                                    }}>
-                                    Update
-                                </Button>
-                            </Stack>
-                            </ModalFooter>
-        */}
           </ModalContent>
         </Modal>
       </Flex>

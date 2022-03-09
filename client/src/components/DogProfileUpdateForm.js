@@ -271,7 +271,7 @@ export default function DogProfileUpdateForm(props) {
                                     <FormLabel>Bio</FormLabel>
                                     <Textarea
                                         required value={bio} onChange={(e) => setBio(e.target.value)}
-                                        placeholder='THIS WILL BE A MODAL also pls provide a short bio thx' />
+                                        placeholder='Please provide a short bio for your dog' />
                                 </FormControl>
                             </Stack>
 

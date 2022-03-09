@@ -68,31 +68,29 @@ function HealthLog(props) {
         formData.append('notes', notes)
         formData.append('image', image[0])
 
-        props.onSuccess()
-
-        // axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
-        // // {
-        // //     mood,
-        // //     physical,
-        // //     activity,
-        // //     notes
-        // // }
-        // // )
-        //     .then(data => {
-        //         setMood([])
-        //         //check this??????
-        //         setPhysical('')
-        //         setActivity('')
-        //         setNotes('')
-        //         setLoading(false)
-        //         setError('')
-        //         setComplete(true)
-
-        //     })
-        //     .catch(error => {
-        //         setLoading(false)
-        //         setError(error.response)
-        //     })
+        axios.post(`/api/v1/health/log/${props.dog.id}`, formData)
+            // {
+            //     mood,
+            //     physical,
+            //     activity,
+            //     notes
+            // }
+            // )
+            .then(data => {
+                setMood([])
+                //check this??????
+                setPhysical('')
+                setActivity('')
+                setNotes('')
+                setLoading(false)
+                setError('')
+                setComplete(true)
+                props.onSuccess()
+            })
+            .catch(error => {
+                setLoading(false)
+                setError(error.response)
+            })
     }
 
     const toggleMood = (value) => {
@@ -253,14 +251,14 @@ ADD PICTURES FOR THAT DAY */}
                                         <Textarea mb={'10'} color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
                                     </FormControl>
                                     <FormControl isRequired={false}>
-                                    {/* HOW TO ALTER STYLE OF THIS COMPONENT */}
- <FileUpload value={image} onChange={((e) => {setImage(e.target.files)})}>Optional Image</FileUpload> 
-</FormControl> 
+                                        {/* HOW TO ALTER STYLE OF THIS COMPONENT */}
+                                        <FileUpload value={image} onChange={((e) => { setImage(e.target.files) })}>Optional Image</FileUpload>
+                                    </FormControl>
                                     <Stack>
                                         <Box alignSelf={'flex-end'} spacing={10}>
                                             <Button isLoading={loading} loadingText='Submitting' type={'submit'}
-                                            fontSize={'sm'}
-                                            rounded={'full'}
+                                                fontSize={'sm'}
+                                                rounded={'full'}
                                                 alignSelf={'flex-end'}
                                                 marginTop={'5'}
                                                 colorScheme={'teal'}

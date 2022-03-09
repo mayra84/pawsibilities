@@ -71,7 +71,7 @@ function Card2() {
                 maxW="sm"
                 // borderWidth="1px"
                 rounded="lg"
-                shadow="lg"
+                boxShadow="2xl"
                 position="relative">
                 {/* {data.isNew && (
             <Circle

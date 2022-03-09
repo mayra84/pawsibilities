@@ -35,10 +35,10 @@ module.exports = {
       UserId: {
         type: Sequelize.INTEGER, 
         references: {
-          //plural??
           model: 'Users',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

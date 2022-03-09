@@ -180,7 +180,42 @@ const DesktopNav = () => {
      
                 <Link as={RouterLink} to="/">Home</Link>
                 <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
-                <Link as={RouterLink} to="/map">Discover</Link>
+                {NAV_ITEMS2.map((navItem) => (
+        <Box key={navItem.label} zIndex = {'10'} position="relative">
+          <Popover trigger={'hover'} placement={'bottom-start'}>
+            <PopoverTrigger>
+              <Link
+                p={2}
+                href={navItem.href ?? '#'}
+                fontSize={'sm'}
+                fontWeight={500}
+                color={linkColor}
+                _hover={{
+                  textDecoration: 'none',
+                  color: linkHoverColor,
+                }}>
+                {navItem.label}
+              </Link>
+            </PopoverTrigger>
+
+            {navItem.children && (
+              <PopoverContent
+                border={0}
+                boxShadow={'xl'}
+                bg={popoverContentBgColor}
+                p={4}
+                rounded={'xl'}
+                minW={'sm'}>
+                <Stack>
+                  {navItem.children.map((child) => (
+                    <DesktopSubNav key={child.label} {...child} />
+                  ))}
+                </Stack>
+              </PopoverContent>
+            )}
+          </Popover>
+        </Box>
+      ))}
                 
                 <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
                 <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
@@ -375,7 +410,35 @@ const MobileNavItem = ({ label, children, href }) => {
     );
 };
 
+const NAV_ITEMS2 = [
 
+    // <Link as={RouterLink} to="/">Home</Link>
+    //         <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
+    //         <Link as={RouterLink} to="/map">Discover</Link>
+    //         <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
+    //         <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+
+           
+            {
+                     label: 'Discover',
+                     children: [
+                         //maybe have several dog options?
+                         {
+                             label: 'Dog Parks',
+                             href: '/map',
+                         },
+                         {
+                             label: 'Adoption',
+                             href: '/discover',
+                         },
+                 {
+                     label: 'Veterinarians',
+                     href: '/healthcare',
+                 },
+                     ],
+                 },
+           
+];
 
 const NAV_ITEMS = [
 
@@ -394,21 +457,28 @@ const NAV_ITEMS = [
                 href: '/healthcalendar',
             },
             {
-                label: 'Discover',
-                children: [
-                            {
-                                label: 'Explore Design Work',
-                                subLabel: 'Trending Design to inspire you',
-                                href: '#',
-                            },
-                            {
-                                label: 'New & Noteworthy',
-                                subLabel: 'Up-and-coming Designers',
-                                href: '#',
-                            },
-                        ],
-                href: '/map',
-            },
+
+                     label: 'Discover',
+                     children: [
+                         //maybe have several dog options?
+                         {
+                             label: 'Dog Parks',
+                             subLabel: 'Find your dream design job',
+                             href: '/map',
+                         },
+                         {
+                             label: 'Adoption',
+                             subLabel: 'Find your dream design job',
+                             href: '/discover',
+                         },
+                 {
+                     label: 'Veterinarians',
+                     subLabel: 'Find your dream design job',
+                     href: '/healthcare',
+                 },
+                     ],
+                 },
+
             {
                 label: 'Dog Profile',
                 href: '/dogprofile',

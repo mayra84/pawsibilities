@@ -4,7 +4,7 @@ import Vet from 'src/components/Vet'
 
 function Healthcare() {
   return (
-    <div>Healthcare
+    <div>  Vets Near You
  <Vet />
     </div>
   )

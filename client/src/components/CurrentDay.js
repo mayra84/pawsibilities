@@ -98,7 +98,8 @@ export default function CurrentDay(props) {
                         </Stack>
                         <Box
                         // mn={0}
-                            borderRadius={'10'} border={'2px'} color={'brand.201'}
+                            // borderRadius={'10'} 
+                            border={'2px'} color={'brand.201'}
                             maxW={'320px'}
                             w={'full'}
                             bg={useColorModeValue('white', 'gray.900')}
@@ -162,3 +163,4 @@ export default function CurrentDay(props) {
             </SmoothList>
     );
 }
+

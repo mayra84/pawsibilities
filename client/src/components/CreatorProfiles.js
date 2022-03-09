@@ -134,11 +134,7 @@ export default function CreatorProfiles() {
                         textAlign={'center'}
                         color={useColorModeValue('gray.700', 'gray.400')}
                         px={3}>
-                        Actress, musician, songwriter and artist. PM for work inquires or{' '}
-                        <Link href={'#'} color={'blue.400'}>
-                            #tag
-                        </Link>{' '}
-                        me in your posts
+                            My inspiration came from some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers
                     </Text>
 
                     <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>

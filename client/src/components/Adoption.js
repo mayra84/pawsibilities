@@ -119,8 +119,8 @@ function Adoption( { props }) {
     </div>
     </SmoothList>
     <SmoothList transitionDuration={1400}>
-        <div onClick={_onClick}> Click to show all Local Adoption Centers
-        {show &&
+        
+       
         <SmoothList transitionDuration={1400}>
             <Center >
         <Box bg = "#83C5BE" w={'auto'} m="3" borderWidth='1px' borderRadius='lg' overflow='hidden' className='result'>
@@ -132,8 +132,8 @@ function Adoption( { props }) {
         </Box>
         </Center>
         </SmoothList>
-         }
-        </div>
+         
+        
         </SmoothList>
     </SimpleGrid>
   )

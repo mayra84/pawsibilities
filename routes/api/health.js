@@ -10,16 +10,6 @@ const upload = require('../../upload');
 
 //create
 router.post('/log/:id', checkAuth, upload.array('image'), async (req, res) => {
-
-    //when on home page
-    //get all dogs for that user 
-    // const logs = await db.Health.findAll({
-    //     where: {
-    //         DogId: req.session.user.id.dog.id
-    //     }
-    // })
-    
-    //check body for required info
     if (!req.body.mood || !req.body.physical || !req.body.activity) {
         res.status(400).json({ error: 'Please include all required fields'})
         return

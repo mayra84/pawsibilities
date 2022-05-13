@@ -15,7 +15,7 @@ const s3 = new aws.S3();
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'pawsibilities',
+        bucket: process.env.AWS_BUCKET_NAME,
         key: function (req, file, cb) {
             console.log(file);
             cb(null, file.originalname + Date.now()); //use Date.now() for unique file keys

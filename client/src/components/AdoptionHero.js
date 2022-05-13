@@ -79,6 +79,7 @@ export default function AdoptionHero() {
                     // py={{ base: 20, md: 36 }}
                     >
                     <Heading
+                    mt={6}
                         fontWeight={500}
                         fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                         lineHeight={'110%'}>
@@ -98,7 +99,7 @@ export default function AdoptionHero() {
                         position={'relative'}>
                         {/* <Button onClick={onOpen} bgColor={'gray.200'}>Add Dog Profile</Button> */}
                         {/* <Link textUnderlineOffset={'none'} as={RouterLink} to="/dogprofile"><Button */}
-                        <Button onClick={onOpen} 
+                        {/* <Button onClick={onOpen} 
                         
                         fontSize={'sm'}
                         rounded={'full'}
@@ -124,7 +125,7 @@ export default function AdoptionHero() {
                         //     }}
                             >
                             Dog Profile Form
-                        </Button>
+                        </Button> */}
                         {/* </Link> */}
                         {/* <Button
               colorScheme={'green'}

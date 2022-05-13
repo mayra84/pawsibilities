@@ -21,6 +21,7 @@ export default function CreatorProfiles() {
         <Center p={'10'} height='50vh'>
             {/* <Center py={6}> */}
                 <Box
+                minW={'320px'}
                     maxW={'320px'}
                     w={'full'}
                     bg={useColorModeValue('white', 'gray.900')}
@@ -57,46 +58,20 @@ export default function CreatorProfiles() {
                     <Text
                         textAlign={'center'}
                         color={useColorModeValue('gray.700', 'gray.400')}
-                        px={3}>
+                        px={2}>
                         I'm the "M" in M&amp;Z!
                         <br></br>
                         My inspiration for Pawsibilities is born from my love for my three dogs: Dalton, Emma, and Cooper. I wanted to make sure to always be the most responsible version of myself for them. I hope it helps other pet owners in proving their love and care for their Pawesome Pals.
                         {/* came from taking my eldest dog, Dalton, to the vet. We needed to give very precise information about Dalton's timeline and I realized.. I couldn't exactly remember. I was profoundly disappointed in my lack of responsibility. This was the exact moment I thought of Pawsibilities.  */}
                     </Text>
 
-                    {/* <Stack mt={8} direction={'row'} spacing={4}>
-                        <Button
-                            flex={1}
-                            fontSize={'sm'}
-                            rounded={'full'}
-                            _focus={{
-                                bg: 'gray.200',
-                            }}>
-                            Message
-                        </Button>
-                        <Button
-                            flex={1}
-                            fontSize={'sm'}
-                            rounded={'full'}
-                            bg={'blue.400'}
-                            color={'white'}
-                            boxShadow={
-                                '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                            }
-                            _hover={{
-                                bg: 'blue.500',
-                            }}
-                            _focus={{
-                                bg: 'blue.500',
-                            }}>
-                            Follow
-                        </Button>
-                    </Stack> */}
+                    
                 </Box>
 
                 <Divider lineHeight={'20'} orientation='vertical' borderColor={'gray'} mx={'20%'} />
 
                 <Box
+                minW={'320px'}
                     maxW={'320px'}
                     w={'full'}
                     bg={useColorModeValue('white', 'gray.900')}
@@ -139,29 +114,7 @@ export default function CreatorProfiles() {
                             {/* some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers */}
                     </Text>
 
-                    <Stack align={'center'} justify={'center'} direction={'row'} mt={6}>
-                        <Badge
-                            px={2}
-                            py={1}
-                            bg={useColorModeValue('gray.50', 'gray.800')}
-                            fontWeight={'400'}>
-                            #art
-                        </Badge>
-                        <Badge
-                            px={2}
-                            py={1}
-                            bg={useColorModeValue('gray.50', 'gray.800')}
-                            fontWeight={'400'}>
-                            #photography
-                        </Badge>
-                        <Badge
-                            px={2}
-                            py={1}
-                            bg={useColorModeValue('gray.50', 'gray.800')}
-                            fontWeight={'400'}>
-                            #music
-                        </Badge>
-                    </Stack>
+                    
 
                     {/* <Stack mt={8} direction={'row'} spacing={4}>
                         <Button

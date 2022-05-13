@@ -73,7 +73,7 @@ function Login() {
       bgColor={'rgba(255 255 255 /70%)'}
       backdropFilter={'blur(2px)'}  
 
-      direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={400} p={'5'} borderRadius={'10'} border={'2px'} color={'brand.201'}>
+      direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={400} p={'5'} borderRadius={'10'} >
         <FormControl color={'black'} mb={'5'}>
           <FormLabel>Email</FormLabel>
           <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />

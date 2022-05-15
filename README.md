@@ -10,49 +10,49 @@ Do not fret! Pawsibilities is here to help. With this app you can track your pet
 <br>
 
 ### The user can sign up and sign in to discover the Pawsibilities! 
-<img src="./public/Pawsibilities_SignUp:SignIn_Page.png">
+<img src="./client/public/Pawsibilities_SignUp:SignIn_Page.png">
 <br>
 <br>
 
 ### Once they do that, they will be redirected to the home page where they will find The Banana Bandit, an Adorable Adoptee, and a few helpful resources down at the bottom, and an indicator they have not created any dog profiles yet!
-<img src="./public/Pawsibilities_Home_Page.png">
+<img src="./client/public/Pawsibilities_Home_Page.png">
 <br>
 <br>
 
 ### The user can click on the "Dog Profile Form" button and register a dog.
-<img src="./public/Pawsibilities_Dog_Profile_Form.png">
+<img src="./client/public/Pawsibilities_Dog_Profile_Form.png">
 <br>
 <br>
 
 ### Once a dog is registered, a health form can be submitted for that day! The user can select multiple icons, add notes, and include a picture in the health log.
-<img src="./public/Pawsibilities_Health_Log_Form.png">
+<img src="./client/public/Pawsibilities_Health_Log_Form.png">
 <br>
 <br>
 
 ### The health log that was submitted can be viewed in the "Calendar" page.
-<img src="./public/Pawsibilities_Single_Dog_Calendar.png">
+<img src="./client/public/Pawsibilities_Single_Dog_Calendar.png">
 <br>
 <br>
 
 ### The event can be selected so the user can see the details. 
-<img src="./public/Pawsibilities_Calendar_Event.png">
+<img src="./client/public/Pawsibilities_Calendar_Event.png">
 <br>
 <br>
 
 ### The "Discover" page uses the zipcode entered during sign up to show adoption centers, vets, and dog parks near the user. 
-<img src="./public/Pawsibilities_Discover_Page.png">
+<img src="./client/public/Pawsibilities_Discover_Page.png">
 <br>
 <br>
 
 ### The user can view all their registered dogs and add more in the "Dog Profile" page. 
-<img src="./public/Pawsibilities_Dog_Profile_Page.png">
+<img src="./client/public/Pawsibilities_Dog_Profile_Page.png">
 <br>
 <br>
 
 ### The last picture here, shows what the home page and calendar would look like for someone who has multiple dogs and has logged their health daily. 
-<img src="./public/Pawsibilities_Multiple_Dogs_Home_Page.png">
+<img src="./client/public/Pawsibilities_Multiple_Dogs_Home_Page.png">
 <br>
-<img src="./public/Pawsibilities_Several_Dogs_Calendar.png">
+<img src="./client/public/Pawsibilities_Several_Dogs_Calendar.png">
 <br>
 <br>
 

@@ -51,43 +51,46 @@ function Login() {
 
   return (
     <>
-    <Carousel />
+      <Carousel />
 
-    {/* //ternary statement??  */}
-    
-    <form onSubmit={handleSubmit}>
+      {/* //ternary statement??  */}
 
-      {error && (
+      <form onSubmit={handleSubmit}>
 
-        <SmoothList transitionDuration={600}>
+        {error && (
 
-        <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
-          <AlertIcon />
-          Error!&nbsp; {error.data.error}
-        </Alert>
+          <SmoothList transitionDuration={600}>
+
+            <Alert maxW={'60%'} borderRadius={'8'} mx={'auto'} status='error'>
+              <AlertIcon />
+              Error!&nbsp; {error.data.error}
+            </Alert>
+          </SmoothList>
+        )}
+        <SmoothList transitionDuration={1400}>
+          <Box display={'flex'} flexDirection={'column'} justifyContent={'center'}>
+            <Flex
+              boxShadow={'lg'}
+              bgColor={'rgba(255 255 255 /70%)'}
+              backdropFilter={'blur(2px)'}
+              m={'0 auto'}
+              my={'5%'}
+              direction={'column'} align={'flex-end'} w={400} maxW={'90%'} p={'5'} justify={'center'} borderRadius={'10'} >
+              <FormControl color={'black'} mb={'5'}>
+                <FormLabel>Email</FormLabel>
+                <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
+                <FormErrorMessage>Error message</FormErrorMessage>
+              </FormControl>
+              <FormControl color={'black'} mb={'5'}>
+                <FormLabel>Password</FormLabel>
+                <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
+                <FormErrorMessage>Error message</FormErrorMessage>
+              </FormControl>
+              <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Login</Button>
+            </Flex>
+          </Box>
         </SmoothList>
-      )}
-<SmoothList transitionDuration={1400}>
-      <Flex
-      boxShadow={'lg'}
-      bgColor={'rgba(255 255 255 /70%)'}
-      backdropFilter={'blur(2px)'}  
-
-      direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={400} p={'5'} borderRadius={'10'} >
-        <FormControl color={'black'} mb={'5'}>
-          <FormLabel>Email</FormLabel>
-          <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
-          <FormErrorMessage>Error message</FormErrorMessage>
-        </FormControl>
-        <FormControl color={'black'} mb={'5'}>
-          <FormLabel>Password</FormLabel>
-          <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
-          <FormErrorMessage>Error message</FormErrorMessage>
-        </FormControl>
-        <Button isLoading={loading} loadingText='Submitting' type={'submit'}>Login</Button>
-      </Flex>
-      </SmoothList>
-    </form>
+      </form>
     </>
 
 

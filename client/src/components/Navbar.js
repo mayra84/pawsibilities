@@ -71,9 +71,10 @@ export default function WithSubnavigation(props) {
                         aria-label={'Toggle Navigation'}
                     />
                 </Flex>
+                    
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'center' }}>
                     <Image
-                   cursor={'pointer'}
+                        cursor={'pointer'}
                         boxShadow={'lg'}
                         onClick={e => { navigate('/') }}
                         // isActive={'true'}
@@ -84,6 +85,7 @@ export default function WithSubnavigation(props) {
                         objectFit='fill'
                         src='../Possible_Pawsibilities_Logo_2.png'
                         alt='Pawsibilities' />
+                        
 
                     {/* <Text
                         textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -140,12 +142,12 @@ export default function WithSubnavigation(props) {
                                     // linkHoverColor={'none'}
 
                                     shadow={'lg'}
-                                    display={{ base: 'none', md: 'inline-flex' }}
+                                    // display={{ base: 'none', md: 'inline-flex' }}
                                     fontSize={'sm'}
                                     fontWeight={600}
                                     color={'white'}
                                     bg={'brand.200'}
-                                    href={'#'}
+                                    href={'/login'}
                                     _hover={{
                                         bg: 'teal.200',
                                     }}>
@@ -158,7 +160,7 @@ export default function WithSubnavigation(props) {
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
-                <MobileNav />
+                <MobileNav onClick={onToggle}/>
             </Collapse>
         </Box>
     );
@@ -172,55 +174,55 @@ const DesktopNav = () => {
 
     return (
         // <SmoothList transitionDuration={1200} delay={200}>
-<Flex>
-        {currentUser ? (
-<>
-            <Stack justify={'center'}
-                align={'center'} direction={'row'} spacing={28}>
-     
-                <Link as={RouterLink} to="/">Home</Link>
-                <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
-                {NAV_ITEMS2.map((navItem) => (
-        <Box key={navItem.label} zIndex = {'10'} position="relative">
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
+        <Flex>
+            {currentUser ? (
+                <>
+                    <Stack justify={'center'}
+                        align={'center'} direction={'row'} spacing={28}>
 
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}>
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
-                
-                <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
-                <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
-    
-                {/* {NAV_ITEMS.map((navItem) => (
+                        <Link as={RouterLink} to="/">Home</Link>
+                        <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
+                        {NAV_ITEMS2.map((navItem) => (
+                            <Box key={navItem.label} zIndex={'10'} position="relative">
+                                <Popover trigger={'hover'} placement={'bottom-start'}>
+                                    <PopoverTrigger>
+                                        <Link
+                                            p={2}
+                                            href={navItem.href ?? '#'}
+                                            fontSize={'sm'}
+                                            fontWeight={500}
+                                            color={linkColor}
+                                            _hover={{
+                                                textDecoration: 'none',
+                                                color: linkHoverColor,
+                                            }}>
+                                            {navItem.label}
+                                        </Link>
+                                    </PopoverTrigger>
+
+                                    {navItem.children && (
+                                        <PopoverContent
+                                            border={0}
+                                            boxShadow={'xl'}
+                                            bg={popoverContentBgColor}
+                                            p={4}
+                                            rounded={'xl'}
+                                            minW={'sm'}>
+                                            <Stack>
+                                                {navItem.children.map((child) => (
+                                                    <DesktopSubNav key={child.label} {...child} />
+                                                ))}
+                                            </Stack>
+                                        </PopoverContent>
+                                    )}
+                                </Popover>
+                            </Box>
+                        ))}
+
+                        <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
+                        <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+
+                        {/* {NAV_ITEMS.map((navItem) => (
                     <Box key={navItem.label}>
                         <Popover trigger={'hover'} placement={'bottom-start'}>
                             <PopoverTrigger>
@@ -256,20 +258,20 @@ const DesktopNav = () => {
                         </Popover>
                     </Box>
                 ))} */}
-            </Stack>
-            </>
-        ) : (
-<>
-            <Stack justify={'center'}
-                align={'center'} direction={'row'} spacing={28}>
-     
-                {/* <Link as={RouterLink} to="/">Home</Link>
+                    </Stack>
+                </>
+            ) : (
+                <>
+                    <Stack justify={'center'}
+                        align={'center'} direction={'row'} spacing={28}>
+
+                        {/* <Link as={RouterLink} to="/">Home</Link>
                 <Link as={RouterLink} to="/healthcalendar">Calendar</Link>
                 <Link as={RouterLink} to="/map">Discover</Link>
                 <Link as={RouterLink} to="/dogprofile">Dog Profile</Link> */}
-                <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
-    
-                {/* {NAV_ITEMS.map((navItem) => (
+                        <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
+
+                        {/* {NAV_ITEMS.map((navItem) => (
                     <Box key={navItem.label}>
                         <Popover trigger={'hover'} placement={'bottom-start'}>
                             <PopoverTrigger>
@@ -305,9 +307,9 @@ const DesktopNav = () => {
                         </Popover>
                     </Box>
                 ))} */}
-            </Stack>
-            </>
-        )}
+                    </Stack>
+                </>
+            )}
         </Flex>
         // </SmoothList>
     );
@@ -347,16 +349,33 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
     );
 };
 
-const MobileNav = () => {
+const MobileNav = (props) => {
+
+    const currentUser = useSelector(state => state.user.currentUser)
     return (
-        <Stack
-            bg={useColorModeValue('white', 'gray.800')}
-            p={4}
-            display={{ md: 'none' }}>
-            {NAV_ITEMS.map((navItem) => (
-                <MobileNavItem key={navItem.label} {...navItem} />
-            ))}
-        </Stack>
+        <Box>
+
+            <Stack
+                bg={useColorModeValue('white', 'gray.800')}
+                color={useColorModeValue('gray.600', 'gray.200')}
+                textAlign={'left'}
+                p={4}
+                display={{ md: 'none' }}>
+                {currentUser ? (
+                    NAV_ITEMS.map((navItem) => (
+                        <MobileNavItem key={navItem.label} {...navItem} />
+                    ))
+                ) : (
+                    <Stack>
+                    <Link as={RouterLink} to="/" py={2} fontWeight={600} onClick={props.onClick}
+                    >Home</Link>
+                    <Link as={RouterLink} to="/aboutus" py={2} fontWeight={600} onClick={props.onClick}
+                    >About M&amp;Z</Link>
+                    </Stack>
+                )}
+            </Stack>
+            
+        </Box>
     );
 };
 
@@ -418,26 +437,26 @@ const NAV_ITEMS2 = [
     //         <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
     //         <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
 
-           
+
+    {
+        label: 'Discover',
+        children: [
+            //maybe have several dog options?
             {
-                     label: 'Discover',
-                     children: [
-                         //maybe have several dog options?
-                         {
-                             label: 'Dog Parks',
-                             href: '/map',
-                         },
-                         {
-                             label: 'Adoption',
-                             href: '/discover',
-                         },
-                 {
-                     label: 'Veterinarians',
-                     href: '/healthcare',
-                 },
-                     ],
-                 },
-           
+                label: 'Dog Parks',
+                href: '/map',
+            },
+            {
+                label: 'Adoption',
+                href: '/discover',
+            },
+            {
+                label: 'Veterinarians',
+                href: '/healthcare',
+            },
+        ],
+    },
+
 ];
 
 const NAV_ITEMS = [
@@ -448,41 +467,41 @@ const NAV_ITEMS = [
     //         <Link as={RouterLink} to="/dogprofile">Dog Profile</Link>
     //         <Link as={RouterLink} to="/aboutus">About M&amp;Z</Link>
 
-            {
-                label: 'Home',
-                href: '/',
-            },
-            {
-                label: 'Calendar',
-                href: '/healthcalendar',
-            },
-            {
+    {
+        label: 'Home',
+        href: '/',
+    },
+    {
+        label: 'Calendar',
+        href: '/healthcalendar',
+    },
+    {
 
-                     label: 'Discover',
-                     children: [
-                         //maybe have several dog options?
-                         {
-                             label: 'Dog Parks',
-                             subLabel: 'Find your dream design job',
-                             href: '/map',
-                         },
-                         {
-                             label: 'Adoption',
-                             subLabel: 'Find your dream design job',
-                             href: '/discover',
-                         },
-                 {
-                     label: 'Veterinarians',
-                     subLabel: 'Find your dream design job',
-                     href: '/healthcare',
-                 },
-                     ],
-                 },
-
+        label: 'Discover',
+        children: [
+            //maybe have several dog options?
             {
-                label: 'Dog Profile',
-                href: '/dogprofile',
+                label: 'Dog Parks',
+                subLabel: 'Find your dream design job',
+                href: '/map',
             },
+            {
+                label: 'Adoption',
+                subLabel: 'Find your dream design job',
+                href: '/discover',
+            },
+            {
+                label: 'Veterinarians',
+                subLabel: 'Find your dream design job',
+                href: '/healthcare',
+            },
+        ],
+    },
+
+    {
+        label: 'Dog Profile',
+        href: '/dogprofile',
+    },
     // {
     //     label: 'Calendar',
     //     children: [

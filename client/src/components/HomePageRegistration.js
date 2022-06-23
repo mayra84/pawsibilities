@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Button, Flex, FormControl, FormErrorMessage, FormLabel, Input } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Button, Flex, FormControl, FormErrorMessage, FormLabel, Input, Stack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, Link as RouterLink } from 'react-router-dom'
@@ -63,8 +63,10 @@ function HomePageRegistration() {
                     </SmoothList>
                 )}
                 <SmoothList transitionDuration={1400}>
-                    <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}>
-                        <Center p={'10'} height='60vh'>
+                    {/* <Flex justifyContent={'center'} alignItems={'center'} alignContent={'center'} m={'0 auto'}> */}
+                        {/* <Center p={'10'} height='60vh'> */}
+                            <Box display={'flex'} flexDirection={'column'} justifyContent={'space-around'}>
+                            <Stack direction={{ base: 'column', lg: 'row' }} m={'5%'} justifyContent={'space-around'} alignItems={'center'}>
                             <HomePageHero />
 
                             <Divider borderColor={'transparent'} orientation='vertical' mx={'10%'} />
@@ -74,26 +76,33 @@ function HomePageRegistration() {
                                 bgColor={'rgba(255 255 255 /70%)'}
                                 backdropFilter={'blur(2px)'}
 
-                                direction={'column'} align={'flex-end'} mx={'auto'} my={'5'} width={'xl'} p={'8'} borderRadius={'10'} >
+                                direction={'column'} 
+                                align={'flex-end'} 
+                                // mx={'auto'} my={'5'} 
+                                p={{base:'4', md: '8', lg: '8', xl: '8'}} 
+                                borderRadius={'10'} 
+                                w={'600px'} maxW={'100%'}>
                                 <FormControl color={'black'} mb={'5'}>
                                     <FormLabel>Email</FormLabel>
-                                    <Input required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
+                                    <Input bg={'white'} required value={email} onChange={(e) => setEmail(e.target.value)} type={'email'} />
                                     <FormErrorMessage>Error message</FormErrorMessage>
                                 </FormControl>
                                 <FormControl color={'black'} mb={'5'}>
                                     <FormLabel>Password</FormLabel>
-                                    <Input required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    <Input bg={'white'} required type={'password'} value={password} onChange={(e) => setPassword(e.target.value)} />
                                     <FormErrorMessage>Error message</FormErrorMessage>
                                 </FormControl>
                                 <FormControl color={'black'} mb={'5'}>
                                     <FormLabel>Zipcode</FormLabel>
-                                    <Input required value={zipcode} onChange={(e) => setZipcode(e.target.value)} type={'zipcode'} />
+                                    <Input bg={'white'} required value={zipcode} onChange={(e) => setZipcode(e.target.value)} type={'zipcode'} />
                                     <FormErrorMessage>Error message</FormErrorMessage>
                                 </FormControl>
                                 <Button isLoading={loading} color={'teal'} loadingText='Submitting' type={'submit'}>Sign Up</Button>
                             </Flex>
-                        </Center>
-                    </Flex>
+                            </Stack>
+                            </Box>
+                        {/* </Center> */}
+                    {/* </Flex> */}
                 </SmoothList>
             </form>
         </div>

@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 
 // Settings for the slider
 const settings = {
-  dots: true,
+  // dots: true,
 //   arrows: false,
   fade: true,
   infinite: true,

@@ -72,48 +72,50 @@ export default function Hero() {
                 </ModalContent>
             </Modal>
 
-            <Container maxW={'2xl'}>
+            <Container display={'flex'} maxW={'2xl'} maxH={'10%'}>
                 <Stack
+                
+                    // order={-3}
+                    m={'10'}
                     as={Box}
                     textAlign={'center'}
                     spacing={{ base: 8, md: 14 }}
-                    // py={{ base: 20, md: 36 }}
-                    >
+                // py={{ base: 20, md: 36 }}
+                >
                     <Heading
                         fontWeight={500}
                         fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                        lineHeight={'110%'}>
+                        // lineHeight={'110%'}
+                        >
                         You currently don't have any dogs registered!<br />
                         {/* <Text as={'span'} color={'green.400'}>
               your audience
             </Text> */}
                     </Heading>
-                    {/* <Text color={'gray.500'}>
-          You currently don't have any dogs! 
-          </Text> */}
+        
                     <Stack
                         direction={'column'}
                         spacing={3}
                         align={'center'}
                         alignSelf={'center'}
                         position={'relative'}>
-                        {/* <Button onClick={onOpen} bgColor={'gray.200'}>Add Dog Profile</Button> */}
-                        {/* <Link textUnderlineOffset={'none'} as={RouterLink} to="/dogprofile"><Button */}
-                        <Button onClick={onOpen} 
-                        
-                        fontSize={'sm'}
-                        rounded={'full'}
-                        // _focus={{
-                        //     bg: 'gray.200',
-                        // }}
+                
+                        <Button onClick={onOpen}
 
-                        bgColor={'teal.500'}
-                colorScheme={'teal.500'}
-                bg={'teal.500'}
-                borderRadius={'8'}
-                px={6}
-                _hover={{
-                    bg: 'teal.300'}}
+                            fontSize={'sm'}
+                            rounded={'full'}
+                            // _focus={{
+                            //     bg: 'gray.200',
+                            // }}
+
+                            bgColor={'teal.500'}
+                            colorScheme={'teal.500'}
+                            bg={'teal.500'}
+                            borderRadius={'8'}
+                            px={6}
+                            _hover={{
+                                bg: 'teal.300'
+                            }}
 
                         // bgColor={'teal.500'}
                         //     colorScheme={'teal.500'}
@@ -123,7 +125,7 @@ export default function Hero() {
                         //     _hover={{
                         //         bg: 'teal.300',
                         //     }}
-                            >
+                        >
                             Dog Profile Form
                         </Button>
                         {/* </Link> */}
@@ -146,15 +148,15 @@ export default function Hero() {
                                 color={useColorModeValue('gray.800', 'gray.300')}
                                 w={71}
                                 position={'absolute'}
-                                right={-71}
+                                right={-68}
                                 top={'10px'}
                             />
                             <Text
                                 fontSize={'lg'}
                                 fontFamily={'Caveat'}
                                 position={'absolute'}
-                                right={'-140px'}
-                                top={'-15px'}
+                                right={'-100px'}
+                                top={'-20px'}
                                 transform={'rotate(10deg)'}>
                                 Register a dog here!
                             </Text>

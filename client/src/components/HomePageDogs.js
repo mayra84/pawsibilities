@@ -96,15 +96,18 @@ function HomePageDogs() {
     <div>
       <SmoothList transitionDuration={1400}>
         <Stack 
-        
+        paddingTop={'10%'}
         direction={{ base: 'column', md: 'row' }}
         // direction={'row'} columns={{ sm: 2, md: 3, lg: 4 }} 
-        justify={'center'} p={''} spacing={20} >
+        justify={'center'}  
+        alignItems={'center'}
+        // spacing={20} 
+        >
           {/* <Card /> */}
           {/* <Testimonials /> */}
-          <Box maxW={'1500'}>
+          <Box w={'1500px'} maxW={'90%'} justify={'center'}>
             <Stack mb={'10'}>
-              <Heading>Helpful Resources</Heading>
+              <Heading size={'2xl'}>Helpful Resources</Heading>
             </Stack>
             <Stack
               // alignItems={'stretch'}

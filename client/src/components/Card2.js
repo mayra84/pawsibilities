@@ -61,14 +61,17 @@ const TestimonialAvatarAltered = ({
 function Card2() {
     return (
         <Flex 
-        // p={50} 
-        alignItems="center" justifyContent="flex-start">
+        // p={0} 
+            
+        alignItems="center" justifyContent="center">
             <Box
             // mt={'-200'}
+            w={'350px'} maxW={'80%'}
                 borderRadius={'10'} 
                 // border={'2px'} borderColor={'brand.201'}
                 bg={useColorModeValue('white', 'gray.800')}
-                maxW="sm"
+                // maxW="sm"
+        
                 // borderWidth="1px"
                 rounded="lg"
                 boxShadow="2xl"
@@ -92,10 +95,10 @@ function Card2() {
           />
           <Image src={'https://pbs.twimg.com/media/FM4eMpSVQAA3cYM?format=jpg&name=large'} /> */}
                 {/* </Stack> */}
-                <Box p="3" >
+                <Box>
 
-                    <Flex mt="1" justifyContent="space-between" alignContent="center">
-                        <Stack direction={'column'}>
+                    <Flex mt="1" justifyContent="center" alignContent="center">
+                        <Stack direction={'column'} p={2}>
                             <Box
                                 fontSize="lg"
                                 fontWeight="light"
@@ -115,7 +118,7 @@ function Card2() {
                                 Adorable Adoptee
 
                             </Box>
-                            <Text pb={'2'}>
+                            {/* <Text pb={'2'}>
                             Lyiam is still available for adoption! He is a five year old lab mix. He gets along with other dogs, knows basic commands, and is potty trained. He is doing well with his foster but would love a forever home soon ❤️‍🩹
                             </Text>
                             <TestimonialAvatar
@@ -124,7 +127,7 @@ function Card2() {
                                 }
                             //   name={'WeRateDogs'}
 
-                            />
+                            /> */}
                             <Link fontWeight={'bold'} href="https://twitter.com/15outof10/status/1495893143878877190">15/10</Link>
                             <TestimonialAvatarAltered title={'@15outof10'} />
                         </Stack>

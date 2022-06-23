@@ -60,13 +60,16 @@ const TestimonialAvatarAltered = ({
 
 function Card() {
     return (
-        <Flex alignItems="center" justifyContent="flex-start">
+        <Flex alignItems="center" justifyContent="center">
             <Box
             // mt={'-150'}
                 borderRadius={'10'} 
                 // border={'2px'} borderColor={'brand.201'}
                 bg={useColorModeValue('white', 'gray.800')}
-                maxW="sm"
+                // maxW="sm"
+                w={'350px'} maxW={'80%'}
+                // h={'lg'} maxH={'80%'}
+                // overflow={{sm: 'scroll', base: ''}}
                 // borderWidth="1px"
                 rounded="lg"
                 boxShadow="2xl"
@@ -90,11 +93,12 @@ function Card() {
           />
           <Image src={'https://pbs.twimg.com/media/FM4eMpSVQAA3cYM?format=jpg&name=large'} /> */}
                 {/* </Stack> */}
-                <Box p="3" >
+                <Box >
 
-                    <Flex mt="1" justifyContent="space-between" alignContent="center">
-                        <Stack direction={'column'}>
+                    <Flex mt="1" justifyContent="center" alignContent="center">
+                        <Stack direction={'column'} justify={'center'} p={2}>
                             <Box
+                             
                                 fontSize="lg"
                                 fontWeight="light"
                                 as="h4"
@@ -113,16 +117,16 @@ function Card() {
                                 The Banana Bandit
 
                             </Box>
-                            <Text pb={'2'}>
+                            {/* <Text pb={'2'}>
                                 This is Vixen. He really likes bananas. Steals them when he thinks nobody's watching. 13/10 opportunistic as h*ck
-                            </Text>
-                            <TestimonialAvatar
+                            </Text> */}
+                            {/* <TestimonialAvatar
                                 src={
                                     'https://pbs.twimg.com/profile_images/1478141668159148033/IOD8SZvx_400x400.jpg'
                                 }
                             //   name={'WeRateDogs'}
 
-                            />
+                            /> */}
                             <Link fontWeight={'bold'} href="https://twitter.com/dog_rates/status/1499168931671511045?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Etweet">WeRateDogs</Link>
                             <TestimonialAvatarAltered title={'@dog_rates'} />
                         </Stack>

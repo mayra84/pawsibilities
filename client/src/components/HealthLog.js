@@ -151,74 +151,34 @@ function HealthLog(props) {
             )}
 
             <form onSubmit={handleSubmit}>
-                <Stack spacing={8} mx={'auto'} pb={8} >
+                <Stack pb={8} >
                     <Stack align={'center'}>
                         <Box
+                        p={5}
+                        w={'1000px'}
+                        maxW={'95%'}
+                        className='box'
                             boxShadow={'lg'}
                             bgColor={'rgba(255 255 255 /90%)'}
                             backdropFilter={'blur(2px)'}
                             borderRadius={'10'} border={'2px'} color={'black'}
                             rounded={'lg'}
-                            p={12}
-                            fontSize={'2xl'}>
+                            // p={12}
+                            // p={{base: 2, lg: 12}}
+                            fontSize={'2xl'}
+                            // flexWrap={'wrap'}
+                            flexDirection={{base: 'row', lg: 'row'}}
+                            >
 
-                            <Stack spacing={2}>
+                            <Stack className='stack-smoothlist' >
                                 <SmoothList transitionDuration={1200} delay={200}>
 
                                     {/* <DogDropDown /> */}
 
-
-                                    <FormControl id="mood">
-                                        <FormLabel fontSize={'2xl'} color={'black'}>Mood</FormLabel>
-                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-                                            <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
-
-                                                <ImageButton onClick={() => { toggleMood('happy') }} src={'../Happy_3.png'} isActive={mood.includes('happy')} />
-
-                                                <ImageButton onClick={() => { toggleMood('calm') }} src={'../Calm.png'} isActive={mood.includes('calm')} />
-
-                                                <ImageButton onClick={() => { toggleMood('energetic') }} src={'../Energetic.png'} isActive={mood.includes('energetic')} />
-
-
-                                                <ImageButton onClick={() => { toggleMood('sad') }} src={'../Sad.png'} isActive={mood.includes('sad')} />
-
-                                                <ImageButton onClick={() => { toggleMood('anxious') }} src={'../Anxious.png'} isActive={mood.includes('anxious')} />
-
-
-                                                <ImageButton onClick={() => { toggleMood('apathetic') }} src={'../Apathetic.png'} isActive={mood.includes('apathetic')} />
-
-                                                <ImageButton onClick={() => { toggleMood('none') }} src={'../None_Paw.png'} isActive={mood.includes('none')} />
-
-                                            </Stack>
-                                        </CheckboxGroup>
-                                    </FormControl>
-
-                                    <FormControl id="activity">
-                                        <FormLabel fontSize={'2xl'} color={'black'}>Activity</FormLabel>
-                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-                                            <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
-                                                {/* when option clicked, ask to input distance/time */}
-
-                                                <ImageButton onClick={() => { toggleActivity('walk') }} src={'../Walk.png'} isActive={activity.includes('walk')} />
-
-                                                <ImageButton onClick={() => { toggleActivity('park') }} src={'../Park.png'} isActive={activity.includes('park')} />
-
-                                                <ImageButton onClick={() => { toggleActivity('run') }} src={'../Run.png'} isActive={activity.includes('run')} />
-
-                                                <ImageButton onClick={() => { toggleActivity('swim') }} src={'../Swim.png'} isActive={activity.includes('swim')} />
-
-                                                <ImageButton onClick={() => { toggleActivity('playedFetch') }} src={'../Played_Fetch.png'} isActive={activity.includes('playedFetch')} />
-
-                                                <ImageButton onClick={() => { toggleActivity('none') }} src={'../None_Ball.png'} isActive={activity.includes('none')} />
-
-                                            </Stack>
-                                        </CheckboxGroup>
-                                    </FormControl>
-
                                     <FormControl id="physicalObservations">
-                                        <FormLabel fontSize={'2xl'} color={'black'}>Physical Observations</FormLabel>
+                                        <FormLabel fontSize={'2xl'} color={'black'} p={2} textAlign={'center'}>Physical Observations</FormLabel>
                                         <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
-                                            <Stack mx={'8'} mt={'6'} mb={'10'} spacing={[1, 5]} direction={['column', 'row']}>
+                                            <Stack mb={'10'} spacing={0} gap={'10px'} direction={{base: 'row'}} flexWrap={'wrap'} alignItems={{base: 'center'}} justify={{base: 'center'}} className='icon-stack'>
 
                                                 <ImageButton onClick={() => { togglePhysical('limping') }} src={'../Limping.png'} isActive={physical.includes('limping')} />
 
@@ -237,6 +197,54 @@ function HealthLog(props) {
                                     </FormControl>
 
 
+                                    <FormControl id="activity">
+                                        <FormLabel fontSize={'2xl'} color={'black'} p={2} textAlign={'center'}>Activity</FormLabel>
+                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                                            <Stack mb={'10'} spacing={0} gap={'10px'} direction={{base: 'row'}} flexWrap={'wrap'} alignItems={{base: 'center'}} justify={{base: 'center'}} className='icon-stack'>
+                                                {/* when option clicked, ask to input distance/time */}
+
+                                                <ImageButton onClick={() => { toggleActivity('walk') }} src={'../Walk.png'} isActive={activity.includes('walk')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('park') }} src={'../Park.png'} isActive={activity.includes('park')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('run') }} src={'../Run.png'} isActive={activity.includes('run')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('swim') }} src={'../Swim.png'} isActive={activity.includes('swim')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('playedFetch') }} src={'../Played_Fetch.png'} isActive={activity.includes('playedFetch')} />
+
+                                                <ImageButton onClick={() => { toggleActivity('none') }} src={'../None_Ball.png'} isActive={activity.includes('none')} />
+
+                                            </Stack>
+                                        </CheckboxGroup>
+                                    </FormControl>
+
+
+                                    <FormControl id="mood" >
+                                        <FormLabel fontSize={'2xl'} color={'black'} p={2} textAlign={'center'}>Mood</FormLabel>
+                                        <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                                            <Stack mb={'10'} spacing={0} gap={'10px'} direction={{base: 'row'}} flexWrap={'wrap'} alignItems={{base: 'center'}} justify={{base: 'center'}} className='icon-stack'>
+
+                                                <ImageButton onClick={() => { toggleMood('happy') }} src={'../Happy_3.png'} isActive={mood.includes('happy')} className='image-button-happy'/>
+
+                                                <ImageButton onClick={() => { toggleMood('calm') }} src={'../Calm.png'} isActive={mood.includes('calm')} className='image-button-calm'/>
+
+                                                <ImageButton onClick={() => { toggleMood('energetic') }} src={'../Energetic.png'} isActive={mood.includes('energetic')} />
+
+
+                                                <ImageButton onClick={() => { toggleMood('sad') }} src={'../Sad.png'} isActive={mood.includes('sad')} />
+
+                                                <ImageButton onClick={() => { toggleMood('anxious') }} src={'../Anxious.png'} isActive={mood.includes('anxious')} />
+
+
+                                                <ImageButton onClick={() => { toggleMood('apathetic') }} src={'../Apathetic.png'} isActive={mood.includes('apathetic')} />
+
+                                                <ImageButton onClick={() => { toggleMood('none') }} src={'../None_Paw.png'} isActive={mood.includes('none')} />
+
+                                            </Stack>
+                                        </CheckboxGroup>
+                                    </FormControl>
+
 
 
                                     {/* TODO:
@@ -247,7 +255,7 @@ ADD PICTURES FOR THAT DAY */}
 
 
                                     <FormControl id="other">
-                                        <FormLabel fontSize={'2xl'} color={'black'} mb={'5'}>Other Observations</FormLabel>
+                                        <FormLabel fontSize={'2xl'} color={'black'} mb={'5'} p={2} textAlign={'center'}>Other Observations</FormLabel>
                                         <Textarea mb={'10'} color={'black'} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder='Enter observations here' />
                                     </FormControl>
                                     <FormControl isRequired={false}>

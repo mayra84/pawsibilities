@@ -8,7 +8,7 @@ const FileUpload = ({ name, placeholder, acceptedFileTypes, onChange, children, 
 
     return (
         <FormControl isInvalid={invalid} >
-            <FormLabel htmlFor="writeUpFile">{children}</FormLabel>
+            <FormLabel textAlign={'center'} htmlFor="writeUpFile">{children}</FormLabel>
             <InputGroup>
                 <InputLeftElement
                     pointerEvents="none"

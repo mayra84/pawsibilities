@@ -137,7 +137,7 @@ export default function CurrentDay(props) {
                     >
 
                         <Stack className='4' alignItems={{ base: 'center', lg: 'center' }}
-                        justify={{ base: 'space-around', lg:'space-around'}}
+                        justify={{ base: 'space-around', lg:'center'}}
                         flexDirection={{ base: 'column', lg: 'row'}}
                        
                         
@@ -204,14 +204,16 @@ export default function CurrentDay(props) {
                     </Stack>
 
 
-                    <Modal size={'6xl'} isOpen={isOpen} onClose={onClose}>
+                    <Modal w={'1100px'}
+                        maxW={'95%'} isOpen={isOpen} onClose={onClose}>
                         {overlay}
                         <ModalOverlay />
-                        <ModalContent>
+                        <ModalContent w={'1100px'}
+                        maxW={'95%'}>
 
                             <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>Log {activeDog?.name}'s health for today</ModalHeader>
                             <ModalCloseButton />
-                            <ModalBody>
+                            <ModalBody p={{base: 1, lg: 6}}>
                                 <HealthLog dog={activeDog} onSuccess={handleSuccess} />
                             </ModalBody>
 

@@ -87,12 +87,13 @@ const [overlay, setOverlay] = React.useState(<OverlayOne />)
       <Flex
         justifyContent='center'>
         <Box
-          m='0 auto'
+           m='2%'
           marginTop={'20'}
           paddingTop={''}
           bg={'white'}
           boxShadow={'lg'}
-          borderRadius={'10'}>
+          borderRadius={'10'}
+          overflow={'scroll'}>
           <Calendar
             localizer={localizer}
             defaultDate={new Date()}

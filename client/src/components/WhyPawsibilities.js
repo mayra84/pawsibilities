@@ -13,15 +13,15 @@ import {
   
   export default function WhyPawsibilities() {
     return (
-      <Center py={8}>
+      <Center py={2}>
         <Box
-          maxW={'675px'}
-          w={'full'}
+          w={'600px'}
+          maxW={'95%'}
           bg={useColorModeValue('white', 'gray.900')}
           boxShadow={'2xl'}
           rounded={'lg'}
           pt={6}
-          p={10}
+          p={{base: 6, md: 10}}
           textAlign={'center'}>
           
           <Heading fontSize={'2xl'} fontFamily={'body'} mb={'6'}>

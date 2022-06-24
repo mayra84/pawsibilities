@@ -11,6 +11,7 @@ import {
     Badge,
     useColorModeValue,
     Divider,
+    StackItem,
 } from '@chakra-ui/react';
 import React from 'react';
 
@@ -18,16 +19,19 @@ export default function CreatorProfiles() {
     
     return (
             <SmoothList transitionDuration={1200} delay={200}>
-        <Center p={'10'} height='50vh'>
+        {/* <Center p={'10'} height='50vh'> */}
             {/* <Center py={6}> */}
+            <Stack direction={{base: 'column', lg: 'row'}} justify={{base: 'center', md: 'space-around'}} alignItems={{base: 'center', lg: 'flex-start'}}>
+                {/* <StackItem> */}
                 <Box
-                minW={'320px'}
-                    maxW={'320px'}
-                    w={'full'}
+                direction={{base: 'row', lg: 'column'}}
+                w={'320px'}
+                    maxW={'95%'}
+                    // w={'full'}
                     bg={useColorModeValue('white', 'gray.900')}
                     boxShadow={'2xl'}
                     rounded={'lg'}
-                    p={10}
+                    p={{base: 5, lg: 10}}
                     textAlign={'center'}>
                     <Avatar
                         size={'xl'}
@@ -37,17 +41,6 @@ export default function CreatorProfiles() {
                         alt={'Avatar Alt'}
                         mb={4}
                         pos={'relative'}
-                        // _after={{
-                        //     content: '""',
-                        //     w: 4,
-                        //     h: 4,
-                        //     bg: 'green.300',
-                        //     border: '2px solid white',
-                        //     rounded: 'full',
-                        //     pos: 'absolute',
-                        //     bottom: 0,
-                        //     right: 3,
-                        // }}
                     />
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
                         Mayra Estrella
@@ -71,13 +64,13 @@ export default function CreatorProfiles() {
                 <Divider lineHeight={'20'} orientation='vertical' borderColor={'gray'} mx={'20%'} />
 
                 <Box
-                minW={'320px'}
-                    maxW={'320px'}
-                    w={'full'}
+                direction={{base: 'row', lg: 'column'}}
+                w={'320px'}
+                maxW={'95%'}
                     bg={useColorModeValue('white', 'gray.900')}
                     boxShadow={'2xl'}
                     rounded={'lg'}
-                    p={10}
+                    p={{base: 5, lg: 10}}
                     textAlign={'center'}>
                     <Avatar
                         size={'xl'}
@@ -87,17 +80,6 @@ export default function CreatorProfiles() {
                         alt={'Avatar Alt'}
                         mb={4}
                         pos={'relative'}
-                        // _after={{
-                        //     content: '""',
-                        //     w: 4,
-                        //     h: 4,
-                        //     bg: 'green.300',
-                        //     border: '2px solid white',
-                        //     rounded: 'full',
-                        //     pos: 'absolute',
-                        //     bottom: 0,
-                        //     right: 3,
-                        // }}
                     />
                     <Heading fontSize={'2xl'} fontFamily={'body'}>
                         Zaria Mcburrows
@@ -113,40 +95,11 @@ export default function CreatorProfiles() {
                             seeing adoption centers overflow with dogs people returned once they had to go back to work in person. By incorporating certain technologies, Pawsibilities makes it easier to find adoption centers near you, among other things.
                             {/* some projects that used Google Maps API and a Weather API, and we got the idea to incorporate those into our application to help users find local dog parks, veterinarians, and adoption centers */}
                     </Text>
-
-                    
-
-                    {/* <Stack mt={8} direction={'row'} spacing={4}>
-                        <Button
-                            flex={1}
-                            fontSize={'sm'}
-                            rounded={'full'}
-                            _focus={{
-                                bg: 'gray.200',
-                            }}>
-                            Message
-                        </Button>
-                        <Button
-                            flex={1}
-                            fontSize={'sm'}
-                            rounded={'full'}
-                            bg={'blue.400'}
-                            color={'white'}
-                            boxShadow={
-                                '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
-                            }
-                            _hover={{
-                                bg: 'blue.500',
-                            }}
-                            _focus={{
-                                bg: 'blue.500',
-                            }}>
-                            Follow
-                        </Button>
-                    </Stack> */}
                 </Box>
+                {/* </StackItem> */}
             {/* </Center> */}
-        </Center>
+        {/* </Center> */}
+        </Stack>
                 </SmoothList>
     );
 }

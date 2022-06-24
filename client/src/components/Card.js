@@ -62,9 +62,7 @@ function Card() {
     return (
         <Flex alignItems="center" justifyContent="center">
             <Box
-            // mt={'-150'}
                 borderRadius={'10'} 
-                // border={'2px'} borderColor={'brand.201'}
                 bg={useColorModeValue('white', 'gray.800')}
                 // maxW="sm"
                 w={'350px'} maxW={'80%'}

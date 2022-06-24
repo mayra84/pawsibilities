@@ -72,13 +72,13 @@ export default function Hero() {
                 </ModalContent>
             </Modal>
 
-            <Container display={'flex'} maxW={'2xl'} maxH={'10%'}>
+            <Container maxW={'3xl'} maxH={'10%'}>
                 <Stack
                 
                     // order={-3}
                     m={'10'}
                     as={Box}
-                    textAlign={'center'}
+                    // textAlign={'center'}
                     spacing={{ base: 8, md: 14 }}
                 // py={{ base: 20, md: 36 }}
                 >

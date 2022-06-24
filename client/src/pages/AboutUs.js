@@ -1,3 +1,4 @@
+import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import SmoothList from 'react-smooth-list'
 import CreatorProfiles from 'src/components/CreatorProfiles'
@@ -7,8 +8,10 @@ function AboutUs() {
   return (
 
     <SmoothList transitionDuration={1200} delay={200}>
+      <Stack py={4}>
       <WhyPawsibilities />
       <CreatorProfiles />
+      </Stack>
     </SmoothList>
 
   )

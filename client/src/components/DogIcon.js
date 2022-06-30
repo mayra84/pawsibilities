@@ -6,7 +6,7 @@ function DogIcon(props) {
     // console.log(props)
     return (
 
-        <Box className='icon-box' display={'inline-block'}>
+        <Box className='icon-box' position={'relative'} >
             <Image
                 className='icon-image'
                 // border={'2px'} color={'brand.301'}
@@ -30,7 +30,7 @@ function DogIcon(props) {
                 <CheckCircleIcon
                     className='icon-checkmark'
                     color={'teal.500'}
-                    boxSize={'8px'}
+                    boxSize={'8'}
                     borderRadius={'50%'}
                     bgColor={'white'}
                     alignSelf={'flex-start'}

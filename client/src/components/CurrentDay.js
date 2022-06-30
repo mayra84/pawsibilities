@@ -107,124 +107,124 @@ export default function CurrentDay(props) {
 
                 </SmoothList>
             )}
-        
-                <Stack className='2' flexDirection={{ base: 'column', lg: 'column' }} justify={'center'} alignContent={''} alignItems={'center'}>
-                    {/* <Stack flexDirection={{sm: 'column', lg: 'row'}}> */}
-                        {dogs.length === 0 &&
 
-                            <HeroHero />
-                        }
+            <Stack className='2' flexDirection={{ base: 'column', lg: 'column' }} justify={'center'} alignContent={''} alignItems={'center'}>
+                <Stack m={2} gap={'10px'} direction={{base: 'row'}} flexWrap={'wrap'} alignItems={{base: 'center'}} justify={{base: 'center'}}>
+                {dogs.length === 0 &&
 
-                        {dogs.map(dog => (
-                            <Stack alignItems={{ base: 'center', lg: 'center' }}
-                            justify={{ base: 'center', lg:'space-around'}}
-                            flexDirection={{ base: 'column', lg: 'row'}}>
-                                    <Box >
-                                <DogIcon
-                                    onClick={() => setActiveDog(dog)}
-                                    src={dog.Image?.location} isActive={dog.id === activeDog?.id}
-                                    alt={dog.name} />
-                            </Box>
-                                    </Stack>
-                        ))}
-                    {/* </Stack> */}
-                    <Stack
+                    <HeroHero />
+                }
+
+                {dogs.map(dog => (
+                    <Stack 
+                    alignItems={{ base: 'center', lg: 'center' }}
+                        flexDirection={{ base: 'row', lg: 'row' }}>
+                        <Box gap={'10px'} paddingTop={1} direction={{base: 'row'}} flexWrap={'wrap'} alignItems={{base: 'center'}} justify={{base: 'center'}}>
+                            <DogIcon
+                                onClick={() => setActiveDog(dog)}
+                                src={dog.Image?.location} isActive={dog.id === activeDog?.id}
+                                alt={dog.name} />
+                        </Box>
+                    </Stack>
+                ))}
+                </Stack>
+                <Stack
                     className='3'
-                        alignItems={'center'}
-                        w={'100%'}
-                        flexDirection={{ base: 'column', lg: 'row' }} maxW={'95%'}
-                        justifyContent={'center'}
+                    alignItems={'center'}
+                    w={'100%'}
+                    flexDirection={{ base: 'column', lg: 'row' }} maxW={'95%'}
+                    justifyContent={'center'}
+                >
+
+                    <Stack className='4' alignItems={{ base: 'center', lg: 'center' }}
+                        justify={{ base: 'space-around'}}
+                        flexDirection={{ base: 'column', lg: 'row' }}
+
+
+                        w={'2300px'} maxW={'95%'}
+
                     >
 
-                        <Stack className='4' alignItems={{ base: 'center', lg: 'center' }}
-                        justify={{ base: 'space-around', lg:'center'}}
-                        flexDirection={{ base: 'column', lg: 'row'}}
-                       
-                        
-                            w={'2300px'} maxW={'95%'}
-                            
+                        <Box className='card-1' pt={{ base: 6, md: 2, lg: 2 }} m={2}>
+                            <Card />
+                        </Box>
+
+                        <Box
+
+                            className='current-day-circle'
+                            alignSelf={{ base: 'center', lg: 'flex-start' }}
+                            order={{ base: -1, lg: 0 }}
+                            bg={useColorModeValue('white', 'gray.900')}
+                            boxShadow={'dark-lg'}
+                            borderRadius={'500'}
+                            minW={{ base: '325px' }}
+                            maxH={'350'}
+                            p={6}
+                            textAlign={'center'}
                         >
 
-                            <Box  className='card-1' pt={{base: 6, md: 2, lg: 2 }}  m={2}>
-                                <Card/>
-                            </Box>
-
-                            <Box 
-                            
-                            className='current-day-circle'
-                             alignSelf={{base: 'center', lg: 'flex-start'}}
-                                order={{ base:-1, lg: 0 }}
-                                bg={useColorModeValue('white', 'gray.900')}
-                                boxShadow={'dark-lg'}
-                                borderRadius={'500'}
-                                minW={{base: '325px'}}
-                                maxH={'350'}
-                                p={6}
-                                textAlign={'center'}
-                            >
-
-                                <Heading p={'2'} color={'black'} fontSize={'4xl'} fontFamily={'body'}>
-                                    {curMonth}
-                                </Heading>
-                                <Heading p={'2'} color={'black'} fontSize={'8xl'} fontFamily={'body'}>
-                                    {currentDay.getDate()}
-                                </Heading>
+                            <Heading p={'2'} color={'black'} fontSize={'4xl'} fontFamily={'body'}>
+                                {curMonth}
+                            </Heading>
+                            <Heading p={'2'} color={'black'} fontSize={'8xl'} fontFamily={'body'}>
+                                {currentDay.getDate()}
+                            </Heading>
 
 
-                                <Stack mt={2} direction={'row'} py={'4'}>
-                                    <Button
-                                        m={'0 auto'}
-                                        //IF SOMETHING BROKE IT MIGHT HAVE BEEN HERE WITH THE ONCLICK
+                            <Stack mt={2} direction={'row'} py={'4'}>
+                                <Button
+                                    m={'0 auto'}
+                                    //IF SOMETHING BROKE IT MIGHT HAVE BEEN HERE WITH THE ONCLICK
 
-                                        onClick={onOpen}
-                                        fontSize={'base'}
-                                        rounded={'full'}
-                                        bgColor={'teal.500'}
-                                        colorScheme={'teal.500'}
-                                        bg={'teal.500'}
-                                        borderRadius={'8'}
-                                        px={4}
-                                        _hover={{
-                                            bg: 'teal.300',
-                                        }}
+                                    onClick={onOpen}
+                                    fontSize={'base'}
+                                    rounded={'full'}
+                                    bgColor={'teal.500'}
+                                    colorScheme={'teal.500'}
+                                    bg={'teal.500'}
+                                    borderRadius={'8'}
+                                    px={4}
+                                    _hover={{
+                                        bg: 'teal.300',
+                                    }}
 
 
-                                    >
-                                        Open Health Survey
-                                    </Button>
-                                </Stack>
-                            </Box>
+                                >
+                                    Open Health Survey
+                                </Button>
+                            </Stack>
+                        </Box>
 
-                            <Box className='card-2' p={2}>
-                                <Card2 />
-                            </Box>
-
-                        </Stack>
+                        <Box className='card-2' p={2}>
+                            <Card2 />
+                        </Box>
 
                     </Stack>
 
+                </Stack>
 
-                    <Modal w={'1100px'}
-                        maxW={'95%'} isOpen={isOpen} onClose={onClose}>
-                        {overlay}
-                        <ModalOverlay />
-                        <ModalContent w={'1100px'}
+
+                <Modal w={'1100px'}
+                    maxW={'95%'} isOpen={isOpen} onClose={onClose}>
+                    {overlay}
+                    <ModalOverlay />
+                    <ModalContent w={'1100px'}
                         maxW={'95%'}>
 
-                            <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>Log {activeDog?.name}'s health for today</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody p={{base: 1, lg: 6}}>
-                                <HealthLog dog={activeDog} onSuccess={handleSuccess} />
-                            </ModalBody>
+                        <ModalHeader m={'0 auto'} my={'5'} fontSize={'3xl'} color={'black'}>Log {activeDog?.name}'s health for today</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody p={{ base: 1, lg: 6 }}>
+                            <HealthLog dog={activeDog} onSuccess={handleSuccess} />
+                        </ModalBody>
 
-                            <ModalFooter>
+                        <ModalFooter>
 
-                            </ModalFooter>
-                        </ModalContent>
-                    </Modal>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
 
 
-                </Stack>
+            </Stack>
 
             <HomePageDogs />
         </SmoothList>

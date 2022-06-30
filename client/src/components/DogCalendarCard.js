@@ -21,7 +21,7 @@ export default function DogCalendarCard(props) {
   const { log } = props
   console.log(log)
   const date = new Date(log.createdAt)
-  const {dog} = props
+  const { dog } = props
   console.log(dog)
   // const curDate= date.toLocaleString()
 
@@ -100,43 +100,47 @@ export default function DogCalendarCard(props) {
               {date.toLocaleDateString()}
             </Text>
             <Stack justify={'center'} alignItems={'center'} direction={'column'}>
+              <Box>
+                <Stack mb={'10'} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
+                  {log.physical.map((physical) => {
+                    return <ImageButton src={images.physical[physical]} />
+                  })}
+                  {/* log.physical !== 'none' && () */}
+                </Stack>
+
+              </Box>
               <Stack direction={'row'}>
+              <Box>
+                <Stack mb={'10'} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
+                  {log.activity.map((activity) => {
+                    return <ImageButton src={images.activity[activity]} />
+                  })}
+                </Stack>
+
+              </Box>
                 <Box
                   BoxAlign={'center'}
                   color={useColorModeValue('gray.700', 'gray.400')}
                   px={3}
                 >
-                  <SimpleGrid columns={{ sm: 2 }} alignItems='stretch' spacing={10} m={2}>
+
+                  <Stack mb={'10'} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
                     {log.mood.map((mood) => {
                       return <ImageButton src={images.mood[mood]} />
                     })}
-                  </SimpleGrid>
+                  </Stack>
+
                 </Box>
               </Stack>
-              <Box>
-                <SimpleGrid columns={{ sm: 2 }} alignItems='stretch' spacing={10} m={2}>
-                  {log.activity.map((activity) => {
-                    return <ImageButton src={images.activity[activity]} />
-                  })}
-                </SimpleGrid>
-              </Box>
-              <Box>
-                <SimpleGrid columns={{ sm: 2 }} alignItems='stretch' justify={'center'} spacing={10} m={2}>
-                  {log.physical.map((physical) => {
-                    return <ImageButton src={images.physical[physical]} />
-                  })}
-                  {/* log.physical !== 'none' && () */}
-                </SimpleGrid>
-              </Box>
               {log.Images.length !== 0 && (
-            
+
                 <Box>
                   {log.Images.map((Images) => {
                     console.log(Images)
                     return <Image boxSize={'60'} borderRadius={'10'} my={'8'} src={Images.location} alt='s3pic' />
                   })}
                 </Box>
-                
+
               )}
             </Stack>
             {log.notes ? (

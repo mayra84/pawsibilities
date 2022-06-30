@@ -6,11 +6,7 @@ import {
     Heading,
     Input,
     Stack,
-    useColorModeValue,
-    HStack,
     Avatar,
-    AvatarBadge,
-    IconButton,
     Center,
     Select,
     Textarea,
@@ -18,21 +14,14 @@ import {
     AlertIcon,
     Box,
 } from '@chakra-ui/react';
-import { SmallCloseIcon } from '@chakra-ui/icons';
+
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, Link as RouterLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { addDog } from 'src/redux/reducers/dogReducer';
-import AllDogs from './AllDogs';
 import SmoothList from 'react-smooth-list';
 import FileUpload from './FileUpload';
 
 export default function DogProfileForm(props) {
-    // const { dog } = props
 
-    const dispatch = useDispatch()
-    // const dogs = useSelector((state) => state.dog)
 
     const [name, setName] = useState('')
     const [breed, setBreed] = useState('')

@@ -120,7 +120,8 @@ const [overlay, setOverlay] = React.useState(<OverlayOne />)
         <Modal size={'3xl'} isOpen={isOpen} onClose={onClose} >
           {overlay}
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent w={'500px'}
+                        maxW={'95%'}>
 
             <ModalHeader m={'0 auto'} mt={'5'} fontSize={'3xl'} color={'black'}>
               {info && info.resource.Dog.name}

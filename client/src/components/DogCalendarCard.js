@@ -2,28 +2,18 @@ import {
   Heading,
   Avatar,
   Box,
-  Center,
   Text,
   Stack,
-  Button,
-  Link,
-  Badge,
-  SimpleGrid,
   useColorModeValue,
   Image,
 } from '@chakra-ui/react';
-import { useSelector } from 'react-redux';
-import { dogReducer } from 'src/redux/reducers/dogReducer';
+
 import ImageButton from './ImageButton';
 import SmoothList from 'react-smooth-list';
 
 export default function DogCalendarCard(props) {
   const { log } = props
-  console.log(log)
   const date = new Date(log.createdAt)
-  const { dog } = props
-  console.log(dog)
-  // const curDate= date.toLocaleString()
 
   const images = {
     mood: {
@@ -71,104 +61,87 @@ export default function DogCalendarCard(props) {
 
 
   return (
-    <Center py={6}>
-      <SmoothList transitionDuration={1200} delay={200}>
-        <Box
-          borderRadius={'10'} border={'2px'} borderColor={'brand.201'}
+    <SmoothList transitionDuration={1200} delay={200}>
+      <Box
+        borderRadius={'10'} border={'2px'} borderColor={'brand.201'}
+        maxW={'lg'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.900')}
+        boxShadow={'2xl'}
+        rounded={'lg'}
+        p={6}
+        textAlign={'center'}
+      >
+        <SmoothList transitionDuration={1200} delay={200}>
+          <Avatar
+            size={'xl'}
+            src={log.Dog.Image.location}
+            alt={'Avatar Alt'}
+            mb={4}
+            pos={'relative'}
+          />
+          <Heading fontSize={'2xl'} fontFamily={'body'}>
+            {log.name}
+          </Heading>
+          <Text fontWeight={600} color={'gray.500'} mb={4}>
+            {date.toLocaleDateString()}
+          </Text>
 
-          maxW={'lg'}
-          w={'full'}
-          bg={useColorModeValue('white', 'gray.900')}
-          boxShadow={'2xl'}
-          rounded={'lg'}
-          p={6}
-          textAlign={'center'}
-        >
-          <SmoothList transitionDuration={1200} delay={200}>
-            <Avatar
-              size={'xl'}
-              src={log.Dog.Image.location}
-              alt={'Avatar Alt'}
-              mb={4}
-              pos={'relative'}
+          <Stack mb={2} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
+            {log.physical.map((physical) => {
+              return <ImageButton src={images.physical[physical]} />
+            })}
+            {/* log.physical !== 'none' && () */}
+          </Stack>
 
-            />
-            <Heading fontSize={'2xl'} fontFamily={'body'}>
-              {log.name}
-            </Heading>
-            <Text fontWeight={600} color={'gray.500'} mb={4}>
-              {date.toLocaleDateString()}
-            </Text>
-            <Stack justify={'center'} alignItems={'center'} direction={'column'}>
-              <Box>
-                <Stack mb={'10'} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
-                  {log.physical.map((physical) => {
-                    return <ImageButton src={images.physical[physical]} />
-                  })}
-                  {/* log.physical !== 'none' && () */}
-                </Stack>
+          <Stack mb={2} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
+            {log.activity.map((activity) => {
+              return <ImageButton src={images.activity[activity]} />
+            })}
+          </Stack>
 
-              </Box>
-              <Stack direction={'row'}>
-              <Box>
-                <Stack mb={'10'} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
-                  {log.activity.map((activity) => {
-                    return <ImageButton src={images.activity[activity]} />
-                  })}
-                </Stack>
+          <Stack mb={2} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
+            {log.mood.map((mood) => {
+              return <ImageButton src={images.mood[mood]} />
+            })}
+          </Stack>
 
-              </Box>
-                <Box
-                  BoxAlign={'center'}
-                  color={useColorModeValue('gray.700', 'gray.400')}
-                  px={3}
-                >
+          {log.Images.length !== 0 && (
 
-                  <Stack mb={'10'} spacing={0} gap={'10px'} direction={{ base: 'row' }} flexWrap={'wrap'} alignItems={{ base: 'center' }} justify={{ base: 'center' }} className='icon-stack'>
-                    {log.mood.map((mood) => {
-                      return <ImageButton src={images.mood[mood]} />
-                    })}
-                  </Stack>
+            <Box>
+              {log.Images.map((Images) => {
+                console.log(Images)
+                return <Image boxSize={'60'} borderRadius={'10'} my={'8'} src={Images.location} alt='s3pic' />
+              })}
+            </Box>
 
-                </Box>
-              </Stack>
-              {log.Images.length !== 0 && (
-
-                <Box>
-                  {log.Images.map((Images) => {
-                    console.log(Images)
-                    return <Image boxSize={'60'} borderRadius={'10'} my={'8'} src={Images.location} alt='s3pic' />
-                  })}
-                </Box>
-
-              )}
-            </Stack>
-            {log.notes ? (
-              <Box pt={'5'}>
-                <Text fontWeight={600} color={'black'} mb={4}>
-                  Notes: <br></br> {log.notes}
-                </Text>
-              </Box>
-            ) : (
-              null
-            )
-            }
+          )}
+          {log.notes ? (
+            <Box pt={'5'}>
+              <Text fontWeight={600} color={'black'} mb={4}>
+                Notes: <br></br> {log.notes}
+              </Text>
+            </Box>
+          ) : (
+            null
+          )
+          }
 
 
 
-            {/* {log.Images ? ( */}
-            {/* //   })
+          {/* {log.Images ? ( */}
+          {/* //   })
            
             // ) : (
             //   null
             // )} */}
-            {/* map */}
-            {/* log.Images.location */}
+          {/* map */}
+          {/* log.Images.location */}
 
 
-          </SmoothList>
-        </Box>
-      </SmoothList>
-    </Center>
+        </SmoothList>
+      </Box>
+    </SmoothList>
+
   );
 }

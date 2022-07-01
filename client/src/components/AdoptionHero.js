@@ -30,7 +30,7 @@ export default function AdoptionHero() {
 
     const handleSuccess = () => {
         onClose()
-        dispatch(fetchDogs)
+        dispatch(fetchDogs())
         // setDisplayAlert(true)
     }
 

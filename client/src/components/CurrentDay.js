@@ -67,7 +67,7 @@ export default function CurrentDay(props) {
         if (!user) {
             return
         }
-        dispatch(fetchDogs)
+        dispatch(fetchDogs())
     }, [dispatch, user])
 
     useEffect(() => {
@@ -75,14 +75,14 @@ export default function CurrentDay(props) {
             return
         }
         setActiveDog(dogs[0])
-        // dispatch(fetchDogs)
+        // dispatch(fetchDogs())
     }, [dogs])
 
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const handleSuccess = () => {
-        dispatch(fetchDogs)
+        dispatch(fetchDogs())
         onClose()
         setComplete(true)
 

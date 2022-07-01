@@ -29,7 +29,7 @@ export default function DogCalendar(props) {
   const calendar = useSelector((state) => state.calendar)
   // console.log(calendar.logs)
   useEffect(() => {
-    dispatch(fetchHealth)
+    dispatch(fetchHealth())
   }, [dispatch])
 
 

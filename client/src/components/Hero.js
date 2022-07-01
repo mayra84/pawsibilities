@@ -31,7 +31,7 @@ export default function Hero() {
 
     const handleSuccess = () => {
         onClose()
-        dispatch(fetchDogs)
+        dispatch(fetchDogs())
         // setDisplayAlert(true)
     }
 

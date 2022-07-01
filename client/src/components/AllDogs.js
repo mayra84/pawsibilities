@@ -45,13 +45,13 @@ export default function AllDogs(props) {
         if (!user) {
             return
         }
-        dispatch(fetchDogs)
+        dispatch(fetchDogs())
     }, [dispatch, user])
 
 
     const handleSuccess = () => {
         onClose()
-        dispatch(fetchDogs)
+        dispatch(fetchDogs())
         setDisplayAlert(true)
     }
 
@@ -85,7 +85,7 @@ export default function AllDogs(props) {
     //       }
     //     })
 
-    //     dispatch(fetchDogs)
+    //     dispatch(fetchDogs())
     //   }
 
     // const handleRemoveDog = async (dog) => {
@@ -180,8 +180,8 @@ export default function AllDogs(props) {
                             backdropFilter={'blur(2px)'}
                             borderRadius={'10'} 
                             // border={'2px'} color={'brand.201'}
-                            maxW={'800px'}
-                            w={'full'}
+                            maxW={'95%'}
+                            w={'800px'}
 
                             //   bg={useColorModeValue('white', 'gray.900')}
                             boxShadow={'2xl'}

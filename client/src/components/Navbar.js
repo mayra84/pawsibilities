@@ -34,7 +34,7 @@ export default function WithSubnavigation(props) {
     const dispatch = useDispatch()
 
     const handleLogout = () => {
-        dispatch(logout)
+        dispatch(logout())
         navigate("/")
     }
 

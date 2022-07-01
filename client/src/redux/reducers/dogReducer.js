@@ -27,19 +27,22 @@ export function setDogs(dogs) {
 }
 
 //gets dogs from backend
-export function fetchDogs(dispatch, getState) {
-    const state = getState()
-    if (!state.user.currentUser) {
-        return
+export function fetchDogs() {
+    return (dispatch, getState) => {
+
+        const state = getState()
+        if (!state.user.currentUser) {
+            return
+        }
+        fetch('/api/v1/dogs')
+            .then(res => res.json())
+            .then(dogs => {
+                if (dogs.error) {
+                    return
+                }
+                dispatch(setDogs(dogs))
+            })
     }
-    fetch('/api/v1/dogs')
-        .then(res => res.json())
-        .then(dogs => {
-            if (dogs.error) {
-                return
-            }
-            dispatch(setDogs(dogs))
-        })
 }
 
 

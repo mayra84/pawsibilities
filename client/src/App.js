@@ -19,7 +19,7 @@ function App() {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(checkUser)
+    dispatch(checkUser())
   }, [dispatch])
 
   return (
